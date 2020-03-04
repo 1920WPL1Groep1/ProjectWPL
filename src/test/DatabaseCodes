@@ -1,0 +1,173 @@
+/*Initialisatie*/
+ use planten
+delete from fenotype
+delete from fenotype_multi
+delete from abiotische_factoren
+delete from abiotisch_multi
+delete from commensalisme
+delete from commensialisme_multi
+delete from extra
+delete from foto
+delete from beheer
+delete from plant
+
+
+/*Toevoegen Plant*/
+insert into plant values
+  (1,'vivassen','rosaceae','aceana', 'buchananii','',8,12,'rosacea acaeana buchananii'),
+  (2,'vivassen','rosaceae','aceana', 'magellanica','',8,12,'rosacea aceaana magellanica'),
+  (3,'vivassen','rosaceae','aceana', 'microphylla','',8,12,'rosaceae acaeana microphylla'),
+  (4,'vivassen','rosaceae','aceana', 'microphylla','''Kupferteppich''',8,12,'rosaceae acaeana microphylla ''Kupferteppich'''),
+  (5,'vivassen','acanthaceae','acanthus', '','''Hollande du Nord''',3,5,'acanthaceae acanthus ''Hollande du Nord'''),
+  (6,'vivassen','acanthaceae','acanthus', 'hungaricus','',3,5,'acanthaceae acanthus hungaricus'),
+  (7,'vivassen','acanthaceae','acanthus', 'hungaricus','',3,5,'acanthaceae acanthus hungaricus'),
+  (8,'vivassen','acanthaceae','acanthus', 'hungaricus','White Lips',3,5,'acanthaceae acanthus hungaricus ''White Lips'''),
+  (9,'vivassen','acanthaceae','acanthus', 'mollis','',3,5,'acanthaceae acanthus mollis'),
+  (10,'vivassen','acanthaceae','acanthus', 'mollis','''Hollard''s Gold''',3,5,'acanthaceae acanthus mollis ''Hollard''s Gold'''),
+  (11,'vivassen','acanthaceae','acanthus','mollis','''Jef Albus''',3,5,'acanthaceae acanthus mollis ''Jef Albus'''),
+  (12,'vivassen','acanthaceae','acanthus','','''Mornings Candle''',3,5,'acanthaceae acanthus ''Mornings Candle'''),
+  (13,'vivassen','acanthaceae','acanthus','spinosus','',3,5,'acanthaceae acanthus spinosus'),
+  (14,'vivassen','asteraceae','achillea','','''Alabaster''',5,7,'asteraceae achillea ''Alabaster'''),
+  (15,'vivassen','asteraceae','achillea','','''Coronation Gold''',5,7,'asteraceae achillea ''Coronation Gold'''),
+  (16,'vivassen','asteraceae','achillea','','''Credo''',5,7,'asteraceae achillea ''Credo'''),
+  (17,'vivassen','asteraceae','achillea','','''Feuerland''',5,7,'asteraceae achillea ''Feuerland'''),
+  (18,'vivassen','asteraceae','achillea','','''Little Moonshine''',5,7,'asteraceae achillea ''Little Moonshine'''),
+  (19,'vivassen','asteraceae','achillea','millefolium','',5,7,'asteraceae achillea millefolium '),
+  (20,'vivassen','asteraceae','achillea','millefolium','''Apfelblüte''',5,7,'asteraceae achillea millefolium ''Apfelblüte'''),
+  (21,'vivassen','asteraceae','achillea', 'millefolium','''Apricot Deligt''',5,7,'asteraceae achillea millefolium ''Apricot Deligt'' '),
+  (22,'vivassen','asteraceae','achillea', 'millefolium','''Cerise Queen''',5,7,'asteraceae achillea millefolium ''Cerise Queen'' '),
+  (23,'vivassen','asteraceae','achillea', 'millefolium','''Lachsschönheit''',5,7,'asteraceae achillea millefolium ''Lachsschönheit'' '),
+  (24,'vivassen','asteraceae','achillea', 'millefolium','''Lilac Beauty''',5,7,'asteraceae achillea millefolium ''Lilac Beauty'' '),
+  (25,'vivassen','asteraceae','achillea', 'millefolium','''Paprika''',5,7,'asteraceae achillea millefolium ''Paprika'' '),
+  (26,'vivassen','asteraceae','achillea', 'millefolium','''Pink Grapfruit''',5,7,'asteraceae achillea millefolium ''Pink Grapfruit'' '),
+  (27,'vivassen','asteraceae','achillea', 'millefolium','''Pomegranate''',5,7,'asteraceae achillea millefolium ''Pomegranate'' '),
+  (28,'vivassen','asteraceae','achillea', 'millefolium','''Red Velvet''',5,7,'asteraceae achillea millefolium ''Red Velvet'' '),
+  (29,'vivassen','asteraceae','achillea', 'millefolium','''Saucy Seduction''',5,7,'asteraceae achillea millefolium ''Saucy Seduction'' '),
+  (30,'vivassen','asteraceae','achillea', 'millefolium','''Schneetaler''',5,7,'asteraceae achillea millefolium ''Schneetaler'' '),
+  (31, 'vivassen', 'asteraceae', 'achillea', 'millefolium','''Summerwine''',5,7,'asteraceae achillea millefolium ''Summerwine'''),
+  (32, 'vivassen', 'asteraceae', 'achillea', 'millefolium','''Sunny Seduction''',5,7,'asteraceae achillea millefolium ''Sunny Seduction'''),
+  (33, 'vivassen', 'asteraceae', 'achillea', 'millefolium','''Wesersandstein''',5,7,'asteraceae achillea millefolium ''Wesersandstein'''),
+  (34, 'vivassen', 'asteraceae', 'achillea', 'millefolium','''Wonderful Wampee''',5,7,'asteraceae achillea millefolium ''Wonderful Wampee'''),
+  (35, 'vivassen', 'asteraceae', 'achillea', '','''Moonshine''',5,7,'asteraceae achillea ''Moonshine'''),
+  (36, 'vivassen', 'asteraceae', 'achillea', 'ptarmica','',7,10,'asteraceae achillea plamica'),
+  (37, 'vivassen', 'asteraceae', 'achillea', 'ptarmica','''Nana Compacta''',7,10,'asteraceae achillea ptarmica ''Nana Compacta'''),
+  (38, 'vivassen', 'asteraceae', 'achillea', 'ptarmica','''Perry''s White''',7,10,'asteraceae achillea ptarmica ''Perry''s White'''),
+  (39, 'vivassen', 'asteraceae', 'achillea', 'ptarmica','''The Pearl''',7,10,'asteraceae achillea ptarmica ''The Pearl'''),
+  (40, 'vivassen', 'asteraceae', 'achillea', '','''Taygetea''',5,7,'asteraceae achillea ''Taygetea'''),
+  (41,'vivassen','asteraceae','achillea', ' ','''Terracotta''',5,7,'asteraceae achillea ''Terracotta'' '),
+  (42,'vivassen','asteraceae','achillea', ' ','''Walther Funcke''',5,7,'asteraceae achillea ''Walther Funcke'' '),
+  (43,'vivassen','ranunculaceae','aconitum', 'carmichaelii','''Arendsii''',7,9,'ranunculaceae aconitum carmichaelii ''Arendsii'' '),
+  (44,'vivassen','ranunculaceae','aconitum', 'henryi','''Spark''s'' Variety''',7,9,'ranunculaceae aconitum henryi ''Spark''s'' Variety'' '),
+  (45,'vivassen','ranunculaceae','aconitum', 'napellus',' ',7,9,'ranunculaceae aconitum napellus'),
+  (46,'vivassen','ranunculaceae','aconitum', 'napellus','''Album''',7,9,'ranunculaceae aconitum napellus ''Album'' '),
+  (47,'vivassen','acoraceae','acorus', 'gramineus','''Oborozuki''',8,12,'acoraceae acorus gramineus ''Oborozuki'' '),
+  (48,'vivassen','ranunculaceae','actaea', ' ','''Chocoholic''',5,7,'ranunculaceae actaea  ''Chocoholic'' '),
+  (49,'vivassen','ranunculaceae','actaea', 'japonica','''Cheju-do''',5,7,'ranunculaceae actaea japonica ''Cheju-do'' '),
+  (50,'vivassen','ranunculaceae','actaea', 'pachypoda','''MISTY BLUE''',5,7,'ranunculaceae actaea pachypoda ''MISTY BLUE'' ')
+
+/*Fenotype toevoegen*/
+declare @teller int
+	set @teller = 1
+	while @teller <= 50
+	begin
+
+	insert into fenotype values
+	(@teller,@teller,'','','','','','','')
+
+	set @teller = @teller + 1
+	end
+
+/*Abiotisch toevoegen*/
+insert into abiotische_factoren values
+	(1,1,'Z', '','droog fris','',''),
+	(2,2,'Z', '','droog fris','',''),
+	(3,3,'Z', '','droog fris','',''),
+	(4,4,'Z', '','droog fris','',''),
+	(5,5,'Z', '','fris','',''),
+	(6,6,'Z', '','fris','',''),
+	(7,7,'Z', '','fris','',''),
+	(8,8,'Z', '','fris','',''),
+	(9,9,'Z', '','fris','',''),
+	(10,10,'Z', '','fris','',''),
+	(11,11,'Z', '','fris','',''),
+	(12,12,'Z', '','fris','',''),
+	(13,13,'Z', '','fris','',''),
+	(14,14,'Z', '','fris','',''),
+	(15,15,'Z', '','fris','',''),
+	(16,16,'Z', '','fris','',''),
+	(17,17,'Z', '','fris','',''),
+	(18,18,'', '','fris','',''),
+	(19,19,'Z', '','fris','',''),
+	(20,20,'', '','fris','',''),
+	(21,21,'Z', '','fris','',''),
+	(22,22,'Z', '','fris','',''),
+	(23,23,'Z', '','fris','',''),
+	(24,24,'Z', '','fris','',''),
+	(25,25,'Z', '','fris','',''),
+	(26,26,'Z', '','fris','',''),
+	(27,27,'Z', '','fris','',''),
+	(28,28,'Z', '','fris','',''),
+	(29,29,'Z', '','fris','',''),
+	(30,30,'Z', '','fris','',''),
+	(31,31,'Z', '','fris','',''),
+	(32,32,'Z', '','fris','',''),
+	(33,33,'Z', '','fris','',''),
+	(34,34,'Z', '','fris','',''),
+	(35,35,'Z', '','fris','',''),
+	(36,36,'Z', '','vochtig','',''),
+	(37,37,'Z', '','fris vochtig','',''),
+	(38,38,'Z', '','fris vochtig','',''),
+	(39,39,'Z', '','fris vochtig','',''),
+	(40,40,'Z', '','droog','',''),
+	(41,41,'Z', '','fris','',''),
+	(42,42,'Z', '','fris','',''),
+	(43,43,'Z-HS', '','fris','',''),
+	(44,44,'Z-HS', '','fris','',''),
+	(45,45,'Z-HS', '','fris vochtig','',''),
+	(46,46,'Z-HS', '','fris vochtig','',''),
+	(47,47,'Z', '','vochtig','',''),
+	(48,48,'HS', '','fris vochtig','',''),
+	(49,49,'HS', '','fris vochtig','',''),
+	(50,50,'', '','fris','','')
+
+/*Toevoegen beheer*/
+
+
+
+
+	set @teller = 1
+	while @teller <= 50
+	begin
+
+	insert into beheer values
+	(@teller,@teller,'','','','')
+
+	set @teller = @teller + 1
+	end
+
+/*Toevoegen Commensalisme*/
+use planten
+	delete from commensalisme
+
+
+
+	set @teller = 1
+	while @teller <= 50
+	begin
+
+	insert into commensalisme values
+	(@teller,@teller,'','')
+
+	set @teller = @teller + 1
+	end
+
+/*Toevoegen Foto*/
+	set @teller = 1
+	while @teller <= 50
+	begin
+
+	insert into foto values
+	(@teller,@teller,'','','')
+
+	set @teller = @teller + 1
+	end
