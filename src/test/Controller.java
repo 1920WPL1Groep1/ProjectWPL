@@ -28,6 +28,7 @@ public class Controller {
     public String Keuze;
     private Connection dbConnection;
     private int getal;
+    private  String database;
 
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
@@ -48,48 +49,55 @@ public class Controller {
         if(keuzenummer==1)
         {
             zoekInfolabel.setText("kies op naam van familie het hoeft niet volledig te zijn");
+            database="plant";
             getal=1;
         }
         if(keuzenummer==2)
         {
             zoekInfolabel.setText("kies op naam van type het hoeft niet volledig te zijn");
             getal=1;
-
+            database="plant";
         }
         if(keuzenummer==3)
         {
             zoekInfolabel.setText("kies op naam van geslacht het hoeft niet volledig te zijn");
             getal=1;
+            database="plant";
 
         }
         if(keuzenummer==4)
         {
             zoekInfolabel.setText("kies op naam van soort het hoeft niet volledig te zijn");
             getal=1;
+            database="plant";
 
         }
         if(keuzenummer==5)
         {
             zoekInfolabel.setText("kies op naam van variatie het hoeft niet volledig te zijn");
             getal=1;
+            database="plant";
 
         }
         if(keuzenummer==6)
         {
             zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat erboven zit");
             getal=2;
+            database="plant";
 
         }
         if(keuzenummer==7)
         {
             zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat eronder zit");
             getal=3;
+            database="plant";
 
         }
         if(keuzenummer==8)
         {
             zoekInfolabel.setText("kies op naam van fgsv het hoeft niet volledig te zijn");
             getal=1;
+            database="plant";
         }
 
     }
@@ -171,7 +179,7 @@ public class Controller {
             {
                 break;
             }
-            List<plant> plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal);
+            List<plant> plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal,database);
             showplanten("planten bij "+Keuze,plantenlijst);
             break;
         }
