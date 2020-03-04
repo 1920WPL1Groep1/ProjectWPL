@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="884.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="884.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
       <TabPane layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -25,10 +26,10 @@
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
                                     <Label layoutX="14.0" layoutY="51.0" text="Maximum:" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
-                                    <TextField layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
+                                    <TextField fx:id="bladhoogteMinimumTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladhoogteMaximumTxt" layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladhoogteMaandTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -39,10 +40,10 @@
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
                                     <Label layoutX="14.0" layoutY="51.0" text="Maximum:" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
-                                    <TextField layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
+                                    <TextField fx:id="bloeihoogteMinimumTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bloeihoogteMaximumTxt" layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bloeihoogteMaandTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -52,21 +53,21 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="Kleur" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladkleurKleurTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladkleurMaandTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="17.0" layoutY="364.0" prefHeight="78.0" prefWidth="384.0" text="Bladkleur:">
+                        <TitledPane animated="false" layoutX="17.0" layoutY="364.0" prefHeight="78.0" prefWidth="384.0" text="Bloeikleur:">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="Kleur" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bloeikleurKleurTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bloeikleurMaandTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -76,9 +77,9 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladgrootteMinimumTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Maximum:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="bladgrootteMaximumTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -88,9 +89,9 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <Label layoutX="13.0" layoutY="18.0" text="X:" />
-                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="levensvormXTxt" layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                     <Label layoutX="216.0" layoutY="19.0" text="Y:" />
-                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField fx:id="levensvormYTxt" layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -99,7 +100,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="bladvormCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -108,7 +109,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="22.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="ratioCombo" layoutX="22.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -117,7 +118,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="19.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="spruitCombo" layoutX="19.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -126,7 +127,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="20.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="bloeiwijzeCombo" layoutX="20.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -135,7 +136,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="22.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="habitusCombo" layoutX="22.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -152,7 +153,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="bezonningCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -161,7 +162,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="grondsoortCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -170,7 +171,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="vochtbehoefteCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -179,7 +180,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="voedingsbehoefteCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -188,7 +189,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="reactieCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -197,11 +198,11 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
-                                    <ComboBox layoutX="191.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
-                                    <ComboBox layoutX="441.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
-                                    <ComboBox layoutX="611.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
-                                    <ComboBox layoutX="354.0" layoutY="13.0" prefHeight="26.0" prefWidth="72.0" />
+                                    <ComboBox fx:id="habitat1Combo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox fx:id="habitat2Combo" layoutX="191.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox fx:id="habitat3Combo" layoutX="441.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox fx:id="habitat4Combo" layoutX="611.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox fx:id="habitatEnOfCombo" layoutX="354.0" layoutY="13.0" prefHeight="26.0" prefWidth="72.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -217,7 +218,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="ontwikkelingssnelheidCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -226,7 +227,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="levensduurCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -235,11 +236,11 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <CheckBox layoutX="24.0" layoutY="18.0" mnemonicParsing="false" text="I" />
-                                    <CheckBox layoutX="124.0" layoutY="18.0" mnemonicParsing="false" text="II" />
-                                    <CheckBox layoutX="224.0" layoutY="18.0" mnemonicParsing="false" text="III" />
-                                    <CheckBox layoutX="324.0" layoutY="18.0" mnemonicParsing="false" text="IV" />
-                                    <CheckBox layoutX="424.0" layoutY="18.0" mnemonicParsing="false" text="V" />
+                                    <CheckBox fx:id="sociabiliteit1Check" layoutX="24.0" layoutY="18.0" mnemonicParsing="false" text="I" />
+                                    <CheckBox fx:id="sociabiliteit2Check" layoutX="124.0" layoutY="18.0" mnemonicParsing="false" text="II" />
+                                    <CheckBox fx:id="sociabiliteit3Check" layoutX="224.0" layoutY="18.0" mnemonicParsing="false" text="III" />
+                                    <CheckBox fx:id="sociabiliteit4Check" layoutX="324.0" layoutY="18.0" mnemonicParsing="false" text="IV" />
+                                    <CheckBox fx:id="sociabiliteit5Check" layoutX="424.0" layoutY="18.0" mnemonicParsing="false" text="V" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -248,9 +249,9 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
-                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
-                                    <ComboBox layoutX="416.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
-                                    <ComboBox layoutX="363.0" layoutY="13.0" prefHeight="26.0" prefWidth="44.0" />
+                                    <ComboBox fx:id="strategie1Combo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="strategie2Combo" layoutX="416.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="strategieEnOfCombo" layoutX="363.0" layoutY="13.0" prefHeight="26.0" prefWidth="44.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -272,12 +273,15 @@
       </TabPane>
       <TitledPane animated="false" layoutX="857.0" layoutY="138.0" prefHeight="707.0" prefWidth="314.0" text="Resultaten">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="resultatenList" layoutX="17.0" layoutY="14.0" prefHeight="654.0" prefWidth="279.0" />
+               </children></AnchorPane>
         </content>
       </TitledPane>
-      <TextField layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
-      <Button layoutX="570.0" layoutY="64.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
-      <CheckBox layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
+      <TextField fx:id="zoekenTxt" layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
+      <Button fx:id="zoekenBtn" layoutX="567.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
+      <CheckBox fx:id="geavanceerdCheck" layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

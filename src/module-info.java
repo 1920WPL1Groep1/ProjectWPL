@@ -5,6 +5,6 @@ module OpdrachtenDB {
     requires java.sql;
 
     opens test;
-
+    opens Project;
 
 }
