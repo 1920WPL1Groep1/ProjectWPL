@@ -83,7 +83,7 @@ public class Controller {
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
         for (plant plant : planten) {
-            resultatentxt.setText(resultatentxt.getText()+ System.lineSeparator()+plant.getFgsv());
+            resultatentxt.setText(resultatentxt.getText() + "\r\n" + plant.getFgsv());
             System.out.println(plant.toString());
         }
         System.out.println();
