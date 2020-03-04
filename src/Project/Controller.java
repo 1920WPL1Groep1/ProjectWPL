@@ -62,9 +62,21 @@ public class Controller {
     public RadioButton vlinderBtnJa;
     public RadioButton vlinderBtnNee;
     public TextArea resultatentxt;
+    public TabPane advancedTab;
+    public RadioButton eetbaarBtnJa;
+    public RadioButton eetbaarBtnNee;
+    public RadioButton geurendBtnJa;
+    public RadioButton geurendBtnNee;
+    public RadioButton vorstBtnJa;
+    public RadioButton vorstBtnNee;
+    public ComboBox vergelijkenNectarCombo;
+    public ComboBox nectarwaardeCombo;
+    public ComboBox vergelijkenPollenCombo;
+    public ComboBox pollenwaardeCombo;
     private Connection dbConnection;
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
+        advancedTab.setDisable(true);
     }
 
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
@@ -107,4 +119,16 @@ public class Controller {
 
     }
 
+    public void click_advanced(MouseEvent mouseEvent) {
+        if (geavanceerdCheck.isSelected())
+        {
+            advancedTab.setDisable(false);
+
+        }
+        else
+        {
+            advancedTab.setDisable(true);
+
+        }
+    }
 }

@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="884.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <TabPane layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="advancedTab" layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Fenotype">
             <content>
@@ -384,7 +384,7 @@
       </TitledPane>
       <TextField fx:id="zoekenTxt" layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
       <Button fx:id="zoekenBtn" layoutX="567.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
-      <CheckBox fx:id="geavanceerdCheck" layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
+      <CheckBox fx:id="geavanceerdCheck" layoutX="870.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#click_advanced" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
