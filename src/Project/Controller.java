@@ -62,9 +62,11 @@ public class Controller {
     public RadioButton vlinderBtnJa;
     public RadioButton vlinderBtnNee;
     public TextArea resultatentxt;
+    public TabPane tabpane;
     private Connection dbConnection;
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
+        tabpane.setDisable(true);
     }
 
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
@@ -82,8 +84,17 @@ public class Controller {
      */
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
+        int getal =0;
         for (plant plant : planten) {
-            resultatentxt.setText(resultatentxt.getText() + "\r\n" + plant.getFgsv());
+            getal++;
+            if (getal==1)
+            {
+                resultatentxt.setText(plant.getFgsv());
+            }
+            else
+            {
+                resultatentxt.setText(resultatentxt.getText() + "\r\n" + plant.getFgsv());
+            }
             System.out.println(plant.toString());
         }
         System.out.println();
@@ -107,4 +118,14 @@ public class Controller {
 
     }
 
+    public void click_advance(MouseEvent mouseEvent) {
+        if(geavanceerdCheck.isSelected())
+        {
+            tabpane.setDisable(false);
+        }
+        else
+        {
+            tabpane.setDisable(true);
+        }
+    }
 }
