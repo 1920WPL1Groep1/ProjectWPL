@@ -26,9 +26,11 @@ public class Controller {
     public Button zoekButton;
     public int keuzenummer;
     public String Keuze;
+    public ListView<String> testlistview;
     private Connection dbConnection;
     private int getal;
     private String database;
+
 
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
@@ -161,9 +163,10 @@ public class Controller {
      */
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
-        for (plant plant : planten) {
-            UitkomstTextarea.setText(UitkomstTextarea.getText() + "\r\n" + plant.toString());
-            System.out.println(plant.toString());
+        for (int i = 0; i<planten.size();i++) {
+            testlistview.getItems().add(i, String.valueOf(planten.get(i)));
+//            UitkomstTextarea.setText(UitkomstTextarea.getText() + "\r\n" + plant.toString());
+//            System.out.println(plant.toString());
         }
         System.out.println();
     }
