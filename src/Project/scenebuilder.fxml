@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -261,12 +262,114 @@
             </Tab>
             <Tab text="Beheer">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane animated="false" prefHeight="78.0" prefWidth="782.0" text="Beheerbehandelingen">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox fx:id="beheerbehandelingCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutY="90.0" prefHeight="78.0" prefWidth="782.0" text="Maand">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox fx:id="maandCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutY="180.0" prefHeight="78.0" prefWidth="782.0" text="Frequentie">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox fx:id="frequentieCombo" layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <Label layoutX="380.0" layoutY="17.0" text="per jaar" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Extra">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="16.0" layoutY="14.0" prefHeight="78.0" prefWidth="782.0" text="Bijvriendelijk">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <RadioButton fx:id="bijBtnJa" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" text="Ja" />
+                                    <RadioButton fx:id="bijBtnNee" layoutX="112.0" layoutY="17.0" mnemonicParsing="false" text="Nee" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="16.0" layoutY="104.0" prefHeight="78.0" prefWidth="782.0" text="Vlindervriendelijk">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <RadioButton fx:id="vlinderBtnJa" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" text="Ja" />
+                                    <RadioButton fx:id="vlinderBtnNee" layoutX="112.0" layoutY="17.0" mnemonicParsing="false" text="Nee" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="16.0" layoutY="194.0" prefHeight="78.0" prefWidth="782.0" text="Eetbaar/kruidgebruik">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <RadioButton fx:id="eetbaarBtnJa" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" text="Ja" />
+                                    <RadioButton fx:id="eetbaarBtnNee" layoutX="112.0" layoutY="17.0" mnemonicParsing="false" text="Nee" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="16.0" layoutY="285.0" prefHeight="78.0" prefWidth="782.0" text="Geurend">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <RadioButton fx:id="geurendBtnJa" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" text="Ja" />
+                                    <RadioButton fx:id="geurendBtnNee" layoutX="112.0" layoutY="17.0" mnemonicParsing="false" text="Nee" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="16.0" layoutY="375.0" prefHeight="78.0" prefWidth="782.0" text="Vorstgevoelig">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <RadioButton fx:id="vorstBtnJa" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" text="Ja" />
+                                    <RadioButton fx:id="vorstBtnNee" layoutX="112.0" layoutY="17.0" mnemonicParsing="false" text="Nee" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="466.0" prefHeight="78.0" prefWidth="782.0" text="Nectarwaarde">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox fx:id="vergelijkenNectarCombo" layoutX="46.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="nectarwaardeCombo" layoutX="394.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="556.0" prefHeight="78.0" prefWidth="782.0" text="Pollenwaarde">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox fx:id="vergelijkenPollenCombo" layoutX="46.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox fx:id="pollenwaardeCombo" layoutX="394.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
@@ -280,7 +383,7 @@
         </content>
       </TitledPane>
       <TextField fx:id="zoekenTxt" layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
-      <Button fx:id="zoekenBtn" layoutX="567.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
+      <Button fx:id="zoekenBtn" layoutX="567.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
       <CheckBox fx:id="geavanceerdCheck" layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
