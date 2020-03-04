@@ -61,7 +61,7 @@ public class Controller {
     public RadioButton bijBtnNee;
     public RadioButton vlinderBtnJa;
     public RadioButton vlinderBtnNee;
-    public TextField resultatentxt;
+    public TextArea resultatentxt;
     private Connection dbConnection;
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();

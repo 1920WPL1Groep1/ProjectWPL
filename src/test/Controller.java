@@ -162,7 +162,7 @@ public class Controller {
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
         for (plant plant : planten) {
-            UitkomstTextarea.setText(UitkomstTextarea.getText()+ "\r\n"+plant.toString());
+            UitkomstTextarea.setText(UitkomstTextarea.getText() + "\r\n" + plant.toString());
             System.out.println(plant.toString());
         }
         System.out.println();

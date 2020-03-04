@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -373,11 +374,11 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TitledPane animated="false" layoutX="857.0" layoutY="138.0" prefHeight="707.0" prefWidth="314.0" text="Resultaten">
+      <TitledPane animated="false" layoutX="857.0" layoutY="138.0" prefHeight="598.0" prefWidth="314.0" text="Resultaten">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="311.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="457.0" prefWidth="313.0">
                <children>
-                  <TextField fx:id="resultatentxt" layoutX="14.0" layoutY="14.0" prefHeight="638.0" prefWidth="288.0" />
+                  <TextArea fx:id="resultatentxt" layoutX="22.0" layoutY="14.0" prefHeight="547.0" prefWidth="262.0" />
                </children></AnchorPane>
         </content>
       </TitledPane>
