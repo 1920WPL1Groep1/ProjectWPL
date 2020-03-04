@@ -159,8 +159,9 @@ public class plantdao {
         List<plant> plantenlijst = new ArrayList<>();
         if(getal ==1)
         {
-            GetplantKeuze = "SELECT * FROM plant WHERE "+keuze +" LIKE " +naam;
             naam = "'"+"%" + naam + "%"+"'";
+
+            GetplantKeuze = "SELECT * FROM plant WHERE "+keuze +" LIKE " +naam;
         }
         if(getal==2)
         {
