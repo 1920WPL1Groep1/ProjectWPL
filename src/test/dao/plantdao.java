@@ -160,15 +160,15 @@ public class plantdao {
         if(getal ==1)
         {
             naam = "'"+"%" + naam + "%"+"'";
-            GetplantKeuze = "SELECT * FROM "+ database+" WHERE "+keuze +" LIKE " +naam;
+            GetplantKeuze = "SELECT * FROM "+ database +" WHERE "+keuze +" LIKE " +naam;
         }
         if(getal==2)
         {
-            GetplantKeuze = "SELECT * FROM "+ database+" WHERE "+keuze +" < " +naam;
+            GetplantKeuze = "SELECT * FROM "+ database+ " WHERE "+keuze +" < " +naam;
         }
         if(getal==3)
         {
-            GetplantKeuze = "SELECT * FROM "+ database+" WHERE "+keuze +" > " +naam;
+            GetplantKeuze = "SELECT * FROM "+ database+ " WHERE "+keuze +" > " +naam;
         }
 
         try {
