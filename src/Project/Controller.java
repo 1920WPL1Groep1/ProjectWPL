@@ -63,10 +63,21 @@ public class Controller {
     public RadioButton vlinderBtnNee;
     public TextArea resultatentxt;
     public TabPane tabpane;
+    public Tab fentotyptab;
+    public Tab abiotischetab;
+    public Tab commensalimsetab;
+    public Tab beheertab;
+    public Tab extratab;
+    public Tab resultaatab;
     private Connection dbConnection;
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
-        tabpane.setDisable(true);
+        fentotyptab.setDisable(true);
+        abiotischetab.setDisable(true);
+        commensalimsetab.setDisable(true);
+        beheertab.setDisable(true);
+        extratab.setDisable(true);
+        resultaatab.setDisable(false);
     }
 
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
@@ -121,11 +132,19 @@ public class Controller {
     public void click_advance(MouseEvent mouseEvent) {
         if(geavanceerdCheck.isSelected())
         {
-            tabpane.setDisable(false);
+            fentotyptab.setDisable(false);
+            abiotischetab.setDisable(false);
+            commensalimsetab.setDisable(false);
+            beheertab.setDisable(false);
+            extratab.setDisable(false);
         }
         else
         {
-            tabpane.setDisable(true);
+            fentotyptab.setDisable(true);
+            abiotischetab.setDisable(true);
+            commensalimsetab.setDisable(true);
+            beheertab.setDisable(true);
+            extratab.setDisable(true);
         }
     }
 }

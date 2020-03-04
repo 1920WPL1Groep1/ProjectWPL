@@ -17,7 +17,7 @@
    <children>
       <TabPane fx:id="tabpane" layoutX="27.0" layoutY="88.0" prefHeight="665.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Fenotype">
+          <Tab fx:id="fentotyptab" text="Fenotype">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="524.0">
                      <children>
@@ -146,7 +146,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Abiotische factoren">
+          <Tab fx:id="abiotischetab" text="Abiotische factoren">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -211,7 +211,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Commensalisme">
+            <Tab fx:id="commensalimsetab" text="Commensalisme">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="524.0">
                      <children>
@@ -260,7 +260,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Beheer">
+            <Tab fx:id="beheertab" text="Beheer">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -295,7 +295,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Extra">
+            <Tab fx:id="extratab" text="Extra">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -372,7 +372,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-           <Tab text="Resultaten">
+           <Tab fx:id="resultaatab" text="Resultaten">
               <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
