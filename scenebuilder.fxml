@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="884.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Fenotype">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="524.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="14.0" prefHeight="120.0" prefWidth="384.0" text="Bladhoogte">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="363.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
+                                    <Label layoutX="14.0" layoutY="51.0" text="Maximum:" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="144.0" prefHeight="120.0" prefWidth="384.0" text="Bloeihoogte:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="363.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
+                                    <Label layoutX="14.0" layoutY="51.0" text="Maximum:" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="274.0" prefHeight="78.0" prefWidth="384.0" text="Bladkleur:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Kleur" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="364.0" prefHeight="78.0" prefWidth="384.0" text="Bladkleur:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Kleur" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="454.0" prefHeight="78.0" prefWidth="384.0" text="Bladgrootte tot:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maximum:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="17.0" layoutY="544.0" prefHeight="78.0" prefWidth="384.0" text="Levensvorm:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="X:" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Y:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="417.0" layoutY="13.0" prefHeight="78.0" prefWidth="384.0" text="Bladvorm:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="417.0" layoutY="103.0" prefHeight="78.0" prefWidth="384.0" text="Ratio bloei/blad:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="22.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="417.0" layoutY="193.0" prefHeight="78.0" prefWidth="384.0" text="Spruitfenologie:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="19.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="417.0" layoutY="283.0" prefHeight="78.0" prefWidth="384.0" text="Bloeiwijze:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="20.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="417.0" layoutY="373.0" prefHeight="78.0" prefWidth="384.0" text="Habitus:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="22.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="27.0" layoutY="24.0" prefHeight="120.0" prefWidth="384.0" text="Bladhoogte">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="363.0">
+                                 <children>
+                                    <Label layoutX="13.0" layoutY="18.0" text="Minimum:" />
+                                    <Label layoutX="14.0" layoutY="51.0" text="Maximum:" />
+                                    <TextField layoutX="92.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                    <TextField layoutX="93.0" layoutY="52.0" prefHeight="26.0" prefWidth="91.0" />
+                                    <Label layoutX="216.0" layoutY="19.0" text="Maand:" />
+                                    <TextField layoutX="280.0" layoutY="14.0" prefHeight="26.0" prefWidth="90.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Abiotische factoren">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="13.0" prefHeight="78.0" prefWidth="782.0" text="Bezonning:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="103.0" prefHeight="78.0" prefWidth="783.0" text="Grondsoort:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="193.0" prefHeight="78.0" prefWidth="781.0" text="Vochtbehoefte:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="273.0" prefHeight="78.0" prefWidth="781.0" text="Voedingsbehoefte:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="363.0" prefHeight="78.0" prefWidth="782.0" text="Reactie antagonistische omgeving:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="453.0" prefHeight="78.0" prefWidth="783.0" text="Habitat:">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox layoutX="191.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox layoutX="441.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox layoutX="611.0" layoutY="13.0" prefHeight="26.0" prefWidth="146.0" />
+                                    <ComboBox layoutX="354.0" layoutY="13.0" prefHeight="26.0" prefWidth="72.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Commensalisme">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="524.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="11.0" prefHeight="78.0" prefWidth="782.0" text="Ontwikkelingssnelheid">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="101.0" prefHeight="78.0" prefWidth="782.0" text="Levensduur/concurrentiekracht">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="191.0" prefHeight="78.0" prefWidth="782.0" text="Sociabiliteit">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <CheckBox layoutX="24.0" layoutY="18.0" mnemonicParsing="false" text="I" />
+                                    <CheckBox layoutX="124.0" layoutY="18.0" mnemonicParsing="false" text="II" />
+                                    <CheckBox layoutX="224.0" layoutY="18.0" mnemonicParsing="false" text="III" />
+                                    <CheckBox layoutX="324.0" layoutY="18.0" mnemonicParsing="false" text="IV" />
+                                    <CheckBox layoutX="424.0" layoutY="18.0" mnemonicParsing="false" text="V" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="281.0" prefHeight="78.0" prefWidth="782.0" text="Strategie">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
+                                 <children>
+                                    <ComboBox layoutX="21.0" layoutY="13.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox layoutX="416.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ComboBox layoutX="363.0" layoutY="13.0" prefHeight="26.0" prefWidth="44.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Beheer">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Extra">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TitledPane animated="false" layoutX="857.0" layoutY="138.0" prefHeight="707.0" prefWidth="314.0" text="Resultaten">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </TitledPane>
+      <TextField layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
+      <Button layoutX="570.0" layoutY="64.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
+      <CheckBox layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+   </children>
+</AnchorPane>
