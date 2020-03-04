@@ -61,7 +61,7 @@ public class Controller {
     public RadioButton bijBtnNee;
     public RadioButton vlinderBtnJa;
     public RadioButton vlinderBtnNee;
-    public TextArea resultatentxt;
+    public ListView<String> resultatentxt;
     public TabPane tabpane;
     public Tab fentotyptab;
     public Tab abiotischetab;
@@ -69,7 +69,20 @@ public class Controller {
     public Tab beheertab;
     public Tab extratab;
     public Tab resultaatab;
+    public TextArea extrainfottxtx;
+    public RadioButton variatieRadioButton;
+    public ToggleGroup selecteerGroep;
+    public RadioButton SoortRadioButton;
+    public RadioButton GeslcahtRadioButton;
+    public RadioButton TypeRadiobutton;
+    public RadioButton familieradiobutton;
+    public Label zoekInfolabel;
     private Connection dbConnection;
+    private List<plant> plantenlijst;
+    private int keuzenummer;
+    private int getal;
+    private String database;
+    private  String Keuze;
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
         fentotyptab.setDisable(true);
@@ -96,25 +109,16 @@ public class Controller {
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
         int getal =0;
-        for (plant plant : planten) {
-            getal++;
-            if (getal==1)
-            {
-                resultatentxt.setText(plant.getFgsv());
-            }
-            else
-            {
-                resultatentxt.setText(resultatentxt.getText() + "\r\n" + plant.getFgsv());
-            }
-            System.out.println(plant.toString());
+        for (int i = 0; i<planten.size();i++) {
+                resultatentxt.getItems().add(i,  planten.get(i).getFgsv());
         }
-        System.out.println();
     }
     /**
      * @param plantdao
      * @throws SQLException
      */
     private void showByName(plantdao plantdao) throws SQLException {
+        System.out.println(Keuze+ " "+ getal);
         while (true) {
             String zoekterm = zoekenTxt.getText();
             System.out.println(zoekterm);
@@ -122,7 +126,7 @@ public class Controller {
             {
                 break;
             }
-            List<plant> plantenlijst = plantdao.getplantbykeuze("fgsv",zoekterm,1,"plant");
+             plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal,database);
             showplanten("planten bij "+"familie",plantenlijst);
             break;
         }
@@ -147,4 +151,124 @@ public class Controller {
             extratab.setDisable(true);
         }
     }
+
+    public void listview_clicked(MouseEvent mouseEvent) {
+        String tekst  = resultatentxt.getSelectionModel().getSelectedItem();
+        System.out.println(tekst);
+        for(int i =0; i < plantenlijst.size();i++)
+        {
+            if(plantenlijst.get(i).getFgsv()==tekst)
+            {
+                extrainfottxtx.setText("planten ID : " +plantenlijst.get(i).getPlant_id().toString()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant familie : " +plantenlijst.get(i).getFamilie()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant type : " +plantenlijst.get(i).getType()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant geslacht : " +plantenlijst.get(i).getGeslacht()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant soort : " +plantenlijst.get(i).getSoort()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant variatie : " +plantenlijst.get(i).getVariatie()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "planten plantdichtheid min : " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "planten plantdichtheid max : " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
+
+            }
+
+        }
+    }
+
+    public void ZetZoekinfo()
+    {
+        if(keuzenummer==0)
+        {
+            zoekInfolabel.setText("maak een keuze op wat je wilt zoeken");
+        }
+        if(keuzenummer==1)
+        {
+            zoekInfolabel.setText("kies op naam van familie het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+        }
+        if(keuzenummer==2)
+        {
+            zoekInfolabel.setText("kies op naam van type het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+
+        }
+        if(keuzenummer==3)
+        {
+            zoekInfolabel.setText("kies op naam van geslacht het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+
+        }
+        if(keuzenummer==4)
+        {
+            zoekInfolabel.setText("kies op naam van soort het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+
+        }
+        if(keuzenummer==5)
+        {
+            zoekInfolabel.setText("kies op naam van variatie het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+
+        }
+        if(keuzenummer==6)
+        {
+            zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat erboven zit");
+            getal=2;
+            database="plant";
+
+        }
+        if(keuzenummer==7)
+        {
+            zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat eronder zit");
+            getal=3;
+            database="plant";
+
+        }
+        if(keuzenummer==8)
+        {
+            zoekInfolabel.setText("kies op naam van fgsv het hoeft niet volledig te zijn");
+            getal=1;
+            database="plant";
+        }
+
+    }
+    public int controleKeuzeZoekterm()
+    {
+        keuzenummer =0 ;
+        if(familieradiobutton.isSelected())
+        {
+            keuzenummer=1;
+            Keuze = "familie";
+        }
+        if(TypeRadiobutton.isSelected())
+        {
+            keuzenummer=2;
+            Keuze="type";
+        }
+        if(GeslcahtRadioButton.isSelected())
+        {
+            keuzenummer=3;
+            Keuze="geslacht";
+        }
+        if(SoortRadioButton.isSelected())
+        {
+            keuzenummer=4;
+            Keuze="soort";
+        }
+        if(variatieRadioButton.isSelected())
+        {
+            keuzenummer=5;
+            Keuze="variatie";
+        }
+        return keuzenummer;
+    }
+
+    public void zoekterm(MouseEvent mouseEvent) {
+        controleKeuzeZoekterm();
+        ZetZoekinfo();
+    }
+
 }

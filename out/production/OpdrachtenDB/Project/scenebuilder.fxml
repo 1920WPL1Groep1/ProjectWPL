@@ -4,12 +4,14 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -376,19 +378,31 @@
               <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="resultatentxt" layoutX="21.0" layoutY="22.0" prefHeight="578.0" prefWidth="809.0" />
+                        <ListView fx:id="resultatentxt" layoutX="14.0" layoutY="26.0" onMouseClicked="#listview_clicked" prefHeight="598.0" prefWidth="408.0" />
+                        <TextArea fx:id="extrainfottxtx" layoutX="429.0" layoutY="26.0" prefHeight="598.0" prefWidth="416.0" />
+                        <Label layoutX="29.0" layoutY="5.0" text="selecteer de plant waarvan je meer info wilt zien" />
                      </children></AnchorPane>
               </content>
            </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="zoekenTxt" layoutX="28.0" layoutY="27.0" prefHeight="46.0" prefWidth="524.0" />
+      <TextField fx:id="zoekenTxt" layoutX="28.0" layoutY="26.0" prefHeight="46.0" prefWidth="524.0" />
       <Button fx:id="zoekenBtn" layoutX="568.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="116.0" text="Zoeken" />
       <CheckBox fx:id="geavanceerdCheck" layoutX="701.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#click_advance" prefHeight="18.0" prefWidth="154.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <Label layoutX="28.0" layoutY="5.0" text="je zoekt op fgsv" />
+      <Label layoutX="28.0" layoutY="5.0" text="je zoekt " />
+      <RadioButton fx:id="variatieRadioButton" layoutX="73.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="variatie">
+         <toggleGroup>
+            <ToggleGroup fx:id="selecteerGroep" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="SoortRadioButton" layoutX="133.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Soort" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="GeslcahtRadioButton" layoutX="183.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Geslcaht" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="TypeRadiobutton" layoutX="250.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Type" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="familieradiobutton" layoutX="297.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Familie" toggleGroup="$selecteerGroep" />
+      <Label fx:id="zoekInfolabel" layoutX="28.0" layoutY="72.0" prefHeight="18.0" prefWidth="524.0" />
    </children>
 </AnchorPane>

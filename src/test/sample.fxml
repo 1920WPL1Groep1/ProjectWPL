@@ -37,7 +37,7 @@
             <RadioButton fx:id="plantdichtheidMaxRadiobutton" layoutX="229.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Plantdichtheid Max" toggleGroup="$keuze" />
             <RadioButton fx:id="fgsvRadiobutton" layoutX="378.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Fgsv" toggleGroup="$keuze" />
             <Label fx:id="zoekInfolabel" layoutX="197.0" layoutY="52.0" text="Label" />
-            <ListView fx:id="testlistview" layoutX="14.0" layoutY="399.0" prefHeight="200.0" prefWidth="563.0" />
+            <ListView fx:id="testlistview" layoutX="17.0" layoutY="399.0" prefHeight="200.0" prefWidth="566.0" />
          </children>
       </AnchorPane>
    </children>
