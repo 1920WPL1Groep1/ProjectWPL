@@ -2,6 +2,14 @@ package Project;
 
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import main.java.dao.Database;
+import main.java.model.plant;
+import test.dao.plantdao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 
 public class Controller {
     public TextField bladhoogteMinimumTxt;
@@ -43,11 +51,60 @@ public class Controller {
     public ComboBox strategie1Combo;
     public ComboBox strategie2Combo;
     public ComboBox strategieEnOfCombo;
-    public ListView resultatenList;
     public TextField zoekenTxt;
     public Button zoekenBtn;
     public CheckBox geavanceerdCheck;
-
-    public void click_zoekenBtn(MouseEvent mouseEvent) {
+    public ComboBox beheerbehandelingCombo;
+    public ComboBox maandCombo;
+    public ComboBox frequentieCombo;
+    public RadioButton bijBtnJa;
+    public RadioButton bijBtnNee;
+    public RadioButton vlinderBtnJa;
+    public RadioButton vlinderBtnNee;
+    public TextField resultatentxt;
+    private Connection dbConnection;
+    public void initialize() throws SQLException {
+        dbConnection = Database.getInstance().getConnection();
     }
+
+    public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
+        plantdao plantdao = new plantdao(dbConnection);
+        showByName(plantdao);
+    }
+
+
+
+    /** BEGIN HulpMethoden voor daoDemo **/
+    /**
+     * Print de lijst van de studenten uit
+     * @param titel
+     * @param planten
+     */
+    public void showplanten(String titel, List<plant> planten) {
+        System.out.println("Lijst planten : " + titel);
+        for (plant plant : planten) {
+            resultatentxt.setText(resultatentxt.getText()+ System.lineSeparator()+plant.getFgsv());
+            System.out.println(plant.toString());
+        }
+        System.out.println();
+    }
+    /**
+     * @param plantdao
+     * @throws SQLException
+     */
+    private void showByName(plantdao plantdao) throws SQLException {
+        while (true) {
+            String zoekterm = zoekenTxt.getText();
+            System.out.println(zoekterm);
+            if(zoekterm== null)
+            {
+                break;
+            }
+            List<plant> plantenlijst = plantdao.getplantbykeuze("fgsv",zoekterm,1,"plant");
+            showplanten("planten bij "+"familie",plantenlijst);
+            break;
+        }
+
+    }
+
 }

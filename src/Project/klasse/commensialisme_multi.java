@@ -6,6 +6,13 @@ public class commensialisme_multi {
     private String eigenschap;
     private String waarde;
 
+    public commensialisme_multi(Integer commensialisme_id, Integer plant_id, String eigenschap, String waarde) {
+        this.commensialisme_id = commensialisme_id;
+        this.plant_id = plant_id;
+        this.eigenschap = eigenschap;
+        this.waarde = waarde;
+    }
+
     public Integer getCommensialisme_id() {
         return commensialisme_id;
     }

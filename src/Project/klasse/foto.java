@@ -9,6 +9,14 @@ public class foto {
     private String url;
     private Image figuur;
 
+    public foto(Integer foto_id, Integer plant_id, String eigenschap, String url, Image figuur) {
+        this.foto_id = foto_id;
+        this.plant_id = plant_id;
+        this.eigenschap = eigenschap;
+        this.url = url;
+        this.figuur = figuur;
+    }
+
     public Integer getFoto_id() {
         return foto_id;
     }

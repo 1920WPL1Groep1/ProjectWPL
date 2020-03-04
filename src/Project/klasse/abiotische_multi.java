@@ -6,6 +6,13 @@ public class abiotische_multi {
     private String eigenschap;
     private Integer waarde;
 
+    public abiotische_multi(Integer abiotische_id, Integer plant_id, String eigenschap, Integer waarde) {
+        this.abiotische_id = abiotische_id;
+        this.plant_id = plant_id;
+        this.eigenschap = eigenschap;
+        this.waarde = waarde;
+    }
+
     public Integer getAbiotische_id() {
         return abiotische_id;
     }
