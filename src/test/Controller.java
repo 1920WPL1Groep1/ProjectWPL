@@ -26,6 +26,7 @@ public class Controller {
     public Button zoekButton;
     public int keuzenummer;
     public String Keuze;
+    public ListView testlistview;
     private Connection dbConnection;
     private int getal;
     private String database;
