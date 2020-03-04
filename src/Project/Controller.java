@@ -95,6 +95,10 @@ public class Controller {
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
         for (plant plant : planten) {
+<<<<<<< HEAD
+=======
+            resultatentxt.setText(resultatentxt.getText() + "\r\n" + plant.getFgsv());
+>>>>>>> wout1
             System.out.println(plant.toString());
         }
         System.out.println();

@@ -7,17 +7,22 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <TabPane fx:id="advancedTab" layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
 =======
       <TabPane layoutX="27.0" layoutY="88.0" prefHeight="708.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
+>>>>>>> wout1
+=======
+      <TabPane layoutX="27.0" layoutY="88.0" prefHeight="665.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
 >>>>>>> wout1
         <tabs>
           <Tab text="Fenotype">
@@ -375,6 +380,14 @@
                      </children></AnchorPane>
               </content>
             </Tab>
+           <Tab text="Resultaten">
+              <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="resultatentxt" layoutX="21.0" layoutY="22.0" prefHeight="578.0" prefWidth="809.0" />
+                     </children></AnchorPane>
+              </content>
+           </Tab>
         </tabs>
       </TabPane>
 <<<<<<< HEAD
