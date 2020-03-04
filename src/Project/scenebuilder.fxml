@@ -7,15 +7,14 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="884.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <TabPane layoutX="27.0" layoutY="138.0" prefHeight="708.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="27.0" layoutY="88.0" prefHeight="708.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Fenotype">
             <content>
@@ -374,17 +373,9 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TitledPane animated="false" layoutX="857.0" layoutY="138.0" prefHeight="598.0" prefWidth="314.0" text="Resultaten">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="457.0" prefWidth="313.0">
-               <children>
-                  <TextArea fx:id="resultatentxt" layoutX="22.0" layoutY="14.0" prefHeight="547.0" prefWidth="262.0" />
-               </children></AnchorPane>
-        </content>
-      </TitledPane>
-      <TextField fx:id="zoekenTxt" layoutX="27.0" layoutY="64.0" prefHeight="46.0" prefWidth="524.0" />
-      <Button fx:id="zoekenBtn" layoutX="567.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="260.0" text="Zoeken" />
-      <CheckBox fx:id="geavanceerdCheck" layoutX="870.0" layoutY="78.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Geavanceerd zoeken">
+      <TextField fx:id="zoekenTxt" layoutX="28.0" layoutY="27.0" prefHeight="46.0" prefWidth="524.0" />
+      <Button fx:id="zoekenBtn" layoutX="568.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="116.0" text="Zoeken" />
+      <CheckBox fx:id="geavanceerdCheck" layoutX="701.0" layoutY="41.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
