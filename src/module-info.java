@@ -4,8 +4,6 @@ module OpdrachtenDB {
     requires java.desktop;
     requires java.sql;
 
-    opens Oef1;
-    opens Oef2;
     opens test;
 
 
