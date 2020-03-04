@@ -1,4 +1,4 @@
-package test.dao;
+package Project.dao;
 
 import main.java.dao.StudentDao;
 import main.java.model.plant;
@@ -23,7 +23,7 @@ public class plantdao {
     private static final String GETPLANTBYNAME =
             "SELECT * FROM plant WHERE familie LIKE ?";
     private static String GetplantKeuze =
-            "SELECT * FROM plant WHERE param LIKE ?";
+            "SELECT * FROM plant WHERE ? LIKE ?";
 
     private Connection dbConnection;
 
