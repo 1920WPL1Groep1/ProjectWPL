@@ -3,6 +3,7 @@ package Project.dao;
 import main.java.dao.StudentDao;
 import main.java.model.plant;
 
+import javax.crypto.spec.PSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,6 +158,14 @@ public class plantdao {
     }
     public List<plant> getplantbykeuze(String keuze , String naam, int getal,String database) throws SQLException {
         List<plant> plantenlijst = new ArrayList<>();
+        System.out.println(getal+"test");
+        if(getal==0)
+        {
+            keuze="familie";
+            naam="%%";
+            GetplantKeuze = "SELECT * FROM plant WHERE familie LIKE '%%'";
+            System.out.println(GetplantKeuze+"test");
+        }
         if(getal ==1)
         {
             naam = "'"+"%" + naam + "%"+"'";
@@ -170,7 +179,6 @@ public class plantdao {
         {
             GetplantKeuze = "SELECT * FROM "+ database+ " WHERE "+keuze +" > " +naam;
         }
-
         try {
             System.out.println("in de try");
             System.out.println(naam);
@@ -191,7 +199,6 @@ public class plantdao {
                         resultaat.getInt("plantdichtheid_max"),
                         resultaat.getString("fgsv"));
                 plantenlijst.add(plant);
-
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");

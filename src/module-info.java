@@ -4,7 +4,6 @@ module OpdrachtenDB {
     requires java.desktop;
     requires java.sql;
 
-    opens test;
     opens Project;
 
 }

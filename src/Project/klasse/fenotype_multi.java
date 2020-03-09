@@ -12,6 +12,10 @@ public class fenotype_multi {
     private String jun;
     private String jul;
     private String aug;
+    private String sep;
+    private String okt;
+    private String nov;
+    private String dec;
 
     public fenotype_multi(Integer fenotype_id, Integer plant_id, String eigenschap, String jan, String feb, String maa, String apr, String mei, String jun, String jul, String aug, String sep, String okt, String nov, String dec) {
         this.fenotype_id = fenotype_id;
@@ -151,8 +155,4 @@ public class fenotype_multi {
         this.dec = dec;
     }
 
-    private String sep;
-    private String okt;
-    private String nov;
-    private String dec;
 }

@@ -1,11 +1,10 @@
 package Project;
 
+import Project.dao.plantdao;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import main.java.dao.Database;
 import main.java.model.plant;
-import test.dao.plantdao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -83,6 +82,8 @@ public class Controller {
     private int getal;
     private String database;
     private  String Keuze;
+
+
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
         fentotyptab.setDisable(true);
@@ -92,14 +93,10 @@ public class Controller {
         extratab.setDisable(true);
         resultaatab.setDisable(false);
     }
-
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
         plantdao plantdao = new plantdao(dbConnection);
         showByName(plantdao);
     }
-
-
-
     /** BEGIN HulpMethoden voor daoDemo **/
     /**
      * Print de lijst van de studenten uit
@@ -122,17 +119,19 @@ public class Controller {
         while (true) {
             String zoekterm = zoekenTxt.getText();
             System.out.println(zoekterm);
-            if(zoekterm== null)
+            if(zoekterm==null)
             {
-                break;
+                plantenlijst=plantdao.getAllPlant();
             }
-             plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal,database);
+            else
+            {
+                plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal,database);
+            }
             showplanten("planten bij "+"familie",plantenlijst);
             break;
         }
 
     }
-
     public void click_advance(MouseEvent mouseEvent) {
         if(geavanceerdCheck.isSelected())
         {
@@ -151,7 +150,6 @@ public class Controller {
             extratab.setDisable(true);
         }
     }
-
     public void listview_clicked(MouseEvent mouseEvent) {
         String tekst  = resultatentxt.getSelectionModel().getSelectedItem();
         System.out.println(tekst);
@@ -172,12 +170,13 @@ public class Controller {
 
         }
     }
-
     public void ZetZoekinfo()
     {
         if(keuzenummer==0)
         {
             zoekInfolabel.setText("maak een keuze op wat je wilt zoeken");
+            getal=0;
+            database="plant";
         }
         if(keuzenummer==1)
         {
@@ -238,6 +237,7 @@ public class Controller {
     public int controleKeuzeZoekterm()
     {
         keuzenummer =0 ;
+        Keuze="familie";
         if(familieradiobutton.isSelected())
         {
             keuzenummer=1;
@@ -265,10 +265,9 @@ public class Controller {
         }
         return keuzenummer;
     }
-
     public void zoekterm(MouseEvent mouseEvent) {
+        getal=0;
         controleKeuzeZoekterm();
         ZetZoekinfo();
     }
-
 }
