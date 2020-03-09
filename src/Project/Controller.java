@@ -1,6 +1,7 @@
 package Project;
 
 import Project.dao.plantdao;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import main.java.dao.Database;
@@ -106,8 +107,14 @@ public class Controller {
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
         int getal =0;
+        resultatentxt.getItems().clear();
+        System.out.println(planten.size()+" grote");
         for (int i = 0; i<planten.size();i++) {
                 resultatentxt.getItems().add(i,  planten.get(i).getFgsv());
+        }
+        if (planten.size()==0)
+        {
+            resultatentxt.getItems().add(0,"Er zijn geen planten terug gevonden");
         }
     }
     /**
