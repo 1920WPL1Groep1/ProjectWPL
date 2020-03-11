@@ -1426,10 +1426,10 @@ insert into sociabiliteit values
 /*Insert into spruitfenologie*/
 
 insert into spruitfenelogie values
-	('pachysandra sp.'),
-	('geranium nodosum'),
-	('salvia nemorosa'),
-	('aster sp.')
+	('zomergroen'),
+	('wintergroen'),
+	('altijdgroen'),
+	('voorjaarsgroen')
 
 
 /*Insert into vochtbehoefte*/
