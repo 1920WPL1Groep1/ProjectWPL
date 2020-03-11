@@ -366,7 +366,6 @@ public class plantdao {
     //maakt een fenotype_multi-object, neemt de waarden over van een record in de fenotype_multi tabel, en steekt het object daarna in de fenotype_multiLijst
     private List<fenotype_multi> fenotype_multiToevoegen(plant plant) throws SQLException {
         GetplantKeuze = "SELECT * FROM " + "fenotype_multi" + " WHERE " + "plant_id" + " LIKE " + plant.getPlant_id();
-
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
             ResultSet resultaat = stmGetplantkeuze.executeQuery();

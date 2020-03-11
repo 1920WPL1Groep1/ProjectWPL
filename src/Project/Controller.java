@@ -77,6 +77,11 @@ public class Controller {
     public RadioButton TypeRadiobutton;
     public RadioButton familieradiobutton;
     public Label zoekInfolabel;
+    public Label bladhoogtetxt;
+    public Label bloeihoogtetxt;
+    public Label bladkleurtxt;
+    public Label bloeikleurtxt;
+    public Label bladgroottetxt;
     private Connection dbConnection;
     private List<plant> plantenlijst;
     private List<beheer> beheerlijst;
@@ -166,8 +171,531 @@ public class Controller {
                 fenotypeMultiList = plantdao.returnFenotypeMulti();
                 fotoList = plantdao.returnFoto();
             }
+//            fenotypetabzoeken();
             showplanten("planten bij "+"familie",plantenlijst);
             break;
+        }
+
+    }
+
+    private void fenotypetabzoeken() {
+        for (int i = 0; i < fenotypeMultiList.size(); i++) {
+            try {
+                if (fenotypeMultiList.get(i).getEigenschap() == "bladhoogte") {
+                    int bladgrootte = 0;
+                    switch (bladhoogteMaandTxt.getText().toLowerCase()) {
+                        case "januarie":
+                        case "jan":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getJan());
+                            break;
+                        case "februari":
+                        case "feb":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getFeb());
+                            break;
+                        case "maart":
+                        case "maa":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getMaa());
+                            break;
+                        case "april":
+                        case "apr":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getApr());
+                            break;
+                        case "mei":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getMei());
+                            break;
+                        case "juni":
+                        case "jun":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getJun());
+                            break;
+                        case "juli":
+                        case "jul":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getJul());
+                            break;
+                        case "augustus":
+                        case "aug":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getAug());
+                            break;
+                        case "september":
+                        case "sep":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getSep());
+                            break;
+                        case "oktober":
+                        case "okt":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getOkt());
+                            break;
+                        case "november":
+                        case "nov":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getNov());
+                            break;
+                        case "december":
+                        case "dec":
+                            bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getDec());
+                            break;
+                        default:
+                            bladhoogtetxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
+                    }
+                    if (bladgrootte <= Integer.parseInt(bladhoogteMinimumTxt.getText())) {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+                    if (bladgrootte >= Integer.parseInt(bladhoogteMaximumTxt.getText())) ;
+                    {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+//                TextField test = bladhoogteMaandTxt;
+//                if(bladhoogteMaandTxt.getText().toLowerCase()=="januari" || bladhoogteMaandTxt.getText().toLowerCase()=="jan" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJan()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJan()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="februari" || bladhoogteMaandTxt.getText().toLowerCase()=="feb" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getFeb()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getFeb()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="maart" || bladhoogteMaandTxt.getText().toLowerCase()=="maa" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getMaa()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getMaa()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="april" || bladhoogteMaandTxt.getText().toLowerCase()=="apr" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getApr()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getApr()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="mei" || bladhoogteMaandTxt.getText().toLowerCase()=="mei" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getMei()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getMei()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="juni" || bladhoogteMaandTxt.getText().toLowerCase()=="jun" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJun()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJun()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="juli" || bladhoogteMaandTxt.getText().toLowerCase()=="jul" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJul()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getJul()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="augustus" || bladhoogteMaandTxt.getText().toLowerCase()=="aug" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getAug()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getAug()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="september" || bladhoogteMaandTxt.getText().toLowerCase()=="sep" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getSep()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getSep()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="oktober" || bladhoogteMaandTxt.getText().toLowerCase()=="okt" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getOkt()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getOkt()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="november" || bladhoogteMaandTxt.getText().toLowerCase()=="nov" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getNov()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getNov()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else if(bladhoogteMaandTxt.getText().toLowerCase()=="december" || bladhoogteMaandTxt.getText().toLowerCase()=="dec" )
+//                {
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getDec()) >= Integer.parseInt(bladhoogteMaximumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                    if(Integer.parseInt(fenotypeMultiList.get(i).getDec()) <= Integer.parseInt(bladhoogteMinimumTxt.getText()))
+//                    {
+//                        int  plantID =fenotypeMultiList.get(i).getPlant_id();
+//                        verwjider(plantID);
+//                    }
+//                }
+//                else
+//                {
+//                    bladhoogtetxt.setText("gelieve alles correct in te vullen");
+//                }
+                }
+                if (fenotypeMultiList.get(i).getEigenschap() == "bloeihoogte") {
+                    int bloeihoogte = 0;
+                    switch (bloeihoogteMaandTxt.getText().toLowerCase()) {
+                        case "januarie":
+                        case "jan":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getJan());
+                            break;
+                        case "februari":
+                        case "feb":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getFeb());
+                            break;
+                        case "maart":
+                        case "maa":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getMaa());
+                            break;
+                        case "april":
+                        case "apr":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getApr());
+                            break;
+                        case "mei":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getMei());
+                            break;
+                        case "juni":
+                        case "jun":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getJun());
+                            break;
+                        case "juli":
+                        case "jul":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getJul());
+                            break;
+                        case "augustus":
+                        case "aug":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getAug());
+                            break;
+                        case "september":
+                        case "sep":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getSep());
+                            break;
+                        case "oktober":
+                        case "okt":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getOkt());
+                            break;
+                        case "november":
+                        case "nov":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getNov());
+                            break;
+                        case "december":
+                        case "dec":
+                            bloeihoogte = Integer.parseInt(fenotypeMultiList.get(i).getDec());
+                            break;
+                        default:
+                            bloeihoogtetxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
+                    }
+                    if (bloeihoogte <= Integer.parseInt(bloeihoogteMinimumTxt.getText())) {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+                    if (bloeihoogte >= Integer.parseInt(bloeihoogteMaximumTxt.getText())) ;
+                    {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+
+                }
+                if (fenotypeMultiList.get(i).getEigenschap() == "bladkleur") {
+                    String bladkleur = "";
+                    switch (bladkleurMaandTxt.getText().toLowerCase()) {
+                        case "januarie":
+                        case "jan":
+                            bladkleur = fenotypeMultiList.get(i).getJan();
+                            break;
+                        case "februari":
+                        case "feb":
+                            bladkleur = fenotypeMultiList.get(i).getFeb();
+                            break;
+                        case "maart":
+                        case "maa":
+                            bladkleur = fenotypeMultiList.get(i).getMaa();
+                            break;
+                        case "april":
+                        case "apr":
+                            bladkleur = fenotypeMultiList.get(i).getApr();
+                            break;
+                        case "mei":
+                            bladkleur = fenotypeMultiList.get(i).getMei();
+                            break;
+                        case "juni":
+                        case "jun":
+                            bladkleur = fenotypeMultiList.get(i).getJun();
+                            break;
+                        case "juli":
+                        case "jul":
+                            bladkleur = fenotypeMultiList.get(i).getJul();
+                            break;
+                        case "augustus":
+                        case "aug":
+                            bladkleur = fenotypeMultiList.get(i).getAug();
+                            break;
+                        case "september":
+                        case "sep":
+                            bladkleur = fenotypeMultiList.get(i).getSep();
+                            break;
+                        case "oktober":
+                        case "okt":
+                            bladkleur = fenotypeMultiList.get(i).getOkt();
+                            break;
+                        case "november":
+                        case "nov":
+                            bladkleur = fenotypeMultiList.get(i).getNov();
+                            break;
+                        case "december":
+                        case "dec":
+                            bladkleur = fenotypeMultiList.get(i).getDec();
+                            break;
+                        default:
+                            bladkleurtxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
+                    }
+                    if (bladkleur != bladkleurKleurTxt.getText()) {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+                }
+                if (fenotypeMultiList.get(i).getEigenschap() == "bloeikleur") {
+                    String bloeikleur = "";
+                    switch (bloeikleurMaandTxt.getText().toLowerCase()) {
+                        case "januarie":
+                        case "jan":
+                            bloeikleur = fenotypeMultiList.get(i).getJan();
+                            break;
+                        case "februari":
+                        case "feb":
+                            bloeikleur = fenotypeMultiList.get(i).getFeb();
+                            break;
+                        case "maart":
+                        case "maa":
+                            bloeikleur = fenotypeMultiList.get(i).getMaa();
+                            break;
+                        case "april":
+                        case "apr":
+                            bloeikleur = fenotypeMultiList.get(i).getApr();
+                            break;
+                        case "mei":
+                            bloeikleur = fenotypeMultiList.get(i).getMei();
+                            break;
+                        case "juni":
+                        case "jun":
+                            bloeikleur = fenotypeMultiList.get(i).getJun();
+                            break;
+                        case "juli":
+                        case "jul":
+                            bloeikleur = fenotypeMultiList.get(i).getJul();
+                            break;
+                        case "augustus":
+                        case "aug":
+                            bloeikleur = fenotypeMultiList.get(i).getAug();
+                            break;
+                        case "september":
+                        case "sep":
+                            bloeikleur = fenotypeMultiList.get(i).getSep();
+                            break;
+                        case "oktober":
+                        case "okt":
+                            bloeikleur = fenotypeMultiList.get(i).getOkt();
+                            break;
+                        case "november":
+                        case "nov":
+                            bloeikleur = fenotypeMultiList.get(i).getNov();
+                            break;
+                        case "december":
+                        case "dec":
+                            bloeikleur = fenotypeMultiList.get(i).getDec();
+                            break;
+                        default:
+                            bloeikleurtxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
+                    }
+                    if (bloeikleur != bloeikleurKleurTxt.getText()) {
+                        int plantID = fenotypeMultiList.get(i).getPlant_id();
+                        verwjider(plantID);
+                    }
+
+                }
+            } catch (Exception e) {
+                System.out.println("er liep iets verkeerd tijden het builden");
+            }
+        }
+        for (int j = 0; j < fenotypeList.size(); j++) {
+            try {
+                if (fenotypeList.get(j).getBladgrootte() < Integer.parseInt(bladgrootteMinimumTxt.getText())) {
+                    int ID = fenotypeList.get(j).getPlant_id();
+                    verwjider(ID);
+                }
+                if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
+                    int ID = fenotypeList.get(j).getPlant_id();
+                    verwjider(ID);
+                }
+            } catch (Exception e) {
+                bladgroottetxt.setText("geef zeker een getal in en geen tekst");
+            }
+
+        }
+        //opzoeken levensvorm uitleg vragen
+        for (int k = 0; k < fenotypeList.size(); k++)  {
+            if (bladvormCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(k).getBladvorm())
+            {
+                verwjider(fenotypeList.get(k).getPlant_id());
+            }
+        }
+        for (int l = 0; l < fenotypeList.size();l++)   {
+            if(ratioCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(l).getRatio_bloei_blad())
+            {
+                verwjider(fenotypeList.get(l).getPlant_id());
+            }
+        }
+        for (int m =0; m < fenotypeList.size();m++)    {
+            if(spruitCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(m).getSpruitfenelogie())
+            {
+                verwjider(fenotypeList.get(m).getPlant_id());
+            }
+        }
+    }
+
+    private void verwjider(int plantID) {
+        for(int j =0; j < fenotypeMultiList.size();j++)
+        {
+            if(fenotypeMultiList.get(j).getPlant_id()==plantID)
+            {
+                fenotypeMultiList.remove(j);
+            }
+        }
+        for(int j =0; j < plantenlijst.size();j++)
+        {
+            if(plantenlijst.get(j).getPlant_id()==plantID)
+            {
+                plantenlijst.remove(j);
+            }
+        }
+        for(int j =0; j < beheerlijst.size();j++)
+        {
+            if(beheerlijst.get(j).getPlant_id()==plantID)
+            {
+                beheerlijst.remove(j);
+            }
+        }
+        for(int j =0; j < abiotischeFactorenList.size();j++)
+        {
+            if(abiotischeFactorenList.get(j).getPlant_id()==plantID)
+            {
+                abiotischeFactorenList.remove(j);
+            }
+        }
+        for(int j =0; j < abiotischeFactorenMultiList.size();j++)
+        {
+            if(abiotischeFactorenMultiList.get(j).getPlant_id()==plantID)
+            {
+                abiotischeFactorenMultiList.remove(j);
+            }
+        }
+        for(int j =0; j < commensialismeList.size();j++)
+        {
+            if(commensialismeList.get(j).getPlant_id()==plantID)
+            {
+                commensialismeList.remove(j);
+            }
+        }
+        for(int j =0; j < commensialismeMultiList.size();j++)
+        {
+            if(commensialismeMultiList.get(j).getPlant_id()==plantID)
+            {
+                commensialismeMultiList.remove(j);
+            }
+        }
+        for(int j =0; j < extraList.size();j++)
+        {
+            if(extraList.get(j).getPlant_id()==plantID)
+            {
+                extraList.remove(j);
+            }
+        }
+        for(int j =0; j < fenotypeList.size();j++)
+        {
+            if(fenotypeList.get(j).getPlant_id()==plantID)
+            {
+                fenotypeList.remove(j);
+            }
+        }
+        for(int j =0; j < fotoList.size();j++)
+        {
+            if(fotoList.get(j).getPlant_id()==plantID)
+            {
+                fotoList.remove(j);
+            }
         }
 
     }
@@ -328,6 +856,7 @@ public class Controller {
             {
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fenotypeMultiList.get(j).getPlant_id() + "\r\n");
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Fenotype ID: "+ fenotypeMultiList.get(j).getFenotype_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"eigenschap "+fenotypeMultiList.get(j).getEigenschap()+"\r\n");
                 //Maanden erbij?
             }
         }
@@ -349,8 +878,7 @@ public class Controller {
 
 
     }
-    public void ZetZoekinfo()
-    {
+    public void ZetZoekinfo()   {
         if(keuzenummer==0)
         {
             zoekInfolabel.setText("Maak een keuze op wat je wilt zoeken.");
@@ -413,8 +941,7 @@ public class Controller {
         }
 
     }
-    public int controleKeuzeZoekterm()
-    {
+    public int controleKeuzeZoekterm()    {
         keuzenummer =0 ;
         Keuze="familie";
         if(familieradiobutton.isSelected())
@@ -449,4 +976,5 @@ public class Controller {
         controleKeuzeZoekterm();
         ZetZoekinfo();
     }
+    //voor te zoeken met for lus alles doorlopen en die dat ni erbij horen verwijderen op basis van plantid bij alle lijsten mvg wout hostens xp
 }
