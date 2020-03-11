@@ -227,7 +227,7 @@ public class Controller {
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen abiotische factoren\r\n");
         for (int j=0; j < abiotischeFactorenList.size(); j++)
         {
-            if(beheerlijst.get(j).getPlant_id()==plant_id)
+            if(abiotischeFactorenList.get(j).getPlant_id()==plant_id)
             {
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Abiotische factoren ID: "+ abiotischeFactorenList.get(j).getAbiotische_id() + "\r\n");
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Vochtbehoefte: "+ abiotischeFactorenList.get(j).getVochtbehoefte() + "\r\n");
@@ -243,7 +243,9 @@ public class Controller {
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen abiotische factoren multi\r\n");
         for (int j=0; j < abiotischeFactorenMultiList.size(); j++)
         {
-            if(beheerlijst.get(j).getPlant_id()==plant_id)
+            System.out.println(beheerlijst.size());
+            System.out.println(j);
+            if(abiotischeFactorenMultiList.get(j).getPlant_id()==plant_id)
             {
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Abiotische factoren ID: "+ abiotischeFactorenMultiList.get(j).getAbiotische_id() + "\r\n");
                 extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ abiotischeFactorenMultiList.get(j).getPlant_id() + "\r\n");
