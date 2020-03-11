@@ -1,11 +1,10 @@
 package Project.dao;
 
-import Project.klasse.abiotische_factoren;
-import Project.klasse.abiotische_multi;
-import Project.klasse.beheer;
+import Project.klasse.*;
 import main.java.dao.StudentDao;
 import main.java.model.plant;
 
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -202,8 +201,14 @@ public class plantdao {
                         resultaat.getString("fgsv"));
                 plantenlijst.add(plant);
                 Beheertoevoegen(plant);
+                extraToevoegen(plant);
                 abiotischefactorentoevoegen(plant);
                 abiotischeMultistoevoegeb(plant);
+                fenotypeToevoegen(plant);
+                fenotype_multiToevoegen(plant);
+                fotoToevoegen(plant);
+                commensialismestoevoegen(plant);
+                commensialisme_multitoevoegen(plant);
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -285,4 +290,159 @@ public class plantdao {
         }
         return abiotische_multiList;
     }
+    private List<extra> extraToevoegen(plant plant) throws SQLException {
+        List<extra> extraLijst = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "extra" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                extra extraObject = new extra(resultaat.getInt("extra_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("nectarwaarde"),
+                        resultaat.getString("pollenwaarde"),
+                        resultaat.getString("bijvriendelijk"),
+                        resultaat.getString("eetbaar_kruidgebruik"),
+                        resultaat.getString("geurend"),
+                        resultaat.getString("vorstgevoelig"));
+                extraLijst.add(extraObject);
+                System.out.println(extraObject.getExtra_id()+ " " +extraObject.getPlant_id()+ "  extra");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return extraLijst;
+
+    }
+    private List<fenotype> fenotypeToevoegen(plant plant) throws SQLException {
+        List<fenotype> fenotypeLijst = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "fenotype" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                fenotype fenotypeObject = new fenotype(resultaat.getInt("fenotype_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("bladvorm"),
+                        resultaat.getInt("levensvorm"),
+                        resultaat.getString("habitus"),
+                        resultaat.getString("bloeiwijze"),
+                        resultaat.getInt("bladgrootte"),
+                        resultaat.getString("ratio_bloei_blad"),
+                        resultaat.getString("spruitfenelogie"));
+                fenotypeLijst.add(fenotypeObject);
+                System.out.println(fenotypeObject.getFenotype_id()+ " " +fenotypeObject.getPlant_id()+ "  fenotype");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return fenotypeLijst;
+
+    }
+    private List<fenotype_multi> fenotype_multiToevoegen(plant plant) throws SQLException {
+        List<fenotype_multi> fenotype_multiLijst = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "fenotype_multi" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                fenotype_multi fenotype_multiObject = new fenotype_multi(resultaat.getInt("fenotype_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("eigenschap"),
+                        resultaat.getString("jan"),
+                        resultaat.getString("feb"),
+                        resultaat.getString("maa"),
+                        resultaat.getString("apr"),
+                        resultaat.getString("mei"),
+                        resultaat.getString("jun"),
+                        resultaat.getString("jul"),
+                        resultaat.getString("aug"),
+                        resultaat.getString("sep"),
+                        resultaat.getString("okt"),
+                        resultaat.getString("nov"),
+                        resultaat.getString("dec"));
+                fenotype_multiLijst.add(fenotype_multiObject);
+                System.out.println(fenotype_multiObject.getFenotype_id()+ " " +fenotype_multiObject.getPlant_id()+ "  fenotype_multi");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return fenotype_multiLijst;
+
+    }
+    private List<foto> fotoToevoegen(plant plant) throws SQLException {
+        List<foto> fotoList = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "foto" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                foto foto = new foto(resultaat.getInt("foto_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("eigenschap"),
+                        resultaat.getString("url"),
+                        (Image) resultaat.getBlob("figuur"));
+                fotoList.add(foto);
+                System.out.println(foto.getFoto_id()+ " " +foto.getPlant_id()+ "  foto");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return fotoList;
+    }
+    private List<commensialisme> commensialismestoevoegen(plant plantje) throws SQLException {
+        List<commensialisme> commensialismeslijst = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM " + "commensialisme" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
+
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                commensialisme commensialisme = new commensialisme(resultaat.getInt("commensialisme_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("strategie"),
+                        resultaat.getString("ontwikkelingssnelheid"));
+                commensialismeslijst.add(commensialisme);
+                System.out.println(commensialisme.getCommensialisme_id() + " " + commensialisme.getPlant_id() + "  beheer");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return commensialismeslijst;
+    }
+        private List<commensialisme_multi> commensialisme_multitoevoegen(plant plantje) throws SQLException {
+            List<commensialisme_multi> commensialsime_multilijst = new ArrayList<>();
+            GetplantKeuze = "SELECT * FROM " + "commensialisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
+
+            try {
+                stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+                ResultSet resultaat = stmGetplantkeuze.executeQuery();
+                while (resultaat.next()) {
+                    commensialisme_multi commensialisme_multi = new commensialisme_multi(resultaat.getInt("commensialisme_id"),
+                            resultaat.getInt("plant_id"),
+                            resultaat.getString("eigenschap"),
+                            resultaat.getString("waarde"));
+                    commensialsime_multilijst.add(commensialisme_multi);
+                    System.out.println(commensialisme_multi.getCommensialisme_id() + " " + commensialisme_multi.getPlant_id() + "  beheer");
+                }
+            } catch (SQLException ex) {
+                System.out.println("in de catch");
+                Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("in de catch");
+            }
+            return commensialsime_multilijst;
+        }
 }
