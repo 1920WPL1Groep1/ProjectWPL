@@ -33,6 +33,8 @@ delete from spruitfenelogie
 delete from vochtbehoefte
 delete from voedingsbehoefte
 delete from habitus
+delete from ontwikkelingssnelheid
+delete from ratio_bloeiblad
 
 
 /*Toevoegen Plant*/
@@ -1459,4 +1461,18 @@ set @teller = 1
 
 	set @teller = @teller + 1
 	end
-/*NOG DOEN: ontwikkelingssnelheid + ratio bloeiblad + strategie*/
+
+/*Insert into ontwikkelingssnelheid*/
+insert into voedingsbehoefte values
+	('snel'),
+	('matig'),
+	('traag')
+
+/*Insert into ratio bloei-blad*/
+insert into ratio_bloeiblad values
+	('pachysandra sp.'),
+	('geranium nodosum'),
+	('salvia nemorosa'),
+	('aster sp.')
+
+/*Beheerdaad is volledig leeg, en bestaan nog geen waarden van in de db*/
