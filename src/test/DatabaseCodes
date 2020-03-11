@@ -10,9 +10,9 @@ delete from extra
 delete from foto
 delete from beheer
 delete from plant
-delete from type
-delete from familie
 delete from geslacht
+delete from familie
+delete from type
 delete from grondsoort
 delete from bladvorm
 delete from bloeiwijze
