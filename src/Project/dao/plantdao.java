@@ -1,8 +1,5 @@
 package Project.dao;
-
 import Project.klasse.*;
-import main.java.dao.StudentDao;
-import main.java.model.plant;
 
 import java.awt.*;
 import java.sql.*;
@@ -10,25 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 public class plantdao {
-    private static final String GETALLPLANTEN =
-            "SELECT * FROM plant";
-    private static final String GETPLANTBYID =
-            "SELECT * FROM plant WHERE plant_id = ?";
-    private static final String INSERTPLANT =
-            "INSERT INTO plant (type, familie,geslacht,soort,variatie,plantdichtheid_min,plantdichtheid_max,fgsv) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATEPLANT =
-            "UPDATE plant SET  type=? ,familie = ?, geslacht = ?, soort = ?, variatie = ?, plantdichtheid_min = ?, plantdichtheid_max = ?, fgsv = ? WHERE plant_id = ?";
-    private static final String DELETEPLANT =
-            "DELETE FROM plant WHERE plant_id = ?";
-    private static final String GETPLANTBYNAME =
-            "SELECT * FROM plant WHERE familie LIKE ?";
-    private static String GetplantKeuze =
-            "SELECT * FROM plant WHERE ? LIKE ?";
-
+    private static final String GETALLPLANTEN ="SELECT * FROM plant";
+    private static final String GETPLANTBYID ="SELECT * FROM plant WHERE plant_id = ?";
+    private static final String INSERTPLANT ="INSERT INTO plant (type, familie,geslacht,soort,variatie,plantdichtheid_min,plantdichtheid_max,fgsv) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATEPLANT ="UPDATE plant SET  type=? ,familie = ?, geslacht = ?, soort = ?, variatie = ?, plantdichtheid_min = ?, plantdichtheid_max = ?, fgsv = ? WHERE plant_id = ?";
+    private static final String DELETEPLANT ="DELETE FROM plant WHERE plant_id = ?";
+    private static final String GETPLANTBYNAME ="SELECT * FROM plant WHERE familie LIKE ?";
+    private static String GetplantKeuze ="SELECT * FROM plant WHERE ? LIKE ?";
     private Connection dbConnection;
-
     private PreparedStatement stmtSelectById;
     private PreparedStatement stmSelectAll;
     private PreparedStatement stmtInsert;
@@ -36,8 +23,6 @@ public class plantdao {
     private PreparedStatement stmtDelete;
     private PreparedStatement stmgetbyname;
     private PreparedStatement stmGetplantkeuze;
-
-
     public plantdao(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
@@ -67,13 +52,11 @@ public class plantdao {
                 plantenlijst.add(plant);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return plantenlijst;
     }
-
-     //vragen waarom dit niet werkt
     public plant getplantById(Integer plant_id) throws SQLException {
         plant plant = null;
          stmtSelectById.setInt(1, plant_id);
@@ -91,7 +74,6 @@ public class plantdao {
         }
         return plant;
     }
-
     public void createPlant(plant plant) throws SQLException {
 //       stmtInsert.setInt(1, 60); // hulp vragen bij functie om max id te vragen...
         stmtInsert.setString(1, plant.getType());
@@ -105,7 +87,6 @@ public class plantdao {
         stmtInsert.executeUpdate();
         System.out.println("gelukt");
     }
-
     public Integer updateplant(plant plant) throws SQLException {
         stmtUpdate.setString(1, plant.getType());
         stmtUpdate.setString(2,plant.getFamilie());
@@ -122,7 +103,6 @@ public class plantdao {
         stmtDelete.setInt(1, plant_ID);
         return stmtDelete.executeUpdate(); //Aantal gewist.
     }
-
     public List<plant> getplantbyname(String naam) throws SQLException {
         List<plant> plantenlijst = new ArrayList<>();
 //TODO 4 : Vervolledig de methode getStudentByNaam(String naam) en gebruik de query GETSTUDENTBYNAAM
@@ -151,7 +131,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
 
@@ -212,13 +192,12 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         System.out.println(plantenlijst.size());
         return plantenlijst;
     }
-
     private List<beheer> Beheertoevoegen(plant plantje) throws SQLException {
         List<beheer> beheerlijst = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
@@ -238,7 +217,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return beheerlijst;
@@ -264,7 +243,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return abiotischeFactorenList;
@@ -285,7 +264,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return abiotische_multiList;
@@ -311,7 +290,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return extraLijst;
@@ -339,7 +318,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fenotypeLijst;
@@ -373,7 +352,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fenotype_multiLijst;
@@ -396,7 +375,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fotoList;
@@ -418,12 +397,12 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return commensialismeslijst;
     }
-        private List<commensialisme_multi> commensialisme_multitoevoegen(plant plantje) throws SQLException {
+    private List<commensialisme_multi> commensialisme_multitoevoegen(plant plantje) throws SQLException {
             List<commensialisme_multi> commensialsime_multilijst = new ArrayList<>();
             GetplantKeuze = "SELECT * FROM " + "commensialisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
 
@@ -440,7 +419,7 @@ public class plantdao {
                 }
             } catch (SQLException ex) {
                 System.out.println("in de catch");
-                Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("in de catch");
             }
             return commensialsime_multilijst;
