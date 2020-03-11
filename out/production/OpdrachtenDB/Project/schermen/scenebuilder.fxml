@@ -12,10 +12,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
       <TabPane fx:id="tabpane" layoutX="27.0" layoutY="88.0" prefHeight="665.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -215,7 +217,7 @@
           </Tab>
             <Tab fx:id="commensalimsetab" text="Commensalisme">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="524.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="635.0" prefWidth="836.0">
                      <children>
                         <TitledPane animated="false" layoutX="14.0" layoutY="11.0" prefHeight="78.0" prefWidth="782.0" text="Ontwikkelingssnelheid">
                            <content>
@@ -380,29 +382,37 @@
                      <children>
                         <ListView fx:id="resultatentxt" layoutX="14.0" layoutY="26.0" onMouseClicked="#listview_clicked" prefHeight="598.0" prefWidth="408.0" />
                         <TextArea fx:id="extrainfottxtx" layoutX="429.0" layoutY="26.0" prefHeight="598.0" prefWidth="416.0" />
-                        <Label layoutX="29.0" layoutY="5.0" text="selecteer de plant waarvan je meer info wilt zien" />
+                        <Label layoutX="29.0" layoutY="5.0" text="Selecteer de plant waarvan je meer info wilt zien" />
                      </children></AnchorPane>
               </content>
            </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="zoekenTxt" layoutX="28.0" layoutY="26.0" prefHeight="46.0" prefWidth="524.0" />
-      <Button fx:id="zoekenBtn" layoutX="568.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="46.0" prefWidth="116.0" text="Zoeken" />
-      <CheckBox fx:id="geavanceerdCheck" layoutX="701.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#click_advance" prefHeight="18.0" prefWidth="154.0" text="Geavanceerd zoeken">
+      <TextField fx:id="zoekenTxt" layoutX="28.0" layoutY="36.0" prefHeight="32.0" prefWidth="524.0" />
+      <Button fx:id="zoekenBtn" layoutX="568.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#click_zoekenBtn" prefHeight="32.0" prefWidth="116.0" text="Zoeken" />
+      <CheckBox fx:id="geavanceerdCheck" layoutX="701.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#click_advance" prefHeight="18.0" prefWidth="154.0" text="Geavanceerd zoeken">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <Label layoutX="28.0" layoutY="5.0" text="je zoekt " />
-      <RadioButton fx:id="variatieRadioButton" layoutX="73.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="variatie">
+      <Label layoutX="28.0" layoutY="10.0" text="Je zoekt op:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <RadioButton fx:id="variatieRadioButton" layoutX="123.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Variatie">
          <toggleGroup>
             <ToggleGroup fx:id="selecteerGroep" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="SoortRadioButton" layoutX="133.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Soort" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="GeslcahtRadioButton" layoutX="183.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Geslcaht" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="TypeRadiobutton" layoutX="250.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Type" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="familieradiobutton" layoutX="297.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Familie" toggleGroup="$selecteerGroep" />
-      <Label fx:id="zoekInfolabel" layoutX="28.0" layoutY="72.0" prefHeight="18.0" prefWidth="524.0" />
+      <RadioButton fx:id="SoortRadioButton" layoutX="213.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Soort" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="GeslcahtRadioButton" layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Geslacht" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="TypeRadiobutton" layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Type" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="familieradiobutton" layoutX="477.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Familie" toggleGroup="$selecteerGroep" />
+      <Label fx:id="zoekInfolabel" layoutX="28.0" layoutY="68.0" prefHeight="18.0" prefWidth="524.0" />
+      <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="882.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/download.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
