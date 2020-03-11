@@ -1,11 +1,11 @@
 package Project;
 
 import Project.dao.plantdao;
+import Project.klasse.plant;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import main.java.dao.Database;
-import main.java.model.plant;
 
 import java.sql.Connection;
 import java.sql.SQLException;

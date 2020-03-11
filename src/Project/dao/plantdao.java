@@ -22,6 +22,16 @@ public class plantdao {
     private PreparedStatement stmtDelete;
     private PreparedStatement stmgetbyname;
     private PreparedStatement stmGetplantkeuze;
+    private List<commensialisme_multi> commensialsime_multilijst = new ArrayList<>();
+    private List<commensialisme> commensialismeslijst = new ArrayList<>();
+    private         List<foto> fotoList = new ArrayList<>();
+    private         List<fenotype_multi> fenotype_multiLijst = new ArrayList<>();
+    private         List<extra> extraLijst = new ArrayList<>();
+    private         List<abiotische_multi> abiotische_multiList = new ArrayList<>();
+    private         List<fenotype> fenotypeLijst = new ArrayList<>();
+    private         List<abiotische_factoren> abiotischeFactorenList = new ArrayList<>();
+    private         List<beheer> beheerlijst = new ArrayList<>();
+
     public plantdao(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
@@ -198,7 +208,6 @@ public class plantdao {
         return plantenlijst;
     }
     private List<beheer> Beheertoevoegen(plant plantje) throws SQLException {
-        List<beheer> beheerlijst = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
 
         try {
@@ -223,7 +232,6 @@ public class plantdao {
 
     }
     private List<abiotische_factoren> abiotischefactorentoevoegen(plant plantje) throws SQLException {
-        List<abiotische_factoren> abiotischeFactorenList = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "abiotische_factoren" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
 
         try {
@@ -235,7 +243,7 @@ public class plantdao {
                         resultaat.getString("bezonning"),
                         resultaat.getString("grondsoort"),
                         resultaat.getString("vochtbehoefte"),
-                        resultaat.getString("voedingbehoefte"),
+                        resultaat.getString("voedingsbehoefte"),
                         resultaat.getString("reactie_antagonistische_omg"));
                 abiotischeFactorenList.add(abiotische_factoren);
                 System.out.println(abiotische_factoren.getAbiotische_id()+ " " +abiotische_factoren.getPlant_id()+ "  abiotische_factoren");
@@ -248,7 +256,6 @@ public class plantdao {
         return abiotischeFactorenList;
     }
     private List<abiotische_multi> abiotischeMultistoevoegeb(plant plantje) throws SQLException {
-        List<abiotische_multi> abiotische_multiList = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "abiotisch_multi" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -257,7 +264,7 @@ public class plantdao {
                 abiotische_multi abiotische_multi = new abiotische_multi(resultaat.getInt("abiotische_id"),
                         resultaat.getInt("plant_id"),
                         resultaat.getString("eigenschap"),
-                        resultaat.getInt("waarde"));
+                        resultaat.getString("waarde"));
                 abiotische_multiList.add(abiotische_multi);
                 System.out.println(abiotische_multi.getAbiotische_id()+ " " +abiotische_multi.getPlant_id()+ "  abiotische_multi");
             }
@@ -269,7 +276,6 @@ public class plantdao {
         return abiotische_multiList;
     }
     private List<extra> extraToevoegen(plant plant) throws SQLException {
-        List<extra> extraLijst = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "extra" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
 
         try {
@@ -296,7 +302,6 @@ public class plantdao {
 
     }
     private List<fenotype> fenotypeToevoegen(plant plant) throws SQLException {
-        List<fenotype> fenotypeLijst = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "fenotype" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
 
         try {
@@ -324,7 +329,6 @@ public class plantdao {
 
     }
     private List<fenotype_multi> fenotype_multiToevoegen(plant plant) throws SQLException {
-        List<fenotype_multi> fenotype_multiLijst = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "fenotype_multi" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
 
         try {
@@ -358,7 +362,6 @@ public class plantdao {
 
     }
     private List<foto> fotoToevoegen(plant plant) throws SQLException {
-        List<foto> fotoList = new ArrayList<>();
         GetplantKeuze = "SELECT * FROM "+ "foto" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -368,7 +371,7 @@ public class plantdao {
                         resultaat.getInt("plant_id"),
                         resultaat.getString("eigenschap"),
                         resultaat.getString("url"),
-                        (Image) resultaat.getBlob("figuur"));
+                        resultaat.getBlob("figuur"));
                 fotoList.add(foto);
                 System.out.println(foto.getFoto_id()+ " " +foto.getPlant_id()+ "  foto");
             }
@@ -380,8 +383,7 @@ public class plantdao {
         return fotoList;
     }
     private List<commensialisme> commensialismestoevoegen(plant plantje) throws SQLException {
-        List<commensialisme> commensialismeslijst = new ArrayList<>();
-        GetplantKeuze = "SELECT * FROM " + "commensialisme" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "commensalisme" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -402,14 +404,12 @@ public class plantdao {
         return commensialismeslijst;
     }
     private List<commensialisme_multi> commensialisme_multitoevoegen(plant plantje) throws SQLException {
-            List<commensialisme_multi> commensialsime_multilijst = new ArrayList<>();
-            GetplantKeuze = "SELECT * FROM " + "commensialisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
-
+            GetplantKeuze = "SELECT * FROM " + "commensalisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
             try {
                 stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
                 ResultSet resultaat = stmGetplantkeuze.executeQuery();
                 while (resultaat.next()) {
-                    commensialisme_multi commensialisme_multi = new commensialisme_multi(resultaat.getInt("commensialisme_id"),
+                    commensialisme_multi commensialisme_multi= new commensialisme_multi(resultaat.getInt("commensialisme_id"),
                             resultaat.getInt("plant_id"),
                             resultaat.getString("eigenschap"),
                             resultaat.getString("waarde"));
