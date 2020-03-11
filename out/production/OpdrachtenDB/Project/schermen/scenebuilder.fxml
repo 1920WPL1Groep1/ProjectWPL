@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
       <TabPane fx:id="tabpane" layoutX="27.0" layoutY="88.0" prefHeight="665.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -128,20 +128,22 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="417.0" layoutY="283.0" prefHeight="78.0" prefWidth="384.0" text="Bloeiwijze:">
+                        <TitledPane animated="false" layoutX="417.0" layoutY="283.0" prefHeight="157.0" prefWidth="384.0" text="Bloeiwijze:">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <ComboBox fx:id="bloeiwijzeCombo" layoutX="20.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ImageView fitHeight="60.0" fitWidth="346.0" layoutX="18.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="417.0" layoutY="373.0" prefHeight="78.0" prefWidth="384.0" text="Habitus:">
+                        <TitledPane animated="false" layoutX="417.0" layoutY="455.0" prefHeight="171.0" prefWidth="384.0" text="Habitus:">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="382.0">
                                  <children>
                                     <ComboBox fx:id="habitusCombo" layoutX="22.0" layoutY="12.0" prefHeight="26.0" prefWidth="339.0" />
+                                    <ImageView fitHeight="74.0" fitWidth="346.0" layoutX="19.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -399,20 +401,25 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <RadioButton fx:id="variatieRadioButton" layoutX="123.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Variatie">
+      <RadioButton fx:id="variatieRadioButton" layoutX="202.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Variatie">
          <toggleGroup>
             <ToggleGroup fx:id="selecteerGroep" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="SoortRadioButton" layoutX="213.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Soort" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="GeslcahtRadioButton" layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Geslacht" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="TypeRadiobutton" layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Type" toggleGroup="$selecteerGroep" />
-      <RadioButton fx:id="familieradiobutton" layoutX="477.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Familie" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="SoortRadioButton" layoutX="292.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Soort" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="GeslcahtRadioButton" layoutX="372.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Geslacht" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="TypeRadiobutton" layoutX="479.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Type" toggleGroup="$selecteerGroep" />
+      <RadioButton fx:id="familieradiobutton" layoutX="556.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="Familie" toggleGroup="$selecteerGroep" />
       <Label fx:id="zoekInfolabel" layoutX="28.0" layoutY="68.0" prefHeight="18.0" prefWidth="524.0" />
       <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="882.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/download.png" />
          </image>
       </ImageView>
+      <RadioButton fx:id="familieradiobutton1" layoutX="127.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#zoekterm" text="FGSV">
+         <toggleGroup>
+            <ToggleGroup fx:id="selecteerGroep1" />
+         </toggleGroup>
+      </RadioButton>
    </children>
 </AnchorPane>
