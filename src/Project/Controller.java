@@ -96,6 +96,7 @@ public class Controller {
     }
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
         plantdao plantdao = new plantdao(dbConnection);
+        extrainfottxtx.setText("");
         showByName(plantdao);
     }
     /** BEGIN HulpMethoden voor daoDemo **/

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
       <TabPane fx:id="tabpane" layoutX="27.0" layoutY="88.0" prefHeight="665.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -382,7 +382,7 @@
                      <children>
                         <ListView fx:id="resultatentxt" layoutX="14.0" layoutY="26.0" onMouseClicked="#listview_clicked" prefHeight="598.0" prefWidth="408.0" />
                         <TextArea fx:id="extrainfottxtx" layoutX="429.0" layoutY="26.0" prefHeight="598.0" prefWidth="416.0" />
-                        <Label layoutX="29.0" layoutY="5.0" text="selecteer de plant waarvan je meer info wilt zien" />
+                        <Label layoutX="29.0" layoutY="5.0" text="Selecteer de plant waarvan je meer info wilt zien" />
                      </children></AnchorPane>
               </content>
            </Tab>
