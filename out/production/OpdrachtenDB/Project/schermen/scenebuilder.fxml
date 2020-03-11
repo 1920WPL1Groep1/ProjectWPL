@@ -383,7 +383,7 @@
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <ListView fx:id="resultatentxt" layoutX="14.0" layoutY="26.0" onMouseClicked="#listview_clicked" prefHeight="598.0" prefWidth="408.0" />
-                        <TextArea fx:id="extrainfottxtx" layoutX="429.0" layoutY="26.0" prefHeight="598.0" prefWidth="416.0" />
+                        <TextArea fx:id="extrainfottxtx" editable="false" layoutX="429.0" layoutY="26.0" prefHeight="598.0" prefWidth="416.0" />
                         <Label layoutX="29.0" layoutY="5.0" text="Selecteer de plant waarvan je meer info wilt zien" />
                      </children></AnchorPane>
               </content>
