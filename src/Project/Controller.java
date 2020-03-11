@@ -117,7 +117,7 @@ public class Controller {
         }
         if (planten.size()==0)
         {
-            resultatentxt.getItems().add(0,"Er zijn geen planten terug gevonden");
+            resultatentxt.getItems().add(0,"Er zijn geen planten terug gevonden.");
         }
     }
     /**
@@ -167,14 +167,14 @@ public class Controller {
         {
             if(plantenlijst.get(i).getFgsv()==tekst)
             {
-                extrainfottxtx.setText("planten ID : " +plantenlijst.get(i).getPlant_id().toString()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant familie : " +plantenlijst.get(i).getFamilie()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant type : " +plantenlijst.get(i).getType()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant geslacht : " +plantenlijst.get(i).getGeslacht()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant soort : " +plantenlijst.get(i).getSoort()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "plant variatie : " +plantenlijst.get(i).getVariatie()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "planten plantdichtheid min : " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "planten plantdichtheid max : " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
+                extrainfottxtx.setText("PlantID: " +plantenlijst.get(i).getPlant_id().toString()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Familie: " +plantenlijst.get(i).getFamilie()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Type: " +plantenlijst.get(i).getType()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Geslacht: " +plantenlijst.get(i).getGeslacht()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Soort: " +plantenlijst.get(i).getSoort()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Variatie: " +plantenlijst.get(i).getVariatie()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Plantdichtheid minimum: " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+ "Plantdichtheid maximum: " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
 
             }
 
@@ -184,61 +184,61 @@ public class Controller {
     {
         if(keuzenummer==0)
         {
-            zoekInfolabel.setText("maak een keuze op wat je wilt zoeken");
+            zoekInfolabel.setText("Maak een keuze op wat je wilt zoeken.");
             getal=0;
             database="plant";
         }
         if(keuzenummer==1)
         {
-            zoekInfolabel.setText("kies op naam van familie het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van familie. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
         }
         if(keuzenummer==2)
         {
-            zoekInfolabel.setText("kies op naam van type het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van type. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
 
         }
         if(keuzenummer==3)
         {
-            zoekInfolabel.setText("kies op naam van geslacht het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van geslacht. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
 
         }
         if(keuzenummer==4)
         {
-            zoekInfolabel.setText("kies op naam van soort het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van soort. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
 
         }
         if(keuzenummer==5)
         {
-            zoekInfolabel.setText("kies op naam van variatie het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van variatie. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
 
         }
         if(keuzenummer==6)
         {
-            zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat erboven zit");
+            zoekInfolabel.setText("Geef een cijfer in en we zullen alles teruggeven wat erboven zit.");
             getal=2;
             database="plant";
 
         }
         if(keuzenummer==7)
         {
-            zoekInfolabel.setText("je moet een cijfer invullen en we zullen alles teruggeven wat eronder zit");
+            zoekInfolabel.setText("Geef een cijfer in en we zullen alles teruggeven wat eronder zit.");
             getal=3;
             database="plant";
 
         }
         if(keuzenummer==8)
         {
-            zoekInfolabel.setText("kies op naam van fgsv het hoeft niet volledig te zijn");
+            zoekInfolabel.setText("Kies op naam van het FGSV. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
         }
