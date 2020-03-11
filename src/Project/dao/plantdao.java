@@ -1,5 +1,7 @@
 package Project.dao;
 
+import Project.klasse.abiotische_factoren;
+import Project.klasse.abiotische_multi;
 import Project.klasse.beheer;
 import main.java.dao.StudentDao;
 import main.java.model.plant;
@@ -200,6 +202,8 @@ public class plantdao {
                         resultaat.getString("fgsv"));
                 plantenlijst.add(plant);
                 Beheertoevoegen(plant);
+                abiotischefactorentoevoegen(plant);
+                abiotischeMultistoevoegeb(plant);
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -235,5 +239,50 @@ public class plantdao {
         return beheerlijst;
 
     }
+    private List<abiotische_factoren> abiotischefactorentoevoegen(plant plantje) throws SQLException {
+        List<abiotische_factoren> abiotischeFactorenList = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "abiotische_factoren" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
 
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                abiotische_factoren abiotische_factoren = new abiotische_factoren(resultaat.getInt("abiotische_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("bezonning"),
+                        resultaat.getString("grondsoort"),
+                        resultaat.getString("vochtbehoefte"),
+                        resultaat.getString("voedingbehoefte"),
+                        resultaat.getString("reactie_antagonistische_omg"));
+                abiotischeFactorenList.add(abiotische_factoren);
+                System.out.println(abiotische_factoren.getAbiotische_id()+ " " +abiotische_factoren.getPlant_id()+ "  abiotische_factoren");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return abiotischeFactorenList;
+    }
+    private List<abiotische_multi> abiotischeMultistoevoegeb(plant plantje) throws SQLException {
+        List<abiotische_multi> abiotische_multiList = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "abiotisch_multi" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                abiotische_multi abiotische_multi = new abiotische_multi(resultaat.getInt("abiotische_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("eigenschap"),
+                        resultaat.getInt("waarde"));
+                abiotische_multiList.add(abiotische_multi);
+                System.out.println(abiotische_multi.getAbiotische_id()+ " " +abiotische_multi.getPlant_id()+ "  abiotische_multi");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return abiotische_multiList;
+    }
 }
