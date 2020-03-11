@@ -10,6 +10,24 @@ delete from extra
 delete from foto
 delete from beheer
 delete from plant
+delete from type
+delete from familie
+delete from geslacht
+delete from grondsoort
+delete from bladvorm
+delete from bloeiwijze
+delete from bezonning
+delete from habitat
+delete from levensduur_concurrentiekracht
+delete from kleuren
+delete from nectarwaarde
+delete from maxbladgrootte
+delete from pollenwaarde
+delete from reactieomgeving
+delete from sociabiliteit
+delete from spruitfenelogie
+delete from vochtbehoefte
+delete from voedingsbehoefte
 
 
 /*Toevoegen Plant*/
@@ -64,6 +82,447 @@ insert into plant values
   (48,'vivassen','ranunculaceae','actaea', ' ','''Chocoholic''',5,7,'ranunculaceae actaea  ''Chocoholic'' '),
   (49,'vivassen','ranunculaceae','actaea', 'japonica','''Cheju-do''',5,7,'ranunculaceae actaea japonica ''Cheju-do'' '),
   (50,'vivassen','ranunculaceae','actaea', 'pachypoda','''MISTY BLUE''',5,7,'ranunculaceae actaea pachypoda ''MISTY BLUE'' ')
+
+/*Toevoegen type*/
+insert into  type values
+	(1,'kruidenplanten'),
+	(2,'siergrassen'),
+	(3,'vivassen'),
+	(4,'bamboes'),
+	(5,'varens'),
+	(6,'bolgewassen in pot')
+
+/*Toevoegen families*/
+insert into familie values
+	(1,'acanthaceae',3),
+	(2,'acoraceae',3),
+	(3,'aizoaceae',3),
+	(4,'alliaceae',1),
+	(5,'alliaceae',3),
+	(6,'alliaceae',6),
+	(7,'amaryllidaceae',3),
+	(8,'amaryllidaceae',6),
+	(9,'apiaceae',1),
+	(10,'apiaceae',3),
+	(11,'apocynaceae',3),
+	(12,'araceae',6),
+	(13,'araliaceae',3),
+	(14,'aristolochiaceae',3),
+	(15,'asparagaceae',3),
+	(16,'asparagaceae',6),
+	(17,'asphodelaceae',3),
+	(18,'aspleniaceae',5),
+	(19,'asteraceae',1),
+	(20,'asteraceae',3),
+	(21,'athyriaceae',5),
+	(22,'berberidaceae',3),
+	(23,'blechnaceae',5),
+	(24,'boraginaceae',3),
+	(25,'brassicaceae',1),
+	(26,'brassicaceae',3),
+	(27,'buxaceae',3),
+	(28,'campanulaceae',3),
+	(29,'cannabaceae',3),
+	(30,'caryophyllaceae',3),
+	(31,'cistaceae',3),
+	(32,'colchicaceae',3),
+	(33,'colchicaceae',6),
+	(34,'commelinaceae',3),
+	(35,'cornaceae',3),
+	(36,'crassulaceae',3),
+	(37,'cyperaceae',2),
+	(38,'dipsacaceae',3),
+	(39,'dryopteridaceae',5),
+	(40,'euphorbiaceae',3),
+	(41,'fabaceae',3),
+	(42,'geraniaceae',3),
+	(43,'gunneraceae',3),
+	(44,'hemerocallidaceae',3),
+	(45,'hyacinthaceae',6),
+	(46,'hydrangeaceae',3),
+	(47,'hypericaceae',3),
+	(48,'iridaceae',3),
+	(49,'iridaceae',6),
+	(50,'juncaceae',2),
+	(51,'lamiaceae',1),
+	(52,'lamiaceae',3),
+	(53,'lauraceae',1),
+	(54,'liliaceae',3),
+	(55,'liliaceae',6),
+	(56,'linaceae',3),
+	(57,'lythraceae',3),
+	(58,'malvaceae',3),
+	(59,'mazaceae',3),
+	(60,'melanthiaceae',3),
+	(61,'onagraceae',3),
+	(62,'onocleaceae',5),
+	(63,'orchidaceae',3),
+	(64,'osmundaceae',5),
+	(65,'paeoniaceae',3),
+	(66,'papaveraceae',3),
+	(67,'plantaginaceae',3),
+	(68,'plumbaginaceae',3),
+	(69,'poaceae',2),
+	(70,'poaceae',4),
+	(71,'polemoniaceae',3),
+	(72,'polygonaceae',1),
+	(73,'polygonaceae',3),
+	(74,'polypodiaceae',5),
+	(75,'portulacaceae',3),
+	(76,'primulaceae',3),
+	(77,'primulaceae',6),
+	(78,'pteridaceae',5),
+	(79,'ranunculaceae',3),
+	(80,'ranunculaceae',6),
+	(81,'rosaceae',1),
+	(82,'rosaceae',3),
+	(83,'rubiaceae',3),
+	(84,'rutaceae',1),
+	(85,'rutaceae',3),
+	(86,'saururaceae',3),
+	(87,'saxifragaceae',3),
+	(88,'scrophulariaceae',3),
+	(89,'solanaceae',3),
+	(90,'thelypteridaceae',5),
+	(91,'urticaceae',3),
+	(92,'valerianaceae',1),
+	(93,'valerianaceae',3),
+	(94,'verbenaceae',3),
+	(95,'violaceae',3)
+
+/*Toevoegen geslacht*/
+insert into geslacht values
+	(1,'acaena',81),
+	(2,'acanthus',1),
+	(3,'achillea',19),
+	(4,'aconitum',79),
+	(5,'acorus',2),
+	(6,'actaea',79),
+	(7,'adiantum',78),
+	(8,'aegopodium',9),
+	(9,'aethionema',25),
+	(10,'agapanthus',7),
+	(11,'agastache',51),
+	(12,'ajuga',51),
+	(13,'alcea',58),
+	(14,'alchemilla',81),
+	(15,'allium',5),
+	(16,'alopecurus',69),
+	(17,'althaea',58),
+	(18,'alyssum',25),
+	(19,'ammophila',69),
+	(20,'amorpha',41),
+	(21,'amsonia',11),
+	(22,'anaphalis',19),
+	(23,'anchusa',24),
+	(24,'andropogon',69),
+	(25,'anemone',79),
+	(26,'angelica',9),
+	(27,'antennaria',19),
+	(28,'anthemis',19),
+	(29,'anthericum',15),
+	(30,'anthriscus',9),
+	(31,'aquilegia',79),
+	(32,'arabis',25),
+	(33,'aralia',13),
+	(34,'arenaria',30),
+	(35,'arisarum',12),
+	(36,'armeria',68),
+	(37,'armoracia',25),
+	(38,'arrhenatherum',69),
+	(39,'artemisia',19),
+	(40,'arum',12),
+	(41,'aruncus',81),
+	(42,'asarum',14),
+	(43,'asclepias',11),
+	(44,'asphodeline',17),
+	(45,'asplenium',18),
+	(46,'aster',19),
+	(47,'astilbe',87),
+	(48,'astilboides',87),
+	(49,'astrantia',9),
+	(50,'athyrium',21),
+	(51,'aubrieta',25),
+	(52,'aurinia',25),
+	(53,'baptisia',41),
+	(54,'bellis',19),
+	(55,'bergenia',87),
+	(56,'blechnum',23),
+	(57,'bletilla',63),
+	(58,'boehmeria',91),
+	(59,'bouteloua',69),
+	(60,'briza',69),
+	(61,'brunnera',24),
+	(62,'buglossoides',24),
+	(63,'bupthalmum',19),
+	(64,'calamagrostis',69),
+	(65,'calamintha',51),
+	(66,'caltha',79),
+	(67,'camassia',45),
+	(68,'campanula',28),
+	(69,'cardamine',25),
+	(70,'carex',37),
+	(71,'catananche',19),
+	(72,'centaurea',19),
+	(73,'centranthus',92),
+	(74,'cerastium',30),
+	(75,'ceratostigma',68),
+	(76,'chamaemelum',19),
+	(77,'chasmanthium',69),
+	(78,'chelone',67),
+	(79,'chelonopsis',51),
+	(80,'chionodoxa',15),
+	(81,'chrysanthemum',19),
+	(82,'chrysogonum',19),
+	(83,'cirsium',19),
+	(84,'clematis',79),
+	(85,'colchicum',32),
+	(86,'convallaria',15),
+	(87,'coreopsis',19),
+	(88,'cornus',35),
+	(89,'cortaderia',69),
+	(90,'crambe',25),
+	(91,'crocosmia',48),
+	(92,'crocus',48),
+	(93,'cyclamen',76),
+	(94,'cynara',19),
+	(95,'darmera',87),
+	(96,'delosperma',3),
+	(97,'delphinium',79),
+	(98,'deschampsia',69),
+	(99,'dianthus',30),
+	(100,'dicentra',66),
+	(101,'dierama',48),
+	(102,'digitalis',67),
+	(103,'dipsacus',38),
+	(104,'dodecatheon',76),
+	(105,'doronicum',19),
+	(106,'dryopteris',39),
+	(107,'echinacea',19),
+	(108,'echinops',19),
+	(109,'echium',24),
+	(110,'eomecon',66),
+	(111,'epilobium',61),
+	(112,'epimedium',22),
+	(113,'epipactis',63),
+	(114,'eragrostis',69),
+	(115,'erigeron',19),
+	(116,'erodium',42),
+	(117,'eryngium',9),
+	(118,'erysimum',25),
+	(119,'eucomis',45),
+	(120,'eupatorium',19),
+	(121,'euphorbia',40),
+	(122,'eurybia',19),
+	(123,'fargesia',69),
+	(124,'festuca',69),
+	(125,'filipendula',81),
+	(126,'foeniculum',9),
+	(127,'fragaria',81),
+	(128,'fuchsia',61),
+	(129,'gaillardia',19),
+	(130,'galega',41),
+	(131,'galium',83),
+	(132,'gaura',61),
+	(133,'geranium',42),
+	(134,'geum',81),
+	(135,'gillenia',81),
+	(136,'glechoma',51),
+	(137,'gunnera',43),
+	(138,'gypsophila',30),
+	(139,'hakonechloa',69),
+	(140,'hedera',13),
+	(141,'helenium',19),
+	(142,'helianthemum',31),
+	(143,'helianthus',19),
+	(144,'helichrysum',19),
+	(145,'helictotrichon',69),
+	(146,'heliopsis',19),
+	(147,'helleborus',79),
+	(148,'hemerocallis',44),
+	(149,'herniaria',30),
+	(150,'hesperis',25),
+	(151,'heuchera',87),
+	(152,'heucherella',87),
+	(153,'hibiscus',58),
+	(154,'hosta',15),
+	(155,'houstonia',83),
+	(156,'houttuynia',86),
+	(157,'humulus',29),
+	(158,'hyacinthus',15),
+	(159,'hypericum',47),
+	(160,'hyssopus',51),
+	(161,'iberis',25),
+	(162,'imperata',69),
+	(163,'inula',19),
+	(164,'ipheion',7),
+	(165,'iris',48),
+	(166,'isotoma',28),
+	(167,'kalimeris',19),
+	(168,'kirengeshoma',46),
+	(169,'knautia',38),
+	(170,'kniphofia',17),
+	(171,'koeleria',69),
+	(172,'lamiastrum',51),
+	(173,'lamium',51),
+	(174,'lathyrus',41),
+	(175,'laurus',53),
+	(176,'lavandula',51),
+	(177,'lavatera',58),
+	(178,'leontopodium',19),
+	(179,'leptinella',19),
+	(180,'leucanthemum',19),
+	(181,'levisticum',9),
+	(182,'lewisia',75),
+	(183,'liatris',19),
+	(184,'ligularia',19),
+	(185,'lilium',54),
+	(186,'limonium',68),
+	(187,'linaria',67),
+	(188,'linum',56),
+	(189,'liriope',15),
+	(190,'lithodora',24),
+	(191,'lobelia',28),
+	(192,'lupinus',41),
+	(193,'luzula',50),
+	(194,'lychnis',30),
+	(195,'lysimachia',76),
+	(196,'lythrum',57),
+	(197,'macleaya',66),
+	(198,'malva',58),
+	(199,'matteuccia',62),
+	(200,'mazus',59),
+	(201,'meconopsis',66),
+	(202,'melica',69),
+	(203,'melissa',51),
+	(204,'mentha',51),
+	(205,'milium',69),
+	(206,'miscanthus',69),
+	(207,'mitchella',83),
+	(208,'molinia',69),
+	(209,'monarda',51),
+	(210,'muhlenbergia',69),
+	(211,'mukdenia',87),
+	(212,'mukgenia',87),
+	(213,'muscari',45),
+	(214,'myosotis',24),
+	(215,'myrrhis',9),
+	(216,'napaea',58),
+	(217,'narcissus',7),
+	(218,'nepeta',51),
+	(219,'oenothera',61),
+	(220,'omphalodes',24),
+	(221,'onoclea',62),
+	(222,'ophiopogon',15),
+	(223,'origanum',51),
+	(224,'ornithogalum',45),
+	(225,'osmunda',64),
+	(226,'pachysandra',27),
+	(227,'paeonia',65),
+	(228,'panicum',69),
+	(229,'papaver',66),
+	(230,'paradisea',15),
+	(231,'patrinia',92),
+	(232,'peltoboykinia',87),
+	(233,'pennisetum',69),
+	(234,'penstemon',67),
+	(235,'perovskia',51),
+	(236,'persicaria',72),
+	(237,'petasites',19),
+	(238,'peucedanum',9),
+	(239,'phlomis',51),
+	(240,'phlox',71),
+	(241,'phragmites',69),
+	(242,'phuopsis',83),
+	(243,'physostegia',51),
+	(244,'podophyllum',22),
+	(245,'polemonium',71),
+	(246,'polygonatum',15),
+	(247,'polypodium',74),
+	(248,'polystichum',39),
+	(249,'potentilla',81),
+	(250,'pratia',28),
+	(251,'primula',76),
+	(252,'prunella',51),
+	(253,'pulmonaria',24),
+	(254,'pulsatilla',79),
+	(255,'pycnanthemum',51),
+	(256,'rabdosia',51),
+	(257,'ranunculus',79),
+	(258,'rheum',72),
+	(259,'rodgersia',87),
+	(260,'rosmarinus',51),
+	(261,'rudbeckia',19),
+	(262,'rumex',72),
+	(263,'ruta',84),
+	(264,'saccharum',69),
+	(265,'sagina',30),
+	(266,'salvia',51),
+	(267,'sanguisorba',81),
+	(268,'santolina',19),
+	(269,'saponaria',30),
+	(270,'saruma',14),
+	(271,'satureja',51),
+	(272,'saxifraga',87),
+	(273,'scabiosa',38),
+	(274,'schizachyrium',69),
+	(275,'schizostylis',48),
+	(276,'scilla',45),
+	(277,'scuttellaria',51),
+	(278,'sedum',36),
+	(279,'selinum',9),
+	(280,'sempervivum',36),
+	(281,'sesleria',69),
+	(282,'sidalcea',58),
+	(283,'silene',30),
+	(284,'silphium',19),
+	(285,'sisyrinchium',48),
+	(286,'smilacina',15),
+	(287,'solidago',19),
+	(288,'solidaster',19),
+	(289,'sorghastrum',69),
+	(290,'spodiopogon',69),
+	(291,'sporobolus',69),
+	(292,'stachys',51),
+	(293,'stipa',69),
+	(294,'stokesia',19),
+	(295,'strobilanthes',1),
+	(296,'succisa',38),
+	(297,'succisella',38),
+	(298,'symphytum',24),
+	(299,'tanacetum',19),
+	(300,'telekia',19),
+	(301,'tellima',87),
+	(302,'teucrium',51),
+	(303,'thalictrum',79),
+	(304,'thelypteris',90),
+	(305,'thermopsis',41),
+	(306,'thymus',51),
+	(307,'tiarella',87),
+	(308,'trachystemon',24),
+	(309,'tradescantia',34),
+	(310,'tricyrtis',54),
+	(311,'trifolium',41),
+	(312,'trillium',60),
+	(313,'trollius',79),
+	(314,'tulipa',54),
+	(315,'uncinia',37),
+	(316,'uvularia',32),
+	(317,'valeriana',92),
+	(318,'veratrum',60),
+	(319,'verbascum',88),
+	(320,'verbena',94),
+	(321,'vernonia',19),
+	(322,'veronica',67),
+	(323,'veronicastrum',67),
+	(324,'vinca',11),
+	(325,'viola',95),
+	(326,'waldsteinia',81),
+	(327,'woodwardia',23),
+	(328,'zigadenus',60),
+	(329,'zizia',9),
+	(330,'physalis',89),
+	(331,'hyacinthoides',15)
 
 /*Fenotype toevoegen*/
 declare @teller int
@@ -512,3 +971,185 @@ insert into commensalisme_multi values
 	set @i = @i + 1
 	end
 
+
+
+/*Invoeren naakte tabellen*/
+/*Invoeren grondsoort*/
+
+insert into grondsoort values
+	('Z'),
+	('ZL'),
+	('L'),
+	('LK'),
+	('K'),
+	('ZLK')
+
+
+/*Invoeren bladvorm*/
+
+insert into bladvorm values
+	('naald- of priemvormig'),
+	('lancetvormig'),
+	('rond'),
+	('samengesteld grof'),
+	('samengesteld verfijnd')
+
+
+/*Invoeren bloeiwijze*/
+
+insert into bloeiwijze values
+	('aar'),
+	('schermbloemig'),
+	('pluim'),
+	('bol of knop'),
+	('margrietachtig'),
+	('transparant')
+
+
+/*Invoeren bezonning*/
+
+insert into bezonning values
+	('Z'),
+	('Z-HS'),
+	('HS'),
+	('HS-S'),
+	('S')
+
+
+/*Invoeren habitat*/
+
+insert into habitat values
+	('gemengde boord met droge bodem','GB1'),
+	('gemengde boord met frissee bodem','GB2'),
+	('gemengde boord met vochtige bodem','GB3'),
+	('open plaats met droge bodem','OP1'),
+	('open plaats met droge bodem','OP1B'),
+	('open plaats met frisse bodem','OP2'),
+	('open plaats met frisse bodem','OP2B'),
+	('open plaats met vochtige bodem','OP3'),
+	('open plaats met vochtige bodem','OP3B'),
+	('steppe met droge bodem','SH1'),
+	('steppe met frisse bodem','SH2'),
+	('bos en onder bomen met droge bodem','B1'),
+	('bos en onder bomen met frisse bodem','B2'),
+	('bos en onder bomen met vochtige bodem','B3'),
+	('bodem met grind met droge bodem','GR1'),
+	('bodem met grind met frisse bodem','GR2'),
+	('heide met droge bodem','H1'),
+	('heide met frisse bodem','H2'),
+	('stenige droge bodem','ST1'),
+	('stenige frisse bodem','ST2'),
+	('bosrand met droge bodem','BR1'),
+	('bosrand met frisse bodem','BR2'),
+	('bosrand met vochtige bodem','BR3'),
+	('ondiepe droge bodem','OB1'),
+	('ondiepe frisse bodem','OB2')
+
+
+/*Invoeren levensduur/concurrentiekracht*/
+
+insert into levensduur_concurrentiekracht values
+	('zogenaamde bodembedekkern weinig verdraagzaam met andere planten'),
+	('verdraagzame bodembedekker, ook voor een soortenrijke aanplant'),
+	('woekerende soort, worteluitlopers'),
+	('weinig of niet woekerend, goed te combineren'),
+	('robuuste, meestal grote plant, ook als solitair'),
+	('zich sterk uitzaaiende soort'),
+	('kortlevende plant'),
+	('geeft een goede snijbloem'),
+	('stelt meer eisen qua ''eten en drinken'' of winterbescherming')
+
+
+/*Invoeren kleuren*/
+
+insert into kleuren values
+	('zwart'),
+	('wit'),
+	('roze'),
+	('rood'),
+	('oranje'),
+	('lila'),
+	('grijs'),
+	('groen'),
+	('geel'),
+	('blauw'),
+	('violet'),
+	('paars'),
+	('bruin')
+
+
+/*Insert into nectarwaarde*/
+
+insert into nectarwaarde values
+	('ja'),
+	('nee'),
+	('onbekend')
+
+
+/*Insert into maxbladgrootte*/
+
+insert into maxbladgrootte values
+	(5),
+	(10),
+	(20),
+	(50),
+	(100),
+	(150)
+
+
+/*Insert into pollenwaarde*/
+
+insert into pollenwaarde values
+	('ja'),
+	('nee'),
+	('onbekend')
+
+
+/*Insert into reactieomgeving*/
+
+insert into reactieomgeving values
+	('geen invloed'),
+	('terugdringen ontwikkeling tot verlies'),
+	('gereduceerde groei - bladmassa'),
+	('toename groei - bladmassa')
+
+/*Insert into sociabiliteit*/
+
+insert into sociabiliteit values
+	(1),
+	(2),
+	(3),
+	(4),
+	(5)
+
+
+/*Insert into spruitfenologie*/
+
+insert into spruitfenelogie values
+	('pachysandra sp.'),
+	('geranium nodosum'),
+	('salvia nemorosa'),
+	('aster sp.')
+
+
+/*Insert into vochtbehoefte*/
+
+insert into vochtbehoefte values
+	('droog'),
+	('droog of fris'),
+	('fris'),
+	('fris of vochtig'),
+	('vochtig'),
+	('vochtig of nat'),
+	('nat')
+
+
+/*Insert into voedingsbehoefte*/
+insert into voedingsbehoefte values
+	('arm'),
+	('matig'),
+	('voedselrijk'),
+	('indifferent')
+
+
+/*NOG DOEN: HABITUS + EXTRA + ontwikkelingssnelheid + ratio bloeiblad + soort + strategie + variatie*/
