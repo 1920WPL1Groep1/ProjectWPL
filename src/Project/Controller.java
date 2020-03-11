@@ -238,7 +238,7 @@ public class Controller {
         }
         if(keuzenummer==8)
         {
-            zoekInfolabel.setText("Kies op naam van het FGSV. Het hoeft niet volledig te zijn.n");
+            zoekInfolabel.setText("Kies op naam van het FGSV. Het hoeft niet volledig te zijn.");
             getal=1;
             database="plant";
         }
