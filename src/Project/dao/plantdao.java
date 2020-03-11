@@ -1,7 +1,5 @@
 package Project.dao;
 import Project.klasse.*;
-import main.java.dao.StudentDao;
-import main.java.model.plant;
 
 import java.awt.*;
 import java.sql.*;
@@ -54,7 +52,7 @@ public class plantdao {
                 plantenlijst.add(plant);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return plantenlijst;
@@ -133,7 +131,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
 
@@ -194,7 +192,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         System.out.println(plantenlijst.size());
@@ -219,7 +217,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return beheerlijst;
@@ -245,7 +243,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return abiotischeFactorenList;
@@ -266,7 +264,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return abiotische_multiList;
@@ -292,7 +290,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return extraLijst;
@@ -320,7 +318,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fenotypeLijst;
@@ -354,7 +352,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fenotype_multiLijst;
@@ -377,7 +375,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return fotoList;
@@ -399,7 +397,7 @@ public class plantdao {
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
-            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("in de catch");
         }
         return commensialismeslijst;
@@ -421,7 +419,7 @@ public class plantdao {
                 }
             } catch (SQLException ex) {
                 System.out.println("in de catch");
-                Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("in de catch");
             }
             return commensialsime_multilijst;
