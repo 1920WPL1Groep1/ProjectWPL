@@ -5,7 +5,7 @@ delete from fenotype_multi
 delete from abiotische_factoren
 delete from abiotisch_multi
 delete from commensalisme
-delete from commensialisme_multi
+delete from commensalisme_multi
 delete from extra
 delete from foto
 delete from beheer
@@ -161,7 +161,8 @@ use planten
 	set @teller = @teller + 1
 	end
 
-/*Toevoegen Foto*/
+/*Toevoegen foto*/
+
 	set @teller = 1
 	while @teller <= 50
 	begin
@@ -171,3 +172,228 @@ use planten
 
 	set @teller = @teller + 1
 	end
+
+insert into abiotisch_multi values
+
+/*
+GR1 = bodem met grind met droge bodem
+GR2 = bodem met grind met frisse bodem
+OB1 = ondiepe droge bodem
+OB2 = ondiepe frisse bodem
+OP1 = open plaats met droge bodem
+OP2 = open plaats met frisse bodem
+ST1 = stenige droge bodem
+ST2 = stenige frisse bodem
+*/
+(1,1,'habitat','bodem met grind met droge bodem'),
+(2,1,'habitat','bodem met grind met frisse bodem'),
+(3,1,'habitat','ondiepe droge bodem'),
+(4,1,'habitat','ondiepe frisse bodem'),
+(5,1,'habitat','open plaats met droge bodem'),
+(6,1,'habitat','open plaats met frisse bodem'),
+(7,1,'habitat','stenige droge bodem'),
+(8,1,'habitat','stenige frisse bodem'),
+(9,2,'habitat','bodem met grind met droge bodem'),
+(10,2,'habitat','bodem met grind met frisse bodem'),
+(11,2,'habitat','ondiepe droge bodem'),
+(12,2,'habitat','ondiepe frisse bodem'),
+(13,2,'habitat','open plaats met droge bodem'),
+(14,2,'habitat','open plaats met frisse bodem'),
+(15,2,'habitat','stenige droge bodem'),
+(16,2,'habitat','stenige frisse bodem'),
+(17,3,'habitat','bodem met grind met droge bodem'),
+(18,3,'habitat','bodem met grind met frisse bodem'),
+(19,3,'habitat','ondiepe droge bodem'),
+(20,3,'habitat','ondiepe frisse bodem'),
+(21,3,'habitat','open plaats met droge bodem'),
+(22,3,'habitat','open plaats met frisse bodem'),
+(23,3,'habitat','stenige droge bodem'),
+(24,3,'habitat','stenige frisse bodem'),
+(25,4,'habitat','bodem met grind met droge bodem'),
+(26,4,'habitat','bodem met grind met frisse bodem'),
+(27,4,'habitat','ondiepe droge bodem'),
+(28,4,'habitat','ondiepe frisse bodem'),
+(29,4,'habitat','open plaats met droge bodem'),
+(30,4,'habitat','open plaats met frisse bodem'),
+(31,4,'habitat','stenige droge bodem'),
+(32,4,'habitat','stenige frisse bodem'),
+/*
+GR2 = bodem met grind met frisse bodem
+OP2 = open plaats met frisse bodem
+ST2 = stenige frisse bodem
+BR2 = bosrand met frisse bodem
+*/
+(33,5,'habitat','bosrand met frisse bodem'),
+(34,5,'habitat','bodem met grind met frisse bodem'),
+(35,5,'habitat','open plaats met frisse bodem'),
+(36,5,'habitat','stenige frisse bodem'),
+(37,6,'habitat','bosrand met frisse bodem'),
+(38,6,'habitat','bodem met grind met frisse bodem'),
+(39,6,'habitat','open plaats met frisse bodem'),
+(40,6,'habitat','stenige frisse bodem'),
+(41,7,'habitat','bosrand met frisse bodem'),
+(42,7,'habitat','bodem met grind met frisse bodem'),
+(43,7,'habitat','open plaats met frisse bodem'),
+(44,7,'habitat','stenige frisse bodem'),
+(45,8,'habitat','bosrand met frisse bodem'),
+(46,8,'habitat','bodem met grind met frisse bodem'),
+(47,8,'habitat','open plaats met frisse bodem'),
+(48,8,'habitat','stenige frisse bodem'),
+(49,9,'habitat','bosrand met frisse bodem'),
+(50,9,'habitat','bodem met grind met frisse bodem'),
+(51,9,'habitat','open plaats met frisse bodem'),
+(52,9,'habitat','stenige frisse bodem'),
+/*
+GR2 = bodem met grind met frisse bodem
+OP2 = open plaats met frisse bodem
+ST2 = stenige frisse bodem
+OP2B = open plaats met frisse bodem
+*/
+(53,10,'habitat','bosrand met frisse bodem'),
+(54,10,'habitat','bodem met grind met frisse bodem'),
+(55,10,'habitat','open plaats met frisse bodem'),
+(56,10,'habitat','stenige frisse bodem'),
+(57,11,'habitat','bosrand met frisse bodem'),
+(58,11,'habitat','bodem met grind met frisse bodem'),
+(59,11,'habitat','open plaats met frisse bodem'),
+(60,11,'habitat','stenige frisse bodem'),
+(61,12,'habitat','bosrand met frisse bodem'),
+(62,12,'habitat','bodem met grind met frisse bodem'),
+(63,12,'habitat','open plaats met frisse bodem'),
+(64,12,'habitat','stenige frisse bodem'),
+/*
+GR2 = bodem met grind met frisse bodem
+ST2 = stenige frisse bodem
+BR2 = bosrand met frisse bodem
+*/
+(65,13,'habitat','bosrand met frisse bodem'),
+(66,13,'habitat','bodem met grind met frisse bodem'),
+(67,13,'habitat','stenige frisse bodem'),
+/*
+GB2 = gemengde boord met frisse bodem
+OP2B = open plaats met frisse bodem
+*/
+(68,14,'habitat','gemengde boord met frisse bodem'),
+(69,14,'habitat','open plaats met frisse bodem'),
+(70,15,'habitat','gemengde boord met frisse bodem'),
+(71,15,'habitat','open plaats met frisse bodem'),
+(72,16,'habitat','gemengde boord met frisse bodem'),
+(73,16,'habitat','open plaats met frisse bodem'),
+(74,17,'habitat','gemengde boord met frisse bodem'),
+(75,17,'habitat','open plaats met frisse bodem'),
+(76,18,'habitat','gemengde boord met frisse bodem'),
+(77,18,'habitat','open plaats met frisse bodem'),
+/*
+OP2 = open plaats met frisse bodem
+*/
+(78,19,'habitat','open plaats met frisse bodem'),
+/*
+OP2B = open plaats met frisse bodem
+GB2 = gemengde boord met frisse bodem
+*/
+(79,20,'habitat','gemengde boord met frisse bodem'),
+(80,20,'habitat','open plaats met frisse bodem'),
+(81,21,'habitat','gemengde boord met frisse bodem'),
+(82,21,'habitat','open plaats met frisse bodem'),
+(83,22,'habitat','gemengde boord met frisse bodem'),
+(84,22,'habitat','open plaats met frisse bodem'),
+(85,23,'habitat','gemengde boord met frisse bodem'),
+(86,23,'habitat','open plaats met frisse bodem'),
+(87,24,'habitat','gemengde boord met frisse bodem'),
+(88,24,'habitat','open plaats met frisse bodem'),
+(89,25,'habitat','gemengde boord met frisse bodem'),
+(90,25,'habitat','open plaats met frisse bodem'),
+(91,26,'habitat','gemengde boord met frisse bodem'),
+(92,26,'habitat','open plaats met frisse bodem'),
+(93,27,'habitat','gemengde boord met frisse bodem'),
+(94,27,'habitat','open plaats met frisse bodem'),
+(95,28,'habitat','gemengde boord met frisse bodem'),
+(96,28,'habitat','open plaats met frisse bodem'),
+(97,29,'habitat','gemengde boord met frisse bodem'),
+(98,29,'habitat','open plaats met frisse bodem'),
+(99,30,'habitat','gemengde boord met frisse bodem'),
+(100,30,'habitat','open plaats met frisse bodem'),
+(101,31,'habitat','gemengde boord met frisse bodem'),
+(102,31,'habitat','open plaats met frisse bodem'),
+(103,32,'habitat','gemengde boord met frisse bodem'),
+(104,32,'habitat','open plaats met frisse bodem'),
+(105,33,'habitat','gemengde boord met frisse bodem'),
+(106,33,'habitat','open plaats met frisse bodem'),
+(107,34,'habitat','gemengde boord met frisse bodem'),
+(108,34,'habitat','open plaats met frisse bodem'),
+(109,35,'habitat','gemengde boord met frisse bodem'),
+(110,35,'habitat','open plaats met frisse bodem'),
+/*
+OP3 = open plaats met vochtige bodem
+*/
+(111,36,'habitat','open plaats met vochtige bodem'),
+/*
+GB2 = gemengde bodem met frisse bodem
+GB3 = gemengde bodem met vochtige bodem
+OP3B = open plaats met vochtige bodem
+*/
+(112,37,'habitat','gemengde bodem met frisse bodem'),
+(113,37,'habitat','gemengde bodem met vochtige bodem'),
+(114,37,'habitat','open plaats met vochtige bodem'),
+(115,38,'habitat','gemengde bodem met frisse bodem'),
+(116,38,'habitat','gemengde bodem met vochtige bodem'),
+(117,38,'habitat','open plaats met vochtige bodem'),
+(118,39,'habitat','gemengde bodem met frisse bodem'),
+(119,39,'habitat','gemengde bodem met vochtige bodem'),
+(120,39,'habitat','open plaats met vochtige bodem'),
+/*
+OP1B = open plaats met droge bodem
+*/
+(121,40,'habitat','open plaats met droge bodem'),
+/*
+OP2B = open plaats met frisse bodem
+GB2 = gemengde bodem met frisse bodem
+*/
+(122,41,'habitat','gemengde bodem met frisse bodem'),
+(123,41,'habitat','open plaats met frisse bodem'),
+(124,42,'habitat','gemengde bodem met frisse bodem'),
+(125,42,'habitat','open plaats met frisse bodem'),
+/*
+BR2 = bosrand met frisse bodem
+GB2 = gemengde bodem met frisse bodem
+*/
+(126,43,'habitat','bosrand met frisse bodem'),
+(127,43,'habitat','gemengde bodem met frisse bodem'),
+(128,44,'habitat','bosrand met frisse bodem'),
+(129,44,'habitat','gemengde bodem met frisse bodem'),
+/*
+BR2 = bosrand met frisse bodem
+BR3 = bosrand met vochtige bodem
+GB2 = gemengde bodem met frisse bodem
+GB3 = gemengde bodem met vochtige bodem
+*/
+(130,45,'habitat','bosrand met frisse bodem'),
+(131,45,'habitat','bosrand met vochtige bodem'),
+(132,45,'habitat','gemengde bodem met frisse bodem'),
+(133,45,'habitat','gemengde bodem met vochtige bodem'),
+(134,46,'habitat','bosrand met frisse bodem'),
+(135,46,'habitat','bosrand met vochtige bodem'),
+(136,46,'habitat','gemengde bodem met frisse bodem'),
+(137,46,'habitat','gemengde bodem met vochtige bodem'),
+/*
+OP3 = open plaats met vochtige bodem
+*/
+(138,47,'habitat','open plaats met vochtige bodem'),
+/*
+BR2 = bosrand met frisse bodem
+BR3 = bosrand met vochtige bodem
+B2 = bos en onder bomen met frisse bodem
+B3 = bos en onder bomen met vochtige bodem
+*/
+(139,48,'habitat','bosrand met frisse bodem'),
+(140,48,'habitat','bosrand met vochtige bodem'),
+(141,48,'habitat','bos en onder bomen met frisse bodem'),
+(142,48,'habitat','bos en onder bomen met vochtige bodem'),
+(143,49,'habitat','bosrand met frisse bodem'),
+(144,49,'habitat','bosrand met vochtige bodem'),
+(145,49,'habitat','bos en onder bomen met frisse bodem'),
+(146,49,'habitat','bos en onder bomen met vochtige bodem'),
+(147,50,'habitat','bosrand met frisse bodem'),
+(148,50,'habitat','bosrand met vochtige bodem'),
+(149,50,'habitat','bos en onder bomen met frisse bodem'),
+(150,50,'habitat','bos en onder bomen met vochtige bodem')
