@@ -469,7 +469,7 @@ public class plantdao {
             }
             return commensialsime_multilijst;
     }
-
+        //hallo kevin
 
     //maakt alle lijsten van het object plantdao leeg zodat ze klaar zijn voor de volgende zoekopdracht
     public void lijstenLegen(){
