@@ -317,6 +317,34 @@ public class Controller {
             }
         }
 
+        //Eigenschappen fenotype multi
+        extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
+        extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen fenotype multi\r\n");
+        for (int j=0; j < fenotypeMultiList.size(); j++)
+        {
+            if(fenotypeMultiList.get(j).getPlant_id()==plant_id)
+            {
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fenotypeMultiList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Fenotype ID: "+ fenotypeMultiList.get(j).getFenotype_id() + "\r\n");
+                //Maanden erbij?
+            }
+        }
+
+        //Eigenschappen foto
+        extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
+        extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen foto\r\n");
+        for (int j=0; j < fotoList.size(); j++)
+        {
+            if(fotoList.get(j).getPlant_id()==plant_id)
+            {
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fotoList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Foto ID: "+ fotoList.get(j).getFoto_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Eigenschap: "+ fotoList.get(j).getEigenschap() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"URL: "+ fotoList.get(j).getUrl() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText()+"Figuur: "+ fotoList.get(j).getFiguur() + "\r\n");
+            }
+        }
+
 
     }
     public void ZetZoekinfo()
