@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 public class plantdao {
 
     //sql-opdrachten in strings voor te zoeken in de databank
-    private static final String GETALLPLANTEN ="SELECT * FROM plant";
-    private static final String GETPLANTBYID ="SELECT * FROM plant WHERE plant_id = ?";
-    private static final String INSERTPLANT ="INSERT INTO plant (type, familie,geslacht,soort,variatie,plantdichtheid_min,plantdichtheid_max,fgsv) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATEPLANT ="UPDATE plant SET  type=? ,familie = ?, geslacht = ?, soort = ?, variatie = ?, plantdichtheid_min = ?, plantdichtheid_max = ?, fgsv = ? WHERE plant_id = ?";
-    private static final String DELETEPLANT ="DELETE FROM plant WHERE plant_id = ?";
-    private static final String GETPLANTBYNAME ="SELECT * FROM plant WHERE familie LIKE ?";
-    private static String GetplantKeuze ="SELECT * FROM plant WHERE ? LIKE ?";
+    private static final String GETALLPLANTEN = "SELECT * FROM plant";
+    private static final String GETPLANTBYID = "SELECT * FROM plant WHERE plant_id = ?";
+    private static final String INSERTPLANT = "INSERT INTO plant (type, familie,geslacht,soort,variatie,plantdichtheid_min,plantdichtheid_max,fgsv) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATEPLANT = "UPDATE plant SET  type=? ,familie = ?, geslacht = ?, soort = ?, variatie = ?, plantdichtheid_min = ?, plantdichtheid_max = ?, fgsv = ? WHERE plant_id = ?";
+    private static final String DELETEPLANT = "DELETE FROM plant WHERE plant_id = ?";
+    private static final String GETPLANTBYNAME = "SELECT * FROM plant WHERE familie LIKE ?";
+    private static String GetplantKeuze = "SELECT * FROM plant WHERE ? LIKE ?";
 
     //variabele die de databank connectie bijhoudt
     private Connection dbConnection;
@@ -49,10 +49,10 @@ public class plantdao {
         this.dbConnection = dbConnection;
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
         stmSelectAll = dbConnection.prepareStatement(GETALLPLANTEN);
-        stmtInsert =   dbConnection.prepareStatement(INSERTPLANT,
+        stmtInsert = dbConnection.prepareStatement(INSERTPLANT,
                 Statement.RETURN_GENERATED_KEYS);
-        stmtUpdate     = dbConnection.prepareStatement(UPDATEPLANT);
-        stmtDelete     = dbConnection.prepareStatement(DELETEPLANT);
+        stmtUpdate = dbConnection.prepareStatement(UPDATEPLANT);
+        stmtDelete = dbConnection.prepareStatement(DELETEPLANT);
         stmgetbyname = dbConnection.prepareStatement(GETPLANTBYNAME);
     }
 
@@ -84,7 +84,7 @@ public class plantdao {
     //geeft de plant terug uit de tabel plant van databank waarvan het plant_id overeenkomt met de ingegeven waarde
     public plant getplantById(Integer plant_id) throws SQLException {
         plant plant = null;
-         stmtSelectById.setInt(1, plant_id);
+        stmtSelectById.setInt(1, plant_id);
         ResultSet rs = stmtSelectById.executeQuery();
         if (rs.next()) {
             plant = new plant(rs.getInt("plant_id"),
@@ -105,13 +105,13 @@ public class plantdao {
     public void createPlant(plant plant) throws SQLException {
 //       stmtInsert.setInt(1, 60); // hulp vragen bij functie om max id te vragen...
         stmtInsert.setString(1, plant.getType());
-        stmtInsert.setString(2,plant.getFamilie());
-        stmtInsert.setString(3,plant.getGeslacht());
-        stmtInsert.setString(4,plant.getSoort());
-        stmtInsert.setString(5,plant.getVariatie());
-        stmtInsert.setInt(6,plant.getPlantdichtheid_min());
-        stmtInsert.setInt(7,plant.getPlantdichtheid_max());
-        stmtInsert.setString(8,plant.getFgsv());
+        stmtInsert.setString(2, plant.getFamilie());
+        stmtInsert.setString(3, plant.getGeslacht());
+        stmtInsert.setString(4, plant.getSoort());
+        stmtInsert.setString(5, plant.getVariatie());
+        stmtInsert.setInt(6, plant.getPlantdichtheid_min());
+        stmtInsert.setInt(7, plant.getPlantdichtheid_max());
+        stmtInsert.setString(8, plant.getFgsv());
         stmtInsert.executeUpdate();
         System.out.println("gelukt");
     }
@@ -119,14 +119,14 @@ public class plantdao {
     //een record van de tabel plant in de databank veranderen naar de waarden van de meegegeven plant-object
     public Integer updateplant(plant plant) throws SQLException {
         stmtUpdate.setString(1, plant.getType());
-        stmtUpdate.setString(2,plant.getFamilie());
-        stmtUpdate.setString(3,plant.getGeslacht());
-        stmtUpdate.setString(4,plant.getSoort());
-        stmtUpdate.setString(5,plant.getVariatie());
-        stmtUpdate.setInt(6,plant.getPlantdichtheid_min());
-        stmtUpdate.setInt(7,plant.getPlantdichtheid_max());
-        stmtUpdate.setString(8,plant.getFgsv());
-        stmtUpdate.setInt(9,plant.getPlant_id());
+        stmtUpdate.setString(2, plant.getFamilie());
+        stmtUpdate.setString(3, plant.getGeslacht());
+        stmtUpdate.setString(4, plant.getSoort());
+        stmtUpdate.setString(5, plant.getVariatie());
+        stmtUpdate.setInt(6, plant.getPlantdichtheid_min());
+        stmtUpdate.setInt(7, plant.getPlantdichtheid_max());
+        stmtUpdate.setString(8, plant.getFgsv());
+        stmtUpdate.setInt(9, plant.getPlant_id());
         return stmtUpdate.executeUpdate();
     }
 
@@ -146,7 +146,7 @@ public class plantdao {
         try {
             System.out.println("in de try");
             System.out.println(naam);
-            stmgetbyname.setString(1,naam);
+            stmgetbyname.setString(1, naam);
             ResultSet rss = stmgetbyname.executeQuery();
             while (rss.next()) {
                 plant plant =
@@ -175,27 +175,23 @@ public class plantdao {
     // naamzoekopdracht van het scherm, als de naamzoekopdracht van het zoekscherm leeg blijkt te zijn, worden van alle planten elke eigenschap opgevraagd en gestoken in
     // de lijsten bovenaan -> volledige databank wordt dan opgenomen in de applicatie, iedere lijst komt dan overeen met een tabel van de databank, elk record van een
     // tabel heeft dan een object in de overeenkomstige lijst
-    public List<plant> getplantbykeuze(String keuze , String naam, int getal,String database) throws SQLException {
-        System.out.println(getal+"test");
-        if(getal==0)
-        {
-            keuze="familie";
-            naam = "'"+"%" + naam + "%"+"'";
-            GetplantKeuze = "SELECT * FROM plant WHERE fgsv LIKE" +naam;
-            System.out.println(GetplantKeuze+"test");
+    public List<plant> getplantbykeuze(String keuze, String naam, int getal, String database) throws SQLException {
+        System.out.println(getal + "test");
+        if (getal == 0) {
+            keuze = "familie";
+            naam = "'" + "%" + naam + "%" + "'";
+            GetplantKeuze = "SELECT * FROM plant WHERE fgsv LIKE" + naam;
+            System.out.println(GetplantKeuze + "test");
         }
-        if(getal ==1)
-        {
-            naam = "'"+"%" + naam + "%"+"'";
-            GetplantKeuze = "SELECT * FROM "+ database +" WHERE "+keuze +" LIKE " +naam;
+        if (getal == 1) {
+            naam = "'" + "%" + naam + "%" + "'";
+            GetplantKeuze = "SELECT * FROM " + database + " WHERE " + keuze + " LIKE " + naam;
         }
-        if(getal==2)
-        {
-            GetplantKeuze = "SELECT * FROM "+ database+ " WHERE "+keuze +" < " +naam;
+        if (getal == 2) {
+            GetplantKeuze = "SELECT * FROM " + database + " WHERE " + keuze + " < " + naam;
         }
-        if(getal==3)
-        {
-            GetplantKeuze = "SELECT * FROM "+ database+ " WHERE "+keuze +" > " +naam;
+        if (getal == 3) {
+            GetplantKeuze = "SELECT * FROM " + database + " WHERE " + keuze + " > " + naam;
         }
         try {
             System.out.println("in de try");
@@ -238,7 +234,7 @@ public class plantdao {
 
     //maakt een beheer-object, neemt de waarden over van een record in de beheer tabel, en steekt het object daarna in de beheerlijst
     private List<beheer> Beheertoevoegen(plant plantje) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "beheer" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -251,7 +247,7 @@ public class plantdao {
                         resultaat.getString("maand"),
                         resultaat.getInt("frequentie_jaar"));
                 beheerlijst.add(beheertje);
-                System.out.println(beheertje.getBeheer_id()+ " " +beheertje.getPlant_id()+ "  beheer");
+                System.out.println(beheertje.getBeheer_id() + " " + beheertje.getPlant_id() + "  beheer");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -264,7 +260,7 @@ public class plantdao {
 
     //maakt een abiotische_factoren-object, neemt de waarden over van een record in de abiotische_factoren tabel, en steekt het object daarna in de abiotischeFactorenList
     private List<abiotische_factoren> abiotischefactorentoevoegen(plant plantje) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "abiotische_factoren" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "abiotische_factoren" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -278,7 +274,7 @@ public class plantdao {
                         resultaat.getString("voedingsbehoefte"),
                         resultaat.getString("reactie_antagonistische_omg"));
                 abiotischeFactorenList.add(abiotische_factoren);
-                System.out.println(abiotische_factoren.getAbiotische_id()+ " " +abiotische_factoren.getPlant_id()+ "  abiotische_factoren");
+                System.out.println(abiotische_factoren.getAbiotische_id() + " " + abiotische_factoren.getPlant_id() + "  abiotische_factoren");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -290,7 +286,7 @@ public class plantdao {
 
     //maakt een abiotische_multi-object, neemt de waarden over van een record in de abiotische_multi tabel, en steekt het object daarna in de abiotische_multiList
     private List<abiotische_multi> abiotischeMultistoevoegeb(plant plantje) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "abiotisch_multi" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "abiotisch_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
             ResultSet resultaat = stmGetplantkeuze.executeQuery();
@@ -300,7 +296,7 @@ public class plantdao {
                         resultaat.getString("eigenschap"),
                         resultaat.getString("waarde"));
                 abiotische_multiList.add(abiotische_multi);
-                System.out.println(abiotische_multi.getAbiotische_id()+ " " +abiotische_multi.getPlant_id()+ "  abiotische_multi");
+                System.out.println(abiotische_multi.getAbiotische_id() + " " + abiotische_multi.getPlant_id() + "  abiotische_multi");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -312,7 +308,7 @@ public class plantdao {
 
     //maakt een extra-object, neemt de waarden over van een record in de extra tabel, en steekt het object daarna in de extraLijst
     private List<extra> extraToevoegen(plant plant) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "extra" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "extra" + " WHERE " + "plant_id" + " LIKE " + plant.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -327,7 +323,7 @@ public class plantdao {
                         resultaat.getString("geurend"),
                         resultaat.getString("vorstgevoelig"));
                 extraLijst.add(extraObject);
-                System.out.println(extraObject.getExtra_id()+ " " +extraObject.getPlant_id()+ "  extra");
+                System.out.println(extraObject.getExtra_id() + " " + extraObject.getPlant_id() + "  extra");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -340,7 +336,7 @@ public class plantdao {
 
     //maakt een fenotype-object, neemt de waarden over van een record in de fenotype tabel, en steekt het object daarna in de fenotypeLijst
     private List<fenotype> fenotypeToevoegen(plant plant) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "fenotype" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "fenotype" + " WHERE " + "plant_id" + " LIKE " + plant.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -356,7 +352,7 @@ public class plantdao {
                         resultaat.getString("ratio_bloei_blad"),
                         resultaat.getString("spruitfenelogie"));
                 fenotypeLijst.add(fenotypeObject);
-                System.out.println(fenotypeObject.getFenotype_id()+ " " +fenotypeObject.getPlant_id()+ "  fenotype");
+                System.out.println(fenotypeObject.getFenotype_id() + " " + fenotypeObject.getPlant_id() + "  fenotype");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -369,7 +365,7 @@ public class plantdao {
 
     //maakt een fenotype_multi-object, neemt de waarden over van een record in de fenotype_multi tabel, en steekt het object daarna in de fenotype_multiLijst
     private List<fenotype_multi> fenotype_multiToevoegen(plant plant) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "fenotype_multi" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "fenotype_multi" + " WHERE " + "plant_id" + " LIKE " + plant.getPlant_id();
 
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
@@ -391,7 +387,7 @@ public class plantdao {
                         resultaat.getString("nov"),
                         resultaat.getString("dec"));
                 fenotype_multiLijst.add(fenotype_multiObject);
-                System.out.println(fenotype_multiObject.getFenotype_id()+ " " +fenotype_multiObject.getPlant_id()+ "  fenotype_multi");
+                System.out.println(fenotype_multiObject.getFenotype_id() + " " + fenotype_multiObject.getPlant_id() + "  fenotype_multi");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -404,7 +400,7 @@ public class plantdao {
 
     //maakt een foto-object, neemt de waarden over van een record in de foto tabel, en steekt het object daarna in de fotoList
     private List<foto> fotoToevoegen(plant plant) throws SQLException {
-        GetplantKeuze = "SELECT * FROM "+ "foto" +" WHERE "+ "plant_id" +" LIKE " +plant.getPlant_id();
+        GetplantKeuze = "SELECT * FROM " + "foto" + " WHERE " + "plant_id" + " LIKE " + plant.getPlant_id();
         try {
             stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
             ResultSet resultaat = stmGetplantkeuze.executeQuery();
@@ -415,7 +411,7 @@ public class plantdao {
                         resultaat.getString("url"),
                         resultaat.getBlob("figuur"));
                 fotoList.add(foto);
-                System.out.println(foto.getFoto_id()+ " " +foto.getPlant_id()+ "  foto");
+                System.out.println(foto.getFoto_id() + " " + foto.getPlant_id() + "  foto");
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -450,29 +446,29 @@ public class plantdao {
 
     //maakt een commensialisme_multi-object, neemt de waarden over van een record in de commensalisme_multi tabel, en steekt het object daarna in de commensialsime_multilijst
     private List<commensialisme_multi> commensialisme_multitoevoegen(plant plantje) throws SQLException {
-            GetplantKeuze = "SELECT * FROM " + "commensalisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
-            try {
-                stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
-                ResultSet resultaat = stmGetplantkeuze.executeQuery();
-                while (resultaat.next()) {
-                    commensialisme_multi commensialisme_multi= new commensialisme_multi(resultaat.getInt("commensialisme_id"),
-                            resultaat.getInt("plant_id"),
-                            resultaat.getString("eigenschap"),
-                            resultaat.getString("waarde"));
-                    commensialsime_multilijst.add(commensialisme_multi);
-                    System.out.println(commensialisme_multi.getCommensialisme_id() + " " + commensialisme_multi.getPlant_id() + "  beheer");
-                }
-            } catch (SQLException ex) {
-                System.out.println("in de catch");
-                Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("in de catch");
+        GetplantKeuze = "SELECT * FROM " + "commensalisme_multi" + " WHERE " + "plant_id" + " LIKE " + plantje.getPlant_id();
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                commensialisme_multi commensialisme_multi = new commensialisme_multi(resultaat.getInt("commensialisme_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("eigenschap"),
+                        resultaat.getString("waarde"));
+                commensialsime_multilijst.add(commensialisme_multi);
+                System.out.println(commensialisme_multi.getCommensialisme_id() + " " + commensialisme_multi.getPlant_id() + "  beheer");
             }
-            return commensialsime_multilijst;
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return commensialsime_multilijst;
     }
-        //hallo kevin
+    //hallo kevin
 
     //maakt alle lijsten van het object plantdao leeg zodat ze klaar zijn voor de volgende zoekopdracht
-    public void lijstenLegen(){
+    public void lijstenLegen() {
         this.abiotische_multiList.clear();
         this.abiotischeFactorenList.clear();
         this.beheerlijst.clear();
@@ -483,5 +479,43 @@ public class plantdao {
         this.fenotype_multiLijst.clear();
         this.fotoList.clear();
         this.plantlijst.clear();
+    }
+
+    ;
+
+    public List<beheer> returnBeheerlijst() {
+        return beheerlijst;
+    }
+
+    public List<abiotische_factoren> returnAbiotischeFactoren() {
+        return abiotischeFactorenList;
+    }
+
+    public List<abiotische_multi> returnAbiotischeFactorenMulti() {
+        return abiotische_multiList;
+    }
+
+    public List<commensialisme> returnCommensalisme() {
+        return commensialismeslijst;
+    }
+
+    public List<commensialisme_multi> returnCommensalismeMulti() {
+        return commensialsime_multilijst;
+    }
+
+    public List<extra> returnExtra() {
+        return extraLijst;
+    }
+
+    public List<fenotype> returnFenotype() {
+        return fenotypeLijst;
+    }
+
+    public List<fenotype_multi> returnFenotypeMulti() {
+        return fenotype_multiLijst;
+    }
+
+    public List<foto> returnFoto() {
+        return fotoList;
     }
 }
