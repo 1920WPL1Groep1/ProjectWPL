@@ -4,7 +4,6 @@ import Project.klasse.beheer;
 import main.java.dao.StudentDao;
 import main.java.model.plant;
 
-import javax.crypto.spec.PSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -200,7 +199,7 @@ public class plantdao {
                         resultaat.getInt("plantdichtheid_max"),
                         resultaat.getString("fgsv"));
                 plantenlijst.add(plant);
-//                Beheertoevoegen();
+                Beheertoevoegen(plant);
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -211,25 +210,30 @@ public class plantdao {
         return plantenlijst;
     }
 
-//    private void Beheertoevoegen(plant plantje) throws SQLException {
-//        List<beheer> beheerlijst = new ArrayList<>();
-//        GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
-//
-//        try {
-//            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
-//            ResultSet resultaat = stmGetplantkeuze.executeQuery();
-//            while (resultaat.next()) {
-//                beheer beheer = new beheer(resultaat.getInt("plant_id"),
-//                        resultaat.getString("type"),
-//                        resultaat.getString("familie"),
-//                        resultaat.getString("geslacht"),
-//                        resultaat.getString("soort"),
-//                        resultaat.getString("variatie"),
-//                        resultaat.getInt("plantdichtheid_min"),
-//                        resultaat.getInt("plantdichtheid_max"),
-//                        resultaat.getString("fgsv"));
-//                plantenlijst.add(plant);
-//
-//    }
-//
+    private List<beheer> Beheertoevoegen(plant plantje) throws SQLException {
+        List<beheer> beheerlijst = new ArrayList<>();
+        GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+
+        try {
+            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+            while (resultaat.next()) {
+                beheer beheertje = new beheer(resultaat.getInt("beheer_id"),
+                        resultaat.getInt("plant_id"),
+                        resultaat.getString("beheerdaad"),
+                        resultaat.getString("opmerking"),
+                        resultaat.getString("maand"),
+                        resultaat.getInt("frequentie_jaar"));
+                beheerlijst.add(beheertje);
+                System.out.println(beheertje.getBeheer_id()+ " " +beheertje.getPlant_id()+ "  beheer");
+            }
+        } catch (SQLException ex) {
+            System.out.println("in de catch");
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("in de catch");
+        }
+        return beheerlijst;
+
+    }
+
 }

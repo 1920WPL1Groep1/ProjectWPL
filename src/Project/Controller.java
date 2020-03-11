@@ -99,6 +99,7 @@ public class Controller {
         extrainfottxtx.setText("");
         resultatentxt.getItems().clear();
         showByName(plantdao);
+
     }
     /** BEGIN HulpMethoden voor daoDemo **/
     /**
