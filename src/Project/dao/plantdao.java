@@ -1,5 +1,6 @@
 package Project.dao;
 
+import Project.klasse.beheer;
 import main.java.dao.StudentDao;
 import main.java.model.plant;
 
@@ -162,8 +163,8 @@ public class plantdao {
         if(getal==0)
         {
             keuze="familie";
-            naam="%%";
-            GetplantKeuze = "SELECT * FROM plant WHERE familie LIKE '%%'";
+            naam = "'"+"%" + naam + "%"+"'";
+            GetplantKeuze = "SELECT * FROM plant WHERE fgsv LIKE" +naam;
             System.out.println(GetplantKeuze+"test");
         }
         if(getal ==1)
@@ -199,6 +200,7 @@ public class plantdao {
                         resultaat.getInt("plantdichtheid_max"),
                         resultaat.getString("fgsv"));
                 plantenlijst.add(plant);
+//                Beheertoevoegen();
             }
         } catch (SQLException ex) {
             System.out.println("in de catch");
@@ -209,4 +211,25 @@ public class plantdao {
         return plantenlijst;
     }
 
+//    private void Beheertoevoegen(plant plantje) throws SQLException {
+//        List<beheer> beheerlijst = new ArrayList<>();
+//        GetplantKeuze = "SELECT * FROM "+ "beheer" +" WHERE "+ "plant_id" +" LIKE " +plantje.getPlant_id();
+//
+//        try {
+//            stmGetplantkeuze = dbConnection.prepareStatement(GetplantKeuze);
+//            ResultSet resultaat = stmGetplantkeuze.executeQuery();
+//            while (resultaat.next()) {
+//                beheer beheer = new beheer(resultaat.getInt("plant_id"),
+//                        resultaat.getString("type"),
+//                        resultaat.getString("familie"),
+//                        resultaat.getString("geslacht"),
+//                        resultaat.getString("soort"),
+//                        resultaat.getString("variatie"),
+//                        resultaat.getInt("plantdichtheid_min"),
+//                        resultaat.getInt("plantdichtheid_max"),
+//                        resultaat.getString("fgsv"));
+//                plantenlijst.add(plant);
+//
+//    }
+//
 }
