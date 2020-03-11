@@ -1463,7 +1463,7 @@ set @teller = 1
 	end
 
 /*Insert into ontwikkelingssnelheid*/
-insert into voedingsbehoefte values
+insert into ontwikkelingssnelheid values
 	('snel'),
 	('matig'),
 	('traag')
@@ -1475,4 +1475,4 @@ insert into ratio_bloeiblad values
 	('salvia nemorosa'),
 	('aster sp.')
 
-/*Beheerdaad is volledig leeg, en bestaan nog geen waarden van in de db*/
+/*Beheerdaad en strategie zijn volledig leeg, en bestaan nog geen waarden van in de db*/
