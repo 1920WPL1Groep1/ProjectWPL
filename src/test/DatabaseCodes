@@ -13,6 +13,7 @@ delete from plant
 delete from geslacht
 delete from familie
 delete from type
+delete from extra
 delete from grondsoort
 delete from bladvorm
 delete from bloeiwijze
@@ -28,6 +29,7 @@ delete from sociabiliteit
 delete from spruitfenelogie
 delete from vochtbehoefte
 delete from voedingsbehoefte
+delete from habitus
 
 
 /*Toevoegen Plant*/
@@ -605,10 +607,6 @@ insert into abiotische_factoren values
 	end
 
 /*Toevoegen Commensalisme*/
-use planten
-	delete from commensalisme
-
-
 
 	set @teller = 1
 	while @teller <= 50
@@ -971,7 +969,58 @@ insert into commensalisme_multi values
 	set @i = @i + 1
 	end
 
-
+/*Invoeren van Extra*/
+insert into extra values
+	(1,1,'ja','onbekend','nee','nee','ja','nee'),
+	(2,2,'ja','onbekend','nee','nee','ja','nee'),
+	(3,3,'ja','onbekend','nee','nee','ja','nee'),
+	(4,4,'ja','onbekend','nee','nee','ja','nee'),
+	(5,5,'nee','onbekend','nee','nee','nee','ja'),
+	(6,6,'ja','onbekend','nee','nee','nee','nee'),
+	(7,7,'nee','onbekend','nee','nee','nee','ja'),
+	(8,8,'nee','onbekend','nee','nee','nee','ja'),
+	(9,9,'nee','onbekend','nee','nee','nee','ja'),
+	(10,10,'nee','onbekend','nee','nee','nee','ja'),
+	(11,11,'nee','onbekend','nee','nee','nee','ja'),
+	(12,12,'nee','onbekend','nee','nee','nee','ja'),
+	(13,13,'nee','onbekend','nee','nee','nee','ja'),
+	(14,14,'ja','onbekend','nee','nee','ja','nee'),
+	(15,15,'ja','onbekend','nee','nee','ja','nee'),
+	(16,16,'ja','onbekend','nee','nee','ja','nee'),
+	(17,17,'ja','onbekend','nee','nee','ja','nee'),
+	(18,18,'ja','onbekend','nee','nee','ja','nee'),
+	(19,19,'ja','onbekend','nee','nee','ja','nee'),
+	(20,20,'ja','onbekend','nee','nee','ja','nee'),
+	(21,21,'ja','onbekend','nee','nee','ja','nee'),
+	(22,22,'ja','onbekend','nee','nee','ja','nee'),
+	(23,23,'ja','onbekend','nee','nee','ja','nee'),
+	(24,24,'ja','onbekend','nee','nee','ja','nee'),
+	(25,25,'ja','onbekend','nee','nee','ja','nee'),
+	(26,26,'ja','onbekend','nee','nee','ja','nee'),
+    (27,27,'ja','onbekend','nee','nee','ja','nee'),
+    (28,28,'ja','onbekend','nee','nee','ja','nee'),
+    (29,29,'ja','onbekend','nee','nee','ja','nee'),
+    (30,30,'ja','onbekend','nee','nee','ja','nee'),
+    (31,31,'ja','onbekend','nee','nee','ja','nee'),
+    (32,32,'ja','onbekend','nee','nee','ja','nee'),
+    (33,33,'ja','onbekend','nee','nee','ja','nee'),
+    (34,34,'ja','onbekend','nee','nee','ja','nee'),
+    (35,35,'ja','onbekend','nee','nee','ja','nee'),
+    (36,36,'ja','onbekend','nee','nee','ja','nee'),
+    (37,37,'ja','onbekend','nee','nee','ja','nee'),
+    (38,38,'ja','onbekend','nee','nee','ja','nee'),
+    (39,39,'ja','onbekend','nee','nee','ja','nee'),
+    (40,40,'ja','onbekend','nee','nee','ja','nee'),
+    (41,41,'ja','onbekend','nee','nee','ja','nee'),
+    (42,42,'ja','onbekend','nee','nee','ja','nee'),
+    (43,43,'nee','onbekend','ja','nee','nee','nee'),
+    (44,44,'nee','onbekend','ja','nee','nee','nee'),
+    (45,45,'nee','onbekend','ja','nee','nee','nee'),
+    (46,46,'nee','onbekend','ja','nee','nee','nee'),
+    (47,47,'nee','onbekend','nee','nee','nee','nee'),
+    (48,48,'ja','onbekend','ja','nee','ja','nee'),
+    (49,49,'ja','onbekend','ja','nee','nee','nee'),
+    (50,50,'ja','onbekend','ja','nee','ja','nee')
 
 /*Invoeren naakte tabellen*/
 /*Invoeren grondsoort*/
@@ -1151,5 +1200,14 @@ insert into voedingsbehoefte values
 	('voedselrijk'),
 	('indifferent')
 
+/*Insert into habitus*/
+set @teller = 1
+	while @teller <= 50
+	begin
 
-/*NOG DOEN: HABITUS + EXTRA + ontwikkelingssnelheid + ratio bloeiblad + soort + strategie + variatie*/
+	insert into habitus values
+	(@teller,'')
+
+	set @teller = @teller + 1
+	end
+/*NOG DOEN: ontwikkelingssnelheid + ratio bloeiblad + soort + strategie + variatie*/
