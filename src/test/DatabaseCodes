@@ -482,3 +482,33 @@ insert into commensalisme_multi values
 	(78,49,'sociabiliteit',3),
 	(79,50,'sociabiliteit',2),
 	(80,50,'sociabiliteit',3)
+
+
+/*Toevoegen van fenotype multi*/
+	delete from fenotype_multi
+
+	drop sequence sq_Fenotype_Multi
+	drop sequence sq_Fenotype_Multi_Planten
+	Create sequence sq_Fenotype_Multi
+	start with 1
+	increment by 1
+
+	Create sequence sq_Fenotype_Multi_Planten
+	start with 1
+	increment by 1
+
+	alter sequence sq_Fenotype_Multi_Planten restart with 1
+	ALTER SEQUENCE sq_Fenotype_Multi
+	     RESTART WITH 1;
+	declare @i int = 1;
+	WHILE @i <= 50
+	BEGIN
+	insert into fenotype_multi values
+	(next value for sq_Fenotype_Multi, next value for sq_Fenotype_Multi_Planten, 'bladhoogte', '', '', '', '', '', '', '', '', '', '', '', ''),
+	(next value for sq_Fenotype_Multi, (select convert(int,(SELECT current_value FROM sys.sequences WHERE name = 'sq_Fenotype_Multi_Planten'))) , 'bloeihoogte', '', '', '', '', '', '', '', '', '', '', '', '')
+	, (next value for sq_Fenotype_Multi, (select convert(int,(SELECT current_value FROM sys.sequences WHERE name = 'sq_Fenotype_Multi_Planten'))), 'bladkleur', '', '', '', '', '', '', '', '', '', '', '', '')
+	, (next value for sq_Fenotype_Multi, (select convert(int,(SELECT current_value FROM sys.sequences WHERE name = 'sq_Fenotype_Multi_Planten'))), 'bloeikleur', '', '', '', '', '', '', '', '', '', '', '', '');
+
+	set @i = @i + 1
+	end
+
