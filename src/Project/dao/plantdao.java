@@ -176,7 +176,6 @@ public class plantdao {
     // de lijsten bovenaan -> volledige databank wordt dan opgenomen in de applicatie, iedere lijst komt dan overeen met een tabel van de databank, elk record van een
     // tabel heeft dan een object in de overeenkomstige lijst
     public List<plant> getplantbykeuze(String keuze, String naam, int getal, String database) throws SQLException {
-        System.out.println(getal + "test");
         if (getal == 0) {
             keuze = "familie";
             naam = "'" + "%" + naam + "%" + "'";
