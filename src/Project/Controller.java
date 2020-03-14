@@ -782,7 +782,7 @@ public class Controller {
 
         //zit vast met dit gedeelte omdat als ik niet inzie hoe ik kan zoeken en dan meerdere dingen kan checken...
         // werk ik met een for lus onder de keuze 2 om de overlopen en te checkn of het klopt aan de a-hand van ID ?
-
+//
 //        String keuze1;
 //        String keuze2;
 //        int vorigplantID = 0;
@@ -808,7 +808,7 @@ public class Controller {
 //                {
 //                    verwijder
 //                }
-//
+////
 //            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "of") {
 //                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
 //                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
