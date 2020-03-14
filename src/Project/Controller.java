@@ -1,5 +1,6 @@
 package Project;
 
+import Project.dao.combodao;
 import Project.dao.plantdao;
 import Project.klasse.*;
 import javafx.collections.ObservableList;
@@ -9,7 +10,10 @@ import main.java.dao.Database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller {
     public TextField bladhoogteMinimumTxt;
@@ -82,6 +86,16 @@ public class Controller {
     public Label bladkleurtxt;
     public Label bloeikleurtxt;
     public Label bladgroottetxt;
+    public RadioButton eetbaarBtnJa;
+    public RadioButton eetbaarBtnNee;
+    public RadioButton geurendBtnJa;
+    public RadioButton geurendBtnNee;
+    public RadioButton vorstBtnJa;
+    public RadioButton vorstBtnNee;
+    public ComboBox vergelijkenNectarCombo;
+    public ComboBox nectarwaardeCombo;
+    public ComboBox vergelijkenPollenCombo;
+    public ComboBox pollenwaardeCombo;
     private Connection dbConnection;
     private List<plant> plantenlijst;
     private List<beheer> beheerlijst;
@@ -93,12 +107,12 @@ public class Controller {
     private List<fenotype> fenotypeList;
     private List<fenotype_multi> fenotypeMultiList;
     private List<foto> fotoList;
+    private List<combo> comboList;
 
     private int keuzenummer;
     private int getal;
     private String database;
-    private  String Keuze;
-
+    private String Keuze;
 
 
     public void initialize() throws SQLException {
@@ -109,7 +123,133 @@ public class Controller {
         beheertab.setDisable(true);
         extratab.setDisable(true);
         resultaatab.setDisable(false);
+        opvullencombo("bladvorm");
     }
+
+    private void opvullencombo(String welke) throws SQLException {
+        combodao combodao = new combodao(dbConnection);
+        String var = null;
+        ComboBox test = null;
+        for (int i = 1; i < 25; i++) {
+            if(i==1)
+            {
+                 var ="bladvorm";
+                 test=bladvormCombo;
+            }
+            if(i==2)
+            {
+                var ="ratio_bloeiblad";
+                test=ratioCombo;
+            }
+            if(i==3)
+            {
+                var ="spruitfenelogie";
+                test=spruitCombo;
+            }
+            if(i==4)
+            {
+                var ="bloeiwijze";
+                test=bloeiwijzeCombo;
+            }
+            if(i==5)
+            {
+                var="habitus";
+                test=habitusCombo;
+            }
+            if(i==6)
+            {
+                var="bezonning";
+                test=bezonningCombo;
+            }
+            if(i==7)
+            {
+                var="grondsoort";
+                test=grondsoortCombo;
+            }
+            if(i==8)
+            {
+                var="vochtbehoefte";
+                test=vochtbehoefteCombo;
+            }
+            if(i==9)
+            {
+                var="voedingsbehoefte";
+                test=voedingsbehoefteCombo;
+            }
+            if(i==10)
+            {
+                var="reactieomgeving";
+                test=reactieCombo;
+            }
+            //uitleg over wat er ingevuld moet worden in de combo's + vragen of mathias bij iedere keuze een waarde kan toevoegen "leeg" of "geen keuze" of gewoon leeg veld
+//            if(i==11)
+//            {
+//                var="habitat";
+//                test=habitat1Combo;
+//            }
+            if(i==16)
+            {
+                var="ontwikkelingssnelheid";
+                test=ontwikkelingssnelheidCombo;
+            }
+            if(i==17)
+            {
+                var="levensduur_concurrentiekracht";
+                test=levensduurCombo;
+            }
+            //strategie invullen vragen combo
+            if(i==18)
+            {
+                var="strategie";
+                test=strategie1Combo;
+            }
+            if(i==19)
+            {
+                var="strategie";
+                test=strategie2Combo;
+            }
+            if(i==20)
+            {
+                var="beheer";
+                test=beheerbehandelingCombo;
+            }
+            //maanden
+//            if(i==21)
+//            {
+//
+//            }
+//            frequentie per jaar na vragen ? apparte tabel?
+//            if(i==22)
+//            {
+//                var=
+//            }
+            if(i==23)
+            {
+                var="nectarwaarde";
+                test= nectarwaardeCombo;
+            }
+            if(i==24)
+            {
+                var="pollenwaarde";
+                test=pollenwaardeCombo;
+            }
+            try {
+                comboList =combodao.getcombo(var);
+                for (int j =0; j < comboList.size();j++)
+                {
+                    test.getItems().add(comboList.get(j).getGegeven());
+                }
+                comboList.clear();
+
+            }
+            catch (SQLException e)
+            {
+                System.out.println("in de catch");
+                Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+    }
+
     public void click_zoekenBtn(MouseEvent mouseEvent) throws SQLException {
         plantdao plantdao = new plantdao(dbConnection);
         extrainfottxtx.setText("");
@@ -120,34 +260,34 @@ public class Controller {
     /** BEGIN HulpMethoden voor daoDemo **/
     /**
      * Print de lijst van de studenten uit
+     *
      * @param titel
      * @param planten
      */
     public void showplanten(String titel, List<plant> planten) {
         System.out.println("Lijst planten : " + titel);
-        int getal =0;
+        int getal = 0;
         resultatentxt.getItems().clear();
-        System.out.println(planten.size()+" grote");
-        for (int i = 0; i<planten.size();i++) {
-                resultatentxt.getItems().add(i,  planten.get(i).getFgsv());
+        System.out.println(planten.size() + " grote");
+        for (int i = 0; i < planten.size(); i++) {
+            resultatentxt.getItems().add(i, planten.get(i).getFgsv());
         }
-        if (planten.size()==0)
-        {
-            resultatentxt.getItems().add(0,"Er zijn geen planten terug gevonden.");
+        if (planten.size() == 0) {
+            resultatentxt.getItems().add(0, "Er zijn geen planten terug gevonden.");
         }
     }
+
     /**
      * @param plantdao
      * @throws SQLException
      */
     private void showByName(plantdao plantdao) throws SQLException {
-        System.out.println(Keuze+ " "+ getal);
+        System.out.println(Keuze + " " + getal);
         while (true) {
             String zoekterm = zoekenTxt.getText();
             System.out.println(zoekterm);
-            if(zoekterm==null)
-            {
-                plantenlijst=plantdao.getAllPlant();
+            if (zoekterm == null) {
+                plantenlijst = plantdao.getAllPlant();
                 beheerlijst = plantdao.returnBeheerlijst();
                 abiotischeFactorenList = plantdao.returnAbiotischeFactoren();
                 abiotischeFactorenMultiList = plantdao.returnAbiotischeFactorenMulti();
@@ -157,10 +297,8 @@ public class Controller {
                 fenotypeList = plantdao.returnFenotype();
                 fenotypeMultiList = plantdao.returnFenotypeMulti();
                 fotoList = plantdao.returnFoto();
-            }
-            else
-            {
-                plantenlijst = plantdao.getplantbykeuze(Keuze,zoekterm,getal,database);
+            } else {
+                plantenlijst = plantdao.getplantbykeuze(Keuze, zoekterm, getal, database);
                 beheerlijst = plantdao.returnBeheerlijst();
                 abiotischeFactorenList = plantdao.returnAbiotischeFactoren();
                 abiotischeFactorenMultiList = plantdao.returnAbiotischeFactorenMulti();
@@ -172,12 +310,12 @@ public class Controller {
                 fotoList = plantdao.returnFoto();
             }
 //            fenotypetabzoeken();
-            showplanten("planten bij "+"familie",plantenlijst);
+//            abiotischefactorenzoeken();
+            showplanten("planten bij " + "familie", plantenlijst);
             break;
         }
 
     }
-
     private void fenotypetabzoeken() {
         for (int i = 0; i < fenotypeMultiList.size(); i++) {
             try {
@@ -237,11 +375,13 @@ public class Controller {
                     if (bladgrootte <= Integer.parseInt(bladhoogteMinimumTxt.getText())) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
                     if (bladgrootte >= Integer.parseInt(bladhoogteMaximumTxt.getText())) ;
                     {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
 //                TextField test = bladhoogteMaandTxt;
 //                if(bladhoogteMaandTxt.getText().toLowerCase()=="januari" || bladhoogteMaandTxt.getText().toLowerCase()=="jan" )
@@ -461,11 +601,13 @@ public class Controller {
                     if (bloeihoogte <= Integer.parseInt(bloeihoogteMinimumTxt.getText())) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
                     if (bloeihoogte >= Integer.parseInt(bloeihoogteMaximumTxt.getText())) ;
                     {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
 
                 }
@@ -525,6 +667,7 @@ public class Controller {
                     if (bladkleur != bladkleurKleurTxt.getText()) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
                 }
                 if (fenotypeMultiList.get(i).getEigenschap() == "bloeikleur") {
@@ -583,6 +726,7 @@ public class Controller {
                     if (bloeikleur != bloeikleurKleurTxt.getText()) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
+                        break;
                     }
 
                 }
@@ -596,9 +740,27 @@ public class Controller {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
                 }
-                if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
+                else if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
+                }
+                //opzoeken levensvorm uitleg vragen
+                else if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBladvorm()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                }
+                else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                }
+                else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                }
+                else if (bloeiwijzeCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBloeiwijze()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+
+                }
+                else if (habitusCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getHabitus())
+                {
+                    verwjider(fenotypeList.get(j).getPlant_id());
                 }
             } catch (Exception e) {
                 bladgroottetxt.setText("geef zeker een getal in en geen tekst");
@@ -606,110 +768,138 @@ public class Controller {
 
         }
         //opzoeken levensvorm uitleg vragen
-        for (int k = 0; k < fenotypeList.size(); k++)  {
-            if (bladvormCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(k).getBladvorm())
+//        for (int k = 0; k < fenotypeList.size(); k++) {
+//            if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getBladvorm()) {
+//                verwjider(fenotypeList.get(k).getPlant_id());
+//            } else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getSpruitfenelogie()) {
+//                verwjider(fenotypeList.get(k).getPlant_id());
+//            } else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getRatio_bloei_blad()) {
+//                verwjider(fenotypeList.get(k).getPlant_id());
+//            }
+//
+//        }
+//        for (int l = 0; l < fenotypeList.size(); l++) {
+//            if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(l).getRatio_bloei_blad()) {
+//                verwjider(fenotypeList.get(l).getPlant_id());
+//            }
+//        }
+//        for (int m = 0; m < fenotypeList.size(); m++) {
+//            if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(m).getSpruitfenelogie()) {
+//                verwjider(fenotypeList.get(m).getPlant_id());
+//            }
+//        }
+    }
+
+    private void abiotischefactorenzoeken()  {
+        for (int k =0; k < abiotischeFactorenList.size();k++)
+        {
+            if (bezonningCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getBezonning())
             {
-                verwjider(fenotypeList.get(k).getPlant_id());
+                verwjider(abiotischeFactorenList.get(k).getPlant_id());
+            }
+            else if(grondsoortCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getGrondsoort())
+            {
+                verwjider(abiotischeFactorenList.get(k).getPlant_id());
+            }
+            else if(vochtbehoefteCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getVochtbehoefte())
+            {
+                verwjider(abiotischeFactorenList.get(k).getPlant_id());
+            }
+            else if(voedingsbehoefteCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getVoedingsbehoefte())
+            {
+                verwjider(abiotischeFactorenList.get(k).getPlant_id());
+            }
+            else if(reactieCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getReactie_antagoistische_omg())
+            {
+                verwjider(abiotischeFactorenList.get(k).getPlant_id());
             }
         }
-        for (int l = 0; l < fenotypeList.size();l++)   {
-            if(ratioCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(l).getRatio_bloei_blad())
+        for(int l=0;l<abiotischeFactorenMultiList.size();l++)
+        {
+            String keuze1;
+            String keuze2;
+            if(habitatEnOfCombo.getSelectionModel().getSelectedItem()=="en")
             {
-                verwjider(fenotypeList.get(l).getPlant_id());
+                keuze1=hab
             }
-        }
-        for (int m =0; m < fenotypeList.size();m++)    {
-            if(spruitCombo.getSelectionModel().getSelectedItem()!=fenotypeList.get(m).getSpruitfenelogie())
+            else if( habitatEnOfCombo.getSelectionModel().getSelectedItem()=="of")
             {
-                verwjider(fenotypeList.get(m).getPlant_id());
+
             }
+            else if(habitatEnOfCombo.getSelectionModel().getSelectedItem()=="en/of")
+            {
+
+            }
+            else if (habitatEnOfCombo.getSelectionModel().getSelectedItem()=="alleen")
+            {
+
+            }
+
         }
     }
 
     private void verwjider(int plantID) {
-        for(int j =0; j < fenotypeMultiList.size();j++)
-        {
-            if(fenotypeMultiList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < fenotypeMultiList.size(); j++) {
+            if (fenotypeMultiList.get(j).getPlant_id() == plantID) {
                 fenotypeMultiList.remove(j);
             }
         }
-        for(int j =0; j < plantenlijst.size();j++)
-        {
-            if(plantenlijst.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < plantenlijst.size(); j++) {
+            if (plantenlijst.get(j).getPlant_id() == plantID) {
                 plantenlijst.remove(j);
             }
         }
-        for(int j =0; j < beheerlijst.size();j++)
-        {
-            if(beheerlijst.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < beheerlijst.size(); j++) {
+            if (beheerlijst.get(j).getPlant_id() == plantID) {
                 beheerlijst.remove(j);
             }
         }
-        for(int j =0; j < abiotischeFactorenList.size();j++)
-        {
-            if(abiotischeFactorenList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < abiotischeFactorenList.size(); j++) {
+            if (abiotischeFactorenList.get(j).getPlant_id() == plantID) {
                 abiotischeFactorenList.remove(j);
             }
         }
-        for(int j =0; j < abiotischeFactorenMultiList.size();j++)
-        {
-            if(abiotischeFactorenMultiList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < abiotischeFactorenMultiList.size(); j++) {
+            if (abiotischeFactorenMultiList.get(j).getPlant_id() == plantID) {
                 abiotischeFactorenMultiList.remove(j);
             }
         }
-        for(int j =0; j < commensialismeList.size();j++)
-        {
-            if(commensialismeList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < commensialismeList.size(); j++) {
+            if (commensialismeList.get(j).getPlant_id() == plantID) {
                 commensialismeList.remove(j);
             }
         }
-        for(int j =0; j < commensialismeMultiList.size();j++)
-        {
-            if(commensialismeMultiList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < commensialismeMultiList.size(); j++) {
+            if (commensialismeMultiList.get(j).getPlant_id() == plantID) {
                 commensialismeMultiList.remove(j);
             }
         }
-        for(int j =0; j < extraList.size();j++)
-        {
-            if(extraList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < extraList.size(); j++) {
+            if (extraList.get(j).getPlant_id() == plantID) {
                 extraList.remove(j);
             }
         }
-        for(int j =0; j < fenotypeList.size();j++)
-        {
-            if(fenotypeList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < fenotypeList.size(); j++) {
+            if (fenotypeList.get(j).getPlant_id() == plantID) {
                 fenotypeList.remove(j);
             }
         }
-        for(int j =0; j < fotoList.size();j++)
-        {
-            if(fotoList.get(j).getPlant_id()==plantID)
-            {
+        for (int j = 0; j < fotoList.size(); j++) {
+            if (fotoList.get(j).getPlant_id() == plantID) {
                 fotoList.remove(j);
             }
         }
 
     }
+
     public void click_advance(MouseEvent mouseEvent) {
-        if(geavanceerdCheck.isSelected())
-        {
+        if (geavanceerdCheck.isSelected()) {
             fentotyptab.setDisable(false);
             abiotischetab.setDisable(false);
             commensalimsetab.setDisable(false);
             beheertab.setDisable(false);
             extratab.setDisable(false);
-        }
-        else
-        {
+        } else {
             fentotyptab.setDisable(true);
             abiotischetab.setDisable(true);
             commensalimsetab.setDisable(true);
@@ -717,146 +907,129 @@ public class Controller {
             extratab.setDisable(true);
         }
     }
+
     public void listview_clicked(MouseEvent mouseEvent) {
-        String tekst  = resultatentxt.getSelectionModel().getSelectedItem();
+        String tekst = resultatentxt.getSelectionModel().getSelectedItem();
         System.out.println(tekst);
-        int plant_id=0;
-        for(int i =0; i < plantenlijst.size();i++)
-        {
-            if(plantenlijst.get(i).getFgsv()==tekst)
-            {
-                extrainfottxtx.setText("PlantID: " +plantenlijst.get(i).getPlant_id().toString()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Familie: " +plantenlijst.get(i).getFamilie()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Type: " +plantenlijst.get(i).getType()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Geslacht: " +plantenlijst.get(i).getGeslacht()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Soort: " +plantenlijst.get(i).getSoort()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Variatie: " +plantenlijst.get(i).getVariatie()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Plantdichtheid minimum: " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+ "Plantdichtheid maximum: " +plantenlijst.get(i).getPlantdichtheid_min()+"\r\n");
-                 plant_id = plantenlijst.get(i).getPlant_id();
+        int plant_id = 0;
+        for (int i = 0; i < plantenlijst.size(); i++) {
+            if (plantenlijst.get(i).getFgsv() == tekst) {
+                extrainfottxtx.setText("PlantID: " + plantenlijst.get(i).getPlant_id().toString() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Familie: " + plantenlijst.get(i).getFamilie() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Type: " + plantenlijst.get(i).getType() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Geslacht: " + plantenlijst.get(i).getGeslacht() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Soort: " + plantenlijst.get(i).getSoort() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Variatie: " + plantenlijst.get(i).getVariatie() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plantdichtheid minimum: " + plantenlijst.get(i).getPlantdichtheid_min() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plantdichtheid maximum: " + plantenlijst.get(i).getPlantdichtheid_min() + "\r\n");
+                plant_id = plantenlijst.get(i).getPlant_id();
             }
         }
         //Eigenschappen beheer
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen beheer\r\n");
-        for (int j=0; j < beheerlijst.size(); j++)
-        {
-            if(beheerlijst.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Beheer Id: "+ beheerlijst.get(j).getBeheer_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Beheerdaad: "+ beheerlijst.get(j).getBeheerdaad() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Opmerking: "+ beheerlijst.get(j).getOpmerking() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Maand: "+ beheerlijst.get(j).getMaand() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Frequentiejaar: "+ beheerlijst.get(j).getFrequentie_jaar() + "\r\n");
+        for (int j = 0; j < beheerlijst.size(); j++) {
+            if (beheerlijst.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Beheer Id: " + beheerlijst.get(j).getBeheer_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Beheerdaad: " + beheerlijst.get(j).getBeheerdaad() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Opmerking: " + beheerlijst.get(j).getOpmerking() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Maand: " + beheerlijst.get(j).getMaand() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Frequentiejaar: " + beheerlijst.get(j).getFrequentie_jaar() + "\r\n");
             }
         }
         //Eigenschappen abiostische factoren
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen abiotische factoren\r\n");
-        for (int j=0; j < abiotischeFactorenList.size(); j++)
-        {
-            if(abiotischeFactorenList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Abiotische factoren ID: "+ abiotischeFactorenList.get(j).getAbiotische_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Vochtbehoefte: "+ abiotischeFactorenList.get(j).getVochtbehoefte() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Bezonning: "+ abiotischeFactorenList.get(j).getBezonning() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Grondsoort: "+ abiotischeFactorenList.get(j).getGrondsoort() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Voedingsbehoefte: "+ abiotischeFactorenList.get(j).getVoedingsbehoefte() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Reactie angonistische omgeving: "+ abiotischeFactorenList.get(j).getReactie_antagoistische_omg() + "\r\n");
+        for (int j = 0; j < abiotischeFactorenList.size(); j++) {
+            if (abiotischeFactorenList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Abiotische factoren ID: " + abiotischeFactorenList.get(j).getAbiotische_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Vochtbehoefte: " + abiotischeFactorenList.get(j).getVochtbehoefte() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Bezonning: " + abiotischeFactorenList.get(j).getBezonning() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Grondsoort: " + abiotischeFactorenList.get(j).getGrondsoort() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Voedingsbehoefte: " + abiotischeFactorenList.get(j).getVoedingsbehoefte() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Reactie angonistische omgeving: " + abiotischeFactorenList.get(j).getReactie_antagoistische_omg() + "\r\n");
             }
         }
 
         //Eigenschappen abiotische factoren multi
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen abiotische factoren multi\r\n");
-        for (int j=0; j < abiotischeFactorenMultiList.size(); j++)
-        {
+        for (int j = 0; j < abiotischeFactorenMultiList.size(); j++) {
             System.out.println(beheerlijst.size());
             System.out.println(j);
-            if(abiotischeFactorenMultiList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Abiotische factoren ID: "+ abiotischeFactorenMultiList.get(j).getAbiotische_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ abiotischeFactorenMultiList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Eigenschap: "+ abiotischeFactorenMultiList.get(j).getEigenschap() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Waarde: "+ abiotischeFactorenMultiList.get(j).getWaarde() + "\r\n");
+            if (abiotischeFactorenMultiList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Abiotische factoren ID: " + abiotischeFactorenMultiList.get(j).getAbiotische_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + abiotischeFactorenMultiList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschap: " + abiotischeFactorenMultiList.get(j).getEigenschap() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Waarde: " + abiotischeFactorenMultiList.get(j).getWaarde() + "\r\n");
             }
         }
 
         //Eigenschappen commensalisme
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen commensalisme\r\n");
-        for (int j=0; j < commensialismeList.size(); j++)
-        {
-            if(commensialismeList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Abiotische factoren ID: "+ commensialismeList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ commensialismeList.get(j).getStrategie() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Eigenschap: "+ commensialismeList.get(j).getCommensialisme_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Waarde: "+ commensialismeList.get(j).getOntwikkelingssnelheid() + "\r\n");
+        for (int j = 0; j < commensialismeList.size(); j++) {
+            if (commensialismeList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Abiotische factoren ID: " + commensialismeList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + commensialismeList.get(j).getStrategie() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschap: " + commensialismeList.get(j).getCommensialisme_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Waarde: " + commensialismeList.get(j).getOntwikkelingssnelheid() + "\r\n");
             }
         }
 
         //Eigenschappen commensalisme multi
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen commensalisme multi\r\n");
-        for (int j=0; j < commensialismeMultiList.size(); j++)
-        {
-            if(commensialismeMultiList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ commensialismeMultiList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Commensialisme ID: "+ commensialismeMultiList.get(j).getCommensialisme_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Eigenschap: "+ commensialismeMultiList.get(j).getEigenschap() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Waarde: "+ commensialismeMultiList.get(j).getWaarde() + "\r\n");
+        for (int j = 0; j < commensialismeMultiList.size(); j++) {
+            if (commensialismeMultiList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + commensialismeMultiList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Commensialisme ID: " + commensialismeMultiList.get(j).getCommensialisme_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschap: " + commensialismeMultiList.get(j).getEigenschap() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Waarde: " + commensialismeMultiList.get(j).getWaarde() + "\r\n");
             }
         }
 
         //Eigenschappen extra
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen extra\r\n");
-        for (int j=0; j < extraList.size(); j++)
-        {
-            if(extraList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ extraList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Extra ID: "+ extraList.get(j).getExtra_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Bijvriendelijk: "+ extraList.get(j).getBijvriendelijk() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Eetbaar en kruidgebruik: "+ extraList.get(j).getEetbaar_kruidgebruik() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Geurend: "+ extraList.get(j).getGeurend() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Nectarwaarde: "+ extraList.get(j).getNectarwaarde() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Pollenwaarde: "+ extraList.get(j).getPollenwaarde() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Vorstgevoelig: "+ extraList.get(j).getVorstgevoelig() + "\r\n");
+        for (int j = 0; j < extraList.size(); j++) {
+            if (extraList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + extraList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Extra ID: " + extraList.get(j).getExtra_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Bijvriendelijk: " + extraList.get(j).getBijvriendelijk() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Eetbaar en kruidgebruik: " + extraList.get(j).getEetbaar_kruidgebruik() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Geurend: " + extraList.get(j).getGeurend() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Nectarwaarde: " + extraList.get(j).getNectarwaarde() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Pollenwaarde: " + extraList.get(j).getPollenwaarde() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Vorstgevoelig: " + extraList.get(j).getVorstgevoelig() + "\r\n");
             }
         }
 
         //Eigenschappen fenotype
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen fenotype\r\n");
-        for (int j=0; j < fenotypeList.size(); j++)
-        {
-            if(fenotypeList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fenotypeList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Fenotype ID: "+ fenotypeList.get(j).getFenotype_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Bladvorm: "+ fenotypeList.get(j).getBladvorm() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Levensvorm: "+ fenotypeList.get(j).getLevensvorm() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Habitus: "+ fenotypeList.get(j).getHabitus() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Bloeiwijze: "+ fenotypeList.get(j).getBloeiwijze() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Bladgrootte: "+ fenotypeList.get(j).getBladgrootte() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Ratio bloei/blad: "+ fenotypeList.get(j).getRatio_bloei_blad() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Spruitfenologie: "+ fenotypeList.get(j).getSpruitfenelogie() + "\r\n");
+        for (int j = 0; j < fenotypeList.size(); j++) {
+            if (fenotypeList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + fenotypeList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Fenotype ID: " + fenotypeList.get(j).getFenotype_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Bladvorm: " + fenotypeList.get(j).getBladvorm() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Levensvorm: " + fenotypeList.get(j).getLevensvorm() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Habitus: " + fenotypeList.get(j).getHabitus() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Bloeiwijze: " + fenotypeList.get(j).getBloeiwijze() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Bladgrootte: " + fenotypeList.get(j).getBladgrootte() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Ratio bloei/blad: " + fenotypeList.get(j).getRatio_bloei_blad() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Spruitfenologie: " + fenotypeList.get(j).getSpruitfenelogie() + "\r\n");
             }
         }
 
         //Eigenschappen fenotype multi
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen fenotype multi\r\n");
-        for (int j=0; j < fenotypeMultiList.size(); j++)
-        {
-            if(fenotypeMultiList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fenotypeMultiList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Fenotype ID: "+ fenotypeMultiList.get(j).getFenotype_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"eigenschap "+fenotypeMultiList.get(j).getEigenschap()+"\r\n");
+        for (int j = 0; j < fenotypeMultiList.size(); j++) {
+            if (fenotypeMultiList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + fenotypeMultiList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Fenotype ID: " + fenotypeMultiList.get(j).getFenotype_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "eigenschap " + fenotypeMultiList.get(j).getEigenschap() + "\r\n");
                 //Maanden erbij?
             }
         }
@@ -864,115 +1037,102 @@ public class Controller {
         //Eigenschappen foto
         extrainfottxtx.setText(extrainfottxtx.getText() + "\r\n");
         extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschappen foto\r\n");
-        for (int j=0; j < fotoList.size(); j++)
-        {
-            if(fotoList.get(j).getPlant_id()==plant_id)
-            {
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Plant ID: "+ fotoList.get(j).getPlant_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Foto ID: "+ fotoList.get(j).getFoto_id() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Eigenschap: "+ fotoList.get(j).getEigenschap() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"URL: "+ fotoList.get(j).getUrl() + "\r\n");
-                extrainfottxtx.setText(extrainfottxtx.getText()+"Figuur: "+ fotoList.get(j).getFiguur() + "\r\n");
+        for (int j = 0; j < fotoList.size(); j++) {
+            if (fotoList.get(j).getPlant_id() == plant_id) {
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Plant ID: " + fotoList.get(j).getPlant_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Foto ID: " + fotoList.get(j).getFoto_id() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Eigenschap: " + fotoList.get(j).getEigenschap() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "URL: " + fotoList.get(j).getUrl() + "\r\n");
+                extrainfottxtx.setText(extrainfottxtx.getText() + "Figuur: " + fotoList.get(j).getFiguur() + "\r\n");
             }
         }
 
 
     }
-    public void ZetZoekinfo()   {
-        if(keuzenummer==0)
-        {
+
+    public void ZetZoekinfo() {
+        if (keuzenummer == 0) {
             zoekInfolabel.setText("Maak een keuze op wat je wilt zoeken.");
-            getal=0;
-            database="plant";
+            getal = 0;
+            database = "plant";
         }
-        if(keuzenummer==1)
-        {
+        if (keuzenummer == 1) {
             zoekInfolabel.setText("Kies op naam van familie. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
         }
-        if(keuzenummer==2)
-        {
+        if (keuzenummer == 2) {
             zoekInfolabel.setText("Kies op naam van type. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
 
         }
-        if(keuzenummer==3)
-        {
+        if (keuzenummer == 3) {
             zoekInfolabel.setText("Kies op naam van geslacht. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
 
         }
-        if(keuzenummer==4)
-        {
+        if (keuzenummer == 4) {
             zoekInfolabel.setText("Kies op naam van soort. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
 
         }
-        if(keuzenummer==5)
-        {
+        if (keuzenummer == 5) {
             zoekInfolabel.setText("Kies op naam van variatie. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
 
         }
-        if(keuzenummer==6)
-        {
+        if (keuzenummer == 6) {
             zoekInfolabel.setText("Geef een cijfer in en we zullen alles teruggeven wat erboven zit.");
-            getal=2;
-            database="plant";
+            getal = 2;
+            database = "plant";
 
         }
-        if(keuzenummer==7)
-        {
+        if (keuzenummer == 7) {
             zoekInfolabel.setText("Geef een cijfer in en we zullen alles teruggeven wat eronder zit.");
-            getal=3;
-            database="plant";
+            getal = 3;
+            database = "plant";
 
         }
-        if(keuzenummer==8)
-        {
+        if (keuzenummer == 8) {
             zoekInfolabel.setText("Kies op naam van het FGSV. Het hoeft niet volledig te zijn.");
-            getal=1;
-            database="plant";
+            getal = 1;
+            database = "plant";
         }
 
     }
-    public int controleKeuzeZoekterm()    {
-        keuzenummer =0 ;
-        Keuze="familie";
-        if(familieradiobutton.isSelected())
-        {
-            keuzenummer=1;
+
+    public int controleKeuzeZoekterm() {
+        keuzenummer = 0;
+        Keuze = "familie";
+        if (familieradiobutton.isSelected()) {
+            keuzenummer = 1;
             Keuze = "familie";
         }
-        if(TypeRadiobutton.isSelected())
-        {
-            keuzenummer=2;
-            Keuze="type";
+        if (TypeRadiobutton.isSelected()) {
+            keuzenummer = 2;
+            Keuze = "type";
         }
-        if(GeslcahtRadioButton.isSelected())
-        {
-            keuzenummer=3;
-            Keuze="geslacht";
+        if (GeslcahtRadioButton.isSelected()) {
+            keuzenummer = 3;
+            Keuze = "geslacht";
         }
-        if(SoortRadioButton.isSelected())
-        {
-            keuzenummer=4;
-            Keuze="soort";
+        if (SoortRadioButton.isSelected()) {
+            keuzenummer = 4;
+            Keuze = "soort";
         }
-        if(variatieRadioButton.isSelected())
-        {
-            keuzenummer=5;
-            Keuze="variatie";
+        if (variatieRadioButton.isSelected()) {
+            keuzenummer = 5;
+            Keuze = "variatie";
         }
         return keuzenummer;
     }
+
     public void zoekterm(MouseEvent mouseEvent) {
-        getal=0;
+        getal = 0;
         controleKeuzeZoekterm();
         ZetZoekinfo();
     }
