@@ -131,55 +131,45 @@ public class Controller {
         String var = null;
         ComboBox test = null;
         for (int i = 1; i < 25; i++) {
-            if(i==1)
-            {
-                 var ="bladvorm";
-                 test=bladvormCombo;
+            if (i == 1) {
+                var = "bladvorm";
+                test = bladvormCombo;
             }
-            if(i==2)
-            {
-                var ="ratio_bloeiblad";
-                test=ratioCombo;
+            if (i == 2) {
+                var = "ratio_bloeiblad";
+                test = ratioCombo;
             }
-            if(i==3)
-            {
-                var ="spruitfenelogie";
-                test=spruitCombo;
+            if (i == 3) {
+                var = "spruitfenelogie";
+                test = spruitCombo;
             }
-            if(i==4)
-            {
-                var ="bloeiwijze";
-                test=bloeiwijzeCombo;
+            if (i == 4) {
+                var = "bloeiwijze";
+                test = bloeiwijzeCombo;
             }
-            if(i==5)
-            {
-                var="habitus";
-                test=habitusCombo;
+            if (i == 5) {
+                var = "habitus";
+                test = habitusCombo;
             }
-            if(i==6)
-            {
-                var="bezonning";
-                test=bezonningCombo;
+            if (i == 6) {
+                var = "bezonning";
+                test = bezonningCombo;
             }
-            if(i==7)
-            {
-                var="grondsoort";
-                test=grondsoortCombo;
+            if (i == 7) {
+                var = "grondsoort";
+                test = grondsoortCombo;
             }
-            if(i==8)
-            {
-                var="vochtbehoefte";
-                test=vochtbehoefteCombo;
+            if (i == 8) {
+                var = "vochtbehoefte";
+                test = vochtbehoefteCombo;
             }
-            if(i==9)
-            {
-                var="voedingsbehoefte";
-                test=voedingsbehoefteCombo;
+            if (i == 9) {
+                var = "voedingsbehoefte";
+                test = voedingsbehoefteCombo;
             }
-            if(i==10)
-            {
-                var="reactieomgeving";
-                test=reactieCombo;
+            if (i == 10) {
+                var = "reactieomgeving";
+                test = reactieCombo;
             }
             //uitleg over wat er ingevuld moet worden in de combo's + vragen of mathias bij iedere keuze een waarde kan toevoegen "leeg" of "geen keuze" of gewoon leeg veld
 //            if(i==11)
@@ -187,31 +177,26 @@ public class Controller {
 //                var="habitat";
 //                test=habitat1Combo;
 //            }
-            if(i==16)
-            {
-                var="ontwikkelingssnelheid";
-                test=ontwikkelingssnelheidCombo;
+            if (i == 16) {
+                var = "ontwikkelingssnelheid";
+                test = ontwikkelingssnelheidCombo;
             }
-            if(i==17)
-            {
-                var="levensduur_concurrentiekracht";
-                test=levensduurCombo;
+            if (i == 17) {
+                var = "levensduur_concurrentiekracht";
+                test = levensduurCombo;
             }
             //strategie invullen vragen combo
-            if(i==18)
-            {
-                var="strategie";
-                test=strategie1Combo;
+            if (i == 18) {
+                var = "strategie";
+                test = strategie1Combo;
             }
-            if(i==19)
-            {
-                var="strategie";
-                test=strategie2Combo;
+            if (i == 19) {
+                var = "strategie";
+                test = strategie2Combo;
             }
-            if(i==20)
-            {
-                var="beheer";
-                test=beheerbehandelingCombo;
+            if (i == 20) {
+                var = "beheer";
+                test = beheerbehandelingCombo;
             }
             //maanden
 //            if(i==21)
@@ -223,27 +208,22 @@ public class Controller {
 //            {
 //                var=
 //            }
-            if(i==23)
-            {
-                var="nectarwaarde";
-                test= nectarwaardeCombo;
+            if (i == 23) {
+                var = "nectarwaarde";
+                test = nectarwaardeCombo;
             }
-            if(i==24)
-            {
-                var="pollenwaarde";
-                test=pollenwaardeCombo;
+            if (i == 24) {
+                var = "pollenwaarde";
+                test = pollenwaardeCombo;
             }
             try {
-                comboList =combodao.getcombo(var);
-                for (int j =0; j < comboList.size();j++)
-                {
+                comboList = combodao.getcombo(var);
+                for (int j = 0; j < comboList.size(); j++) {
                     test.getItems().add(comboList.get(j).getGegeven());
                 }
                 comboList.clear();
 
-            }
-            catch (SQLException e)
-            {
+            } catch (SQLException e) {
                 System.out.println("in de catch");
                 Logger.getLogger(plantdao.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -316,6 +296,7 @@ public class Controller {
         }
 
     }
+
     private void fenotypetabzoeken() {
         for (int i = 0; i < fenotypeMultiList.size(); i++) {
             try {
@@ -739,27 +720,21 @@ public class Controller {
                 if (fenotypeList.get(j).getBladgrootte() < Integer.parseInt(bladgrootteMinimumTxt.getText())) {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
-                }
-                else if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
+                } else if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
                 }
                 //opzoeken levensvorm uitleg vragen
                 else if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBladvorm()) {
                     verwjider(fenotypeList.get(j).getPlant_id());
-                }
-                else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
+                } else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
                     verwjider(fenotypeList.get(j).getPlant_id());
-                }
-                else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
+                } else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
                     verwjider(fenotypeList.get(j).getPlant_id());
-                }
-                else if (bloeiwijzeCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBloeiwijze()) {
+                } else if (bloeiwijzeCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBloeiwijze()) {
                     verwjider(fenotypeList.get(j).getPlant_id());
 
-                }
-                else if (habitusCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getHabitus())
-                {
+                } else if (habitusCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getHabitus()) {
                     verwjider(fenotypeList.get(j).getPlant_id());
                 }
             } catch (Exception e) {
@@ -790,53 +765,74 @@ public class Controller {
 //        }
     }
 
-    private void abiotischefactorenzoeken()  {
-        for (int k =0; k < abiotischeFactorenList.size();k++)
-        {
-            if (bezonningCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getBezonning())
-            {
+    private void abiotischefactorenzoeken() {
+        for (int k = 0; k < abiotischeFactorenList.size(); k++) {
+            if (bezonningCombo.getSelectionModel().getSelectedItem() != abiotischeFactorenList.get(k).getBezonning()) {
                 verwjider(abiotischeFactorenList.get(k).getPlant_id());
-            }
-            else if(grondsoortCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getGrondsoort())
-            {
+            } else if (grondsoortCombo.getSelectionModel().getSelectedItem() != abiotischeFactorenList.get(k).getGrondsoort()) {
                 verwjider(abiotischeFactorenList.get(k).getPlant_id());
-            }
-            else if(vochtbehoefteCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getVochtbehoefte())
-            {
+            } else if (vochtbehoefteCombo.getSelectionModel().getSelectedItem() != abiotischeFactorenList.get(k).getVochtbehoefte()) {
                 verwjider(abiotischeFactorenList.get(k).getPlant_id());
-            }
-            else if(voedingsbehoefteCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getVoedingsbehoefte())
-            {
+            } else if (voedingsbehoefteCombo.getSelectionModel().getSelectedItem() != abiotischeFactorenList.get(k).getVoedingsbehoefte()) {
                 verwjider(abiotischeFactorenList.get(k).getPlant_id());
-            }
-            else if(reactieCombo.getSelectionModel().getSelectedItem()!=abiotischeFactorenList.get(k).getReactie_antagoistische_omg())
-            {
+            } else if (reactieCombo.getSelectionModel().getSelectedItem() != abiotischeFactorenList.get(k).getReactie_antagoistische_omg()) {
                 verwjider(abiotischeFactorenList.get(k).getPlant_id());
             }
         }
-        for(int l=0;l<abiotischeFactorenMultiList.size();l++)
-        {
-            String keuze1;
-            String keuze2;
-            if(habitatEnOfCombo.getSelectionModel().getSelectedItem()=="en")
-            {
-                keuze1=hab
-            }
-            else if( habitatEnOfCombo.getSelectionModel().getSelectedItem()=="of")
-            {
 
-            }
-            else if(habitatEnOfCombo.getSelectionModel().getSelectedItem()=="en/of")
-            {
+        //zit vast met dit gedeelte omdat als ik niet inzie hoe ik kan zoeken en dan meerdere dingen kan checken...
+        // werk ik met een for lus onder de keuze 2 om de overlopen en te checkn of het klopt aan de a-hand van ID ?
 
-            }
-            else if (habitatEnOfCombo.getSelectionModel().getSelectedItem()=="alleen")
-            {
-
-            }
-
-        }
+//        String keuze1;
+//        String keuze2;
+//        int vorigplantID = 0;
+//        boolean verwijder = false;
+//        for (int l = 0; l < abiotischeFactorenMultiList.size(); l++) {
+//            if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en") {
+//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+//                boolean bkeuze1 =false;
+//                boolean bkeuze2=false;
+//                for(int m=0;m<abiotischeFactorenMultiList.size();m++)
+//                {
+//                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
+//                    {
+//                        bkeuze1=true;
+//                    }
+//                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze2)
+//                    {
+//                        bkeuze2=true;
+//                    }
+//                }
+//                if(bkeuze1!=true && bkeuze2!=true)
+//                {
+//                    verwijder
+//                }
+//
+//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "of") {
+//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+//
+//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en/of") {
+//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+//
+//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "alleen") {
+//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+//                if (keuze1 != abiotischeFactorenMultiList.get(l).getEigenschap()) {
+//                }
+//            }
+//
+//        }
     }
+
+    private void commensialismezoeken()   {
+
+    }
+
+    private void beheerzoeken(){}
+
+    private void extratab(){}
 
     private void verwjider(int plantID) {
         for (int j = 0; j < fenotypeMultiList.size(); j++) {
