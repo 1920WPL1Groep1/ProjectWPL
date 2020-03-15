@@ -742,6 +742,8 @@ public class Controller {
             }
 
         }
+        //voor te zoeken met for lus alles doorlopen en die dat ni erbij horen verwijderen op basis van plantid bij alle lijsten mvg wout hostens xp
+
         //opzoeken levensvorm uitleg vragen
 //        for (int k = 0; k < fenotypeList.size(); k++) {
 //            if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getBladvorm()) {
@@ -783,47 +785,99 @@ public class Controller {
         //zit vast met dit gedeelte omdat als ik niet inzie hoe ik kan zoeken en dan meerdere dingen kan checken...
         // werk ik met een for lus onder de keuze 2 om de overlopen en te checkn of het klopt aan de a-hand van ID ?
 //
-//        String keuze1;
-//        String keuze2;
-//        int vorigplantID = 0;
-//        boolean verwijder = false;
-//        for (int l = 0; l < abiotischeFactorenMultiList.size(); l++) {
-//            if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en") {
-//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
-//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
-//                boolean bkeuze1 =false;
-//                boolean bkeuze2=false;
-//                for(int m=0;m<abiotischeFactorenMultiList.size();m++)
-//                {
-//                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
-//                    {
-//                        bkeuze1=true;
-//                    }
-//                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze2)
-//                    {
-//                        bkeuze2=true;
-//                    }
-//                }
-//                if(bkeuze1!=true && bkeuze2!=true)
-//                {
-//                    verwijder
-//                }
-////
-//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "of") {
-//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
-//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
-//
-//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en/of") {
-//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
-//                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
-//
-//            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "alleen") {
-//                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
-//                if (keuze1 != abiotischeFactorenMultiList.get(l).getEigenschap()) {
-//                }
-//            }
-//
-//        }
+        String keuze1;
+        String keuze2;
+        int vorigplantID = 0;
+        boolean verwijder = false;
+        for (int l = 0; l < plantenlijst.size(); l++) {
+            int plantid= plantenlijst.get(l).getPlant_id();
+            List<abiotische_multi> filterdeAbio = new ArrayList<>();
+            for (int p =0; p< abiotischeFactorenMultiList.size();p++)
+            {
+                if(abiotischeFactorenMultiList.get(p).getPlant_id()==plantid)
+                {
+                    filterdeAbio.add(abiotischeFactorenMultiList.get(p));
+                }
+            }
+            if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en") {
+                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+                boolean bkeuze1 =false;
+                boolean bkeuze2=false;
+                for(int m=0;m<filterdeAbio.size();m++)
+                {
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
+                    {
+                        bkeuze1=true;
+                    }
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze2)
+                    {
+                        bkeuze2=true;
+                    }
+                }
+                if(bkeuze1!=true || bkeuze2!=true)
+                {
+                    verwjider(filterdeAbio.get(1).getPlant_id());
+                }
+            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "of") {
+                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+                boolean bkeuze1 =false;
+                boolean bkeuze2=false;
+                for(int m=0;m<filterdeAbio.size();m++)
+                {
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
+                    {
+                        bkeuze1=true;
+                    }
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze2)
+                    {
+                        bkeuze2=true;
+                    }
+                }
+                if(bkeuze1!=false && bkeuze2!=false)
+                {
+                    verwjider(filterdeAbio.get(1).getPlant_id());
+                }
+
+            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "en/of") {
+                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+                keuze2 = habitat3Combo.getSelectionModel().getSelectedItem().toString();
+                boolean bkeuze1 =false;
+                boolean bkeuze2=false;
+                for(int m=0;m<filterdeAbio.size();m++)
+                {
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
+                    {
+                        bkeuze1=true;
+                    }
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze2)
+                    {
+                        bkeuze2=true;
+                    }
+                }
+                if(bkeuze1!=false && bkeuze2!=false)
+                {
+                    verwjider(filterdeAbio.get(1).getPlant_id());
+                }
+
+            } else if (habitatEnOfCombo.getSelectionModel().getSelectedItem() == "alleen") {
+                keuze1 = habitat1Combo.getSelectionModel().getSelectedItem().toString();
+                boolean bkeuze1 =false;
+                for(int m=0;m<filterdeAbio.size();m++)
+                {
+                    if(abiotischeFactorenMultiList.get(m).getEigenschap()==keuze1)
+                    {
+                        bkeuze1=true;
+                    }
+                }
+                if(bkeuze1!=true )
+                {
+                    verwjider(filterdeAbio.get(1).getPlant_id());
+                }
+            }
+
+        }
     }
 
     private void commensialismezoeken()   {
@@ -1132,5 +1186,4 @@ public class Controller {
         controleKeuzeZoekterm();
         ZetZoekinfo();
     }
-    //voor te zoeken met for lus alles doorlopen en die dat ni erbij horen verwijderen op basis van plantid bij alle lijsten mvg wout hostens xp
 }
