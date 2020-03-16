@@ -29,6 +29,10 @@ public class combodao {
         {
             getallkeuze="select beheerdaad from beheer";
         }
+        if(welkecombo=="habitat")
+        {
+            getallkeuze="select waarde from habitat";
+        }
         try {
             stmkeuzecombo = dbConnection.prepareStatement(getallkeuze);
             ResultSet resultaat = stmkeuzecombo.executeQuery();

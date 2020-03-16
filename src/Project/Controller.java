@@ -123,10 +123,9 @@ public class Controller {
         beheertab.setDisable(true);
         extratab.setDisable(true);
         resultaatab.setDisable(false);
-        opvullencombo("bladvorm");
+        opvullencombo();
     }
-
-    private void opvullencombo(String welke) throws SQLException {
+    private void opvullencombo() throws SQLException {
         combodao combodao = new combodao(dbConnection);
         String var = null;
         ComboBox test = null;
@@ -172,11 +171,20 @@ public class Controller {
                 test = reactieCombo;
             }
             //uitleg over wat er ingevuld moet worden in de combo's + vragen of mathias bij iedere keuze een waarde kan toevoegen "leeg" of "geen keuze" of gewoon leeg veld
-//            if(i==11)
-//            {
-//                var="habitat";
-//                test=habitat1Combo;
-//            }
+            if(i==11)
+            {
+                var="habitat";
+                test=habitat1Combo;
+            }
+            if(i==12)
+            {
+                var="habitat";
+                test=habitat3Combo;
+            }
+            if(i==13)
+            {
+
+            }
             if (i == 16) {
                 var = "ontwikkelingssnelheid";
                 test = ontwikkelingssnelheidCombo;
@@ -303,7 +311,7 @@ public class Controller {
                 if (fenotypeMultiList.get(i).getEigenschap() == "bladhoogte") {
                     int bladgrootte = 0;
                     switch (bladhoogteMaandTxt.getText().toLowerCase()) {
-                        case "januarie":
+                        case "januari":
                         case "jan":
                             bladgrootte = Integer.parseInt(fenotypeMultiList.get(i).getJan());
                             break;
@@ -645,6 +653,7 @@ public class Controller {
                         default:
                             bladkleurtxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
                     }
+                    // zou het niet beter zijn om te werken met combobox?
                     if (bladkleur != bladkleurKleurTxt.getText()) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
@@ -704,6 +713,7 @@ public class Controller {
                         default:
                             bloeikleurtxt.setText("vul de maand correct in , of er zijn geen planten die voldoen");
                     }
+                    //zou het niet beter zijn om te werken met een combobox?
                     if (bloeikleur != bloeikleurKleurTxt.getText()) {
                         int plantID = fenotypeMultiList.get(i).getPlant_id();
                         verwjider(plantID);
@@ -720,51 +730,50 @@ public class Controller {
                 if (fenotypeList.get(j).getBladgrootte() < Integer.parseInt(bladgrootteMinimumTxt.getText())) {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
-                } else if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
+                    break;
+                }
+                if (fenotypeList.get(j).getBladgrootte() > Integer.parseInt(bladgrootteMaximumTxt.getText())) {
                     int ID = fenotypeList.get(j).getPlant_id();
                     verwjider(ID);
+                    break;
+                }
+                if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBladvorm()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (bloeiwijzeCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBloeiwijze()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (habitusCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getHabitus()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
+                }
+                if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
+                    verwjider(fenotypeList.get(j).getPlant_id());
+                    break;
                 }
                 //opzoeken levensvorm uitleg vragen
-                else if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBladvorm()) {
-                    verwjider(fenotypeList.get(j).getPlant_id());
-                } else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getRatio_bloei_blad()) {
-                    verwjider(fenotypeList.get(j).getPlant_id());
-                } else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getSpruitfenelogie()) {
-                    verwjider(fenotypeList.get(j).getPlant_id());
-                } else if (bloeiwijzeCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getBloeiwijze()) {
-                    verwjider(fenotypeList.get(j).getPlant_id());
-
-                } else if (habitusCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(j).getHabitus()) {
-                    verwjider(fenotypeList.get(j).getPlant_id());
-                }
+//            if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getBladvorm()) {
+//                verwjider(fenotypeList.get(k).getPlant_id());//
+//        }
             } catch (Exception e) {
                 bladgroottetxt.setText("geef zeker een getal in en geen tekst");
             }
 
         }
-        //voor te zoeken met for lus alles doorlopen en die dat ni erbij horen verwijderen op basis van plantid bij alle lijsten mvg wout hostens xp
-
-        //opzoeken levensvorm uitleg vragen
-//        for (int k = 0; k < fenotypeList.size(); k++) {
-//            if (bladvormCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getBladvorm()) {
-//                verwjider(fenotypeList.get(k).getPlant_id());
-//            } else if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getSpruitfenelogie()) {
-//                verwjider(fenotypeList.get(k).getPlant_id());
-//            } else if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(k).getRatio_bloei_blad()) {
-//                verwjider(fenotypeList.get(k).getPlant_id());
-//            }
-//
-//        }
-//        for (int l = 0; l < fenotypeList.size(); l++) {
-//            if (ratioCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(l).getRatio_bloei_blad()) {
-//                verwjider(fenotypeList.get(l).getPlant_id());
-//            }
-//        }
-//        for (int m = 0; m < fenotypeList.size(); m++) {
-//            if (spruitCombo.getSelectionModel().getSelectedItem() != fenotypeList.get(m).getSpruitfenelogie()) {
-//                verwjider(fenotypeList.get(m).getPlant_id());
-//            }
-//        }
     }
 
     private void abiotischefactorenzoeken() {
@@ -782,13 +791,8 @@ public class Controller {
             }
         }
 
-        //zit vast met dit gedeelte omdat als ik niet inzie hoe ik kan zoeken en dan meerdere dingen kan checken...
-        // werk ik met een for lus onder de keuze 2 om de overlopen en te checkn of het klopt aan de a-hand van ID ?
-//
         String keuze1;
         String keuze2;
-        int vorigplantID = 0;
-        boolean verwijder = false;
         for (int l = 0; l < plantenlijst.size(); l++) {
             int plantid= plantenlijst.get(l).getPlant_id();
             List<abiotische_multi> filterdeAbio = new ArrayList<>();
