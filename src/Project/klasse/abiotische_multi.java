@@ -4,9 +4,9 @@ public class abiotische_multi {
     private Integer abiotische_id;
     private Integer plant_id;
     private String eigenschap;
-    private Integer waarde;
+    private String  waarde;
 
-    public abiotische_multi(Integer abiotische_id, Integer plant_id, String eigenschap, Integer waarde) {
+    public abiotische_multi(Integer abiotische_id, Integer plant_id, String eigenschap, String waarde) {
         this.abiotische_id = abiotische_id;
         this.plant_id = plant_id;
         this.eigenschap = eigenschap;
@@ -37,11 +37,11 @@ public class abiotische_multi {
         this.eigenschap = eigenschap;
     }
 
-    public Integer getWaarde() {
+    public String getWaarde() {
         return waarde;
     }
 
-    public void setWaarde(Integer waarde) {
+    public void setWaarde(String waarde) {
         this.waarde = waarde;
     }
 }

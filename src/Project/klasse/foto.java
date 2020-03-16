@@ -1,15 +1,16 @@
 package Project.klasse;
 
 import java.awt.*;
+import java.sql.Blob;
 
 public class foto {
     private Integer foto_id;
     private Integer plant_id;
     private String eigenschap;
     private String url;
-    private Image figuur;
+    private Blob figuur;
 
-    public foto(Integer foto_id, Integer plant_id, String eigenschap, String url, Image figuur) {
+    public foto(Integer foto_id, Integer plant_id, String eigenschap, String url, Blob figuur) {
         this.foto_id = foto_id;
         this.plant_id = plant_id;
         this.eigenschap = eigenschap;
@@ -49,11 +50,11 @@ public class foto {
         this.url = url;
     }
 
-    public Image getFiguur() {
+    public Blob getFiguur() {
         return figuur;
     }
 
-    public void setFiguur(Image figuur) {
+    public void setFiguur(Blob figuur) {
         this.figuur = figuur;
     }
 }
